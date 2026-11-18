@@ -1,0 +1,145 @@
+schema_version: 1
+owner: "60211808"
+frozen_at: "2026-11-17"
+baseline_repo: "https://github.com/tauricresearch/tradingagents"
+baseline_commit: "9fa1196fffbcfd9de5146d2dd2869df84ab99838"
+tradeoff: >
+  Ten requirements, all Must, covering functional / invariant / cost / governance.
+  Deliberately excluded, with reasons: wall-clock latency budget (COST-06 in the agent
+  session) because the repository defines no latency target and the notes give no
+  duration, so any threshold would be invented; decision-quality regression (COST-07)
+  because no labelled baseline exists to compare against. Both are recorded as rejected
+  rather than silently dropped. Security (input sanitisation) and quality attribute
+  (reproducibility) coverage are deferred; ids will be added, never renumbered, if time
+  allows.
+
+requirements:
+
+  - id: FR-01
+    type: functional
+    statement: >
+      The research debate shall run in two phases: bull and bear each produce structured
+      idea cards under Osborn's rules (defer judgement, pursue quantity, build on others,
+      combine and improve), and the Research Manager shall adjudicate from those cards.
+    fit_criterion:
+      metric: "idea cards produced per side; required fields present; whether the rationale cites card ids"
+      threshold: ">=1 card per side; every card carries claim/evidence/stance/uncertainty; rationale cites >=1 card id; 100% of 10 sampled runs"
+      verification: "schema-validate the saved debate record, then match citation ids in the rationale"
+    priority: must
+    source: "notes/three-changes.md goal 2; tradingagents/agents/state.py (InvestDebateState)"
+
+  - id: FR-02
+    type: functional
+    statement: >
+      The debate shall terminate when it converges or when max_debate_rounds is reached,
+      and shall record the convergence round count and the termination reason.
+    fit_criterion:
+      metric: "presence of convergence_rounds and termination_reason; runs exceeding the cap"
+      threshold: "100% of records carry both fields; 0 runs exceed max_debate_rounds"
+      verification: "assert both fields in investment_debate_state; then run once with max_debate_rounds=0 and assert immediate termination with a recorded reason"
+    priority: must
+    source: "tradingagents/default_config.py (max_debate_rounds: 1); tradingagents/agents/state.py (InvestDebateState.count)"
+
+  - id: FR-03
+    type: functional
+    statement: >
+      A single-ticker analysis shall emit a structured final decision carrying the rating,
+      an executive summary, the investment thesis, and the key evidence items the decision
+      cites.
+    fit_criterion:
+      metric: "completeness of the four fields across sampled runs"
+      threshold: "100% of 10 sampled runs carry all four fields with non-empty evidence citations; 0 missing"
+      verification: "schema-validate the saved decision record"
+    priority: must
+    source: "tradingagents/agents/schemas.py (PortfolioDecision); tradingagents/agents/state.py (final_trade_decision)"
+
+  - id: FR-04
+    type: functional
+    statement: >
+      The system shall meter token usage per agent per LLM call (input, output, total) and
+      expose the aggregate programmatically at the end of a run, not only through the CLI
+      display.
+    fit_criterion:
+      metric: "share of LLM calls with a token record; aggregate minus sum of items"
+      threshold: "100% of calls recorded; absolute(aggregate - sum(items)) == 0"
+      verification: "run one analysis, export per-call records and the aggregate, compare sums"
+    priority: must
+    source: "notes/three-changes.md goal 1; tradingagents/cli/stats_handler.py (CLI-facing today; confirm programmatic export)"
+
+  - id: FR-05
+    type: functional
+    statement: >
+      Every final decision shall pass a deterministic guard checkpoint before any
+      downstream consumer reads it; a decision that fails the guard shall not be published.
+    fit_criterion:
+      metric: "share of decisions traversing the guard; bypass paths"
+      threshold: "100% traverse it (visible in the run trace); 0 bypass paths"
+      verification: "static check that the output node is reachable only through the gate node; runtime assertion of gate execution"
+    priority: must
+    source: "notes/three-changes.md goal 3"
+
+  - id: INV-01
+    type: invariant
+    statement: >
+      final_rating shall be one of Buy / Overweight / Hold / Underweight / Sell / REVIEW;
+      REVIEW shall never be consumed downstream as a tradeable position; and the guard's
+      pass/fail decision shall involve no LLM call.
+    fit_criterion:
+      metric: "out-of-enum values reaching final_rating; REVIEW mapped to a position; LLM calls inside the gate path"
+      threshold: "all three are 0"
+      verification: "inject 'Strong Buy', 'overweight plus', and an empty string into the free-text rating path and assert is_review is True; assert the position mapper raises or skips on REVIEW; static inspection that the gate body contains no LLM or structured-invoke call"
+    priority: must
+    protects: "the existing RATING_REVIEW fail-safe in tradingagents/agents/rating.py, where parse_rating defaults to REVIEW rather than degrading to Hold"
+    source: "tradingagents/agents/rating.py (RATINGS_5_TIER, RATING_REVIEW, parse_rating default, is_review); tradingagents/agents/schemas.py (PortfolioRating); tradingagents/agents/state.py (final_rating)"
+
+  - id: INV-02
+    type: invariant
+    statement: >
+      The suggested position size shall parse to a percentage of the portfolio and shall
+      not exceed the configured cap; a size that cannot be parsed shall resolve to REVIEW,
+      never to a default position.
+    fit_criterion:
+      metric: "over-cap and unparseable position sizes that pass the guard"
+      threshold: "0 pass; 100% are rejected or resolve to REVIEW"
+      verification: "unit-test the gate with '80% of portfolio', 'all in', '1.5x leverage' and an empty string (all must be blocked), plus '12% of portfolio' against a 10% cap (must be blocked)"
+    priority: must
+    source: "tradingagents/agents/schemas.py:180 (position_sizing: str | None, free text, no numeric validator)"
+
+  - id: INV-03
+    type: invariant
+    statement: >
+      At the decision layer, when any key input's as-of date differs from the analysis
+      trade_date, the run shall resolve to REVIEW and shall not continue on stale data.
+    fit_criterion:
+      metric: "tradeable decisions emitted on date-mismatched inputs"
+      threshold: "0; 100% of mismatched runs resolve to REVIEW"
+      verification: "build a date-mismatch fixture (1 day and 7 days old) and assert final_rating is REVIEW"
+    priority: must
+    source: "tradingagents/dataflows/date_window.py (as_of clamps future data only, not stale data); tradingagents/agents/state.py (trade_date)"
+
+  - id: COST-01
+    type: cost
+    statement: >
+      A single-ticker analysis shall run with max_tool_rounds = 8, news_article_limit = 8,
+      and three global news queries, and its total token usage shall be strictly below the
+      pre-change baseline on the same ticker set.
+    fit_criterion:
+      metric: "effective config values; observed rounds and article counts; total tokens versus baseline"
+      threshold: "the three config values equal 8 / 8 / 3; over 10 sampled runs every observed tool-call count and article count is within those limits; every run's total token count is strictly below baseline"
+      verification: "assert build_default_config() returns 8 / 8 / 3 (this fails today: 20 / 20 / 5); then count actual tool calls and articles from the run log and sum usage.total_tokens"
+    priority: must
+    baseline: "mean total_tokens = 108901.0 over 10 valid baseline runs (measured by C on D1, commit 9fa1196, NVDA/2026-09-01, analysts market+news, model CS5351/DeepSeek-V4-Flash)"
+    source: "tradingagents/default_config.py (max_tool_rounds: 20, news_article_limit: 20, global_news_queries: 5 items); notes/three-changes.md goal 1"
+
+  - id: GOV-01
+    type: governance
+    statement: >
+      Every final decision record shall carry the prompt version, model identifier, rule
+      version and input evidence fingerprint in force at the time of the decision, written
+      in the same commit as the decision.
+    fit_criterion:
+      metric: "presence and non-emptiness of the four provenance fields"
+      threshold: "100% of records carry all four; 0 missing"
+      verification: "read the records after 10 runs and assert all four; then delete one field in a fixture and assert the write is refused"
+    priority: must
+    source: "notes/three-changes.md; tradingagents/memory/log.py (existing decision log to extend); prompts/prompt_v1.0.yaml (version source)"
