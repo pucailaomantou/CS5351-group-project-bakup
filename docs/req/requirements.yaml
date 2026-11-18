@@ -128,7 +128,7 @@ requirements:
       threshold: "the three config values equal 8 / 8 / 3; over 10 sampled runs every observed tool-call count and article count is within those limits; every run's total token count is strictly below baseline"
       verification: "assert build_default_config() returns 8 / 8 / 3 (this fails today: 20 / 20 / 5); then count actual tool calls and articles from the run log and sum usage.total_tokens"
     priority: must
-    baseline: "measured by C on D1; fill the number here before the gate is enabled"
+    baseline: "mean total_tokens = 108901.0 over 10 valid baseline runs (measured by C on D1, commit 9fa1196, NVDA/2026-09-01, analysts market+news, model CS5351/DeepSeek-V4-Flash); fill/confirm here before the gate is enabled"
     source: "tradingagents/default_config.py (max_tool_rounds: 20, news_article_limit: 20, global_news_queries: 5 items); notes/three-changes.md goal 1"
 
   - id: GOV-01
