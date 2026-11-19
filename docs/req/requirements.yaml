@@ -126,11 +126,21 @@ requirements:
     fit_criterion:
       metric: "effective config values; ten-run batch mean and median total tokens versus baseline"
       threshold: "the three config values equal 8 / 8 / 3; over ten runs on NVDA / 2026-09-01 the batch mean total token count is < 108901 and the batch median is < 92713"
-      verification: "assert build_default_config() returns 8 / 8 / 3 (this fails today: 20 / 20 / 5); then run ten analyses under the baseline protocol (temperature 0.0, analysts market+news, one research round, one risk round, isolated memory/cache/results) and compare the batch mean and median of usage.total_tokens"
+      verification: "assert build_default_config() returns 8 / 8 / 3 (this fails today: 20 / 20 / 5); then run ten analyses under the baseline protocol (temperature 0.0, analysts market+news, one research round, one risk round, isolated memory/cache/results) and compare the batch mean and median of usage.total_tokens. Record articles fetched (ticker and global) per run in the after batch; they were not recorded in the baseline, so they serve as an explanatory covariate, not as a threshold."
     priority: must
     baseline: "mean total_tokens = 108901.0 over 10 valid baseline runs (measured by C on D1, commit 9fa1196, NVDA/2026-09-01, analysts market+news, model CS5351/DeepSeek-V4-Flash)"
     baseline_median: 92713
-    amended: "2026-11-18, after the baseline measurement and after PR #2 was merged. Removed the unfalsifiable 'every observed tool-call count and article count is within those limits' clause (observed tool_rounds were 3-5 against a cap of 8, so it held by construction as rounds, while observed tool_calls were 12-25 because calls run in parallel within a round, so it could never hold as calls). Replaced the per-run 'strictly below baseline' clause with a ten-run batch comparison on mean and median because the baseline distribution was bimodal (7 runs at 80968-94687, 3 runs at 146263-167483 with 22-25 tool calls), making individual-run comparison unstable."
+    baseline_observations: >
+      Ten runs on NVDA / 2026-09-01. total_tokens tracks input_tokens almost
+      exactly (r = 0.9995), and tool_calls explains the spread (r = 0.90): the three
+      runs at 22-25 tool calls produced 146263 / 157933 / 167483 tokens, while the
+      seven runs at 12-19 calls stayed at 80968-94687 (mean 88190). tool_rounds were
+      3-5 in every run, so max_tool_rounds was never approached; tokens per tool call
+      stayed at 4859-7613, so the per-call payload is stable and the call count is
+      what moves. Article counts were not recorded per run in this batch, so the
+      effect of news_article_limit cannot be separated from the effect of the global
+      query count.
+    amended: "2026-11-18, after the baseline measurement and after PR #2 was merged. Removed the unfalsifiable 'every observed tool-call count and article count is within those limits' clause (observed tool_rounds were 3-5 against a cap of 8, so it held by construction as rounds, while observed tool_calls were 12-25 because calls run in parallel within a round, so it could never hold as calls). Replaced the per-run 'strictly below baseline' clause with a ten-run batch comparison on mean and median because the baseline distribution was bimodal (7 runs at 80968-94687, 3 runs at 146263-167483 with 22-25 tool calls), making individual-run comparison unstable. The observed variance is driven by tool-call count, which none of the three configured limits bounds directly, since several calls run inside a single round; the config assertions are therefore necessary but not sufficient for the token target."
     source: "tradingagents/default_config.py (max_tool_rounds: 20, news_article_limit: 20, global_news_queries: 5 items); notes/three-changes.md goal 1"
 
   - id: GOV-01
