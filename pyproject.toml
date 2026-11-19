@@ -45,10 +45,14 @@ bedrock = [
 [project.scripts]
 tradingagents = "cli.main:app"
 
+[tool.setuptools]
+package-dir = {"" = "src"}
+
 [tool.setuptools.dynamic]
 version = {attr = "tradingagents.__version__"}
 
 [tool.setuptools.packages.find]
+where = ["src"]
 include = ["tradingagents*", "cli*"]
 
 [tool.setuptools.package-data]
@@ -56,7 +60,7 @@ cli = ["static/*"]
 tradingagents = ["assets/*.svg"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["test"]
 addopts = "-ra --strict-markers -m \"not integration\""
 markers = [
     "unit: fast isolated unit tests",

@@ -9,3 +9,4 @@
 
 Upstream `README.md` is kept at `docs/upstream/README-9fa1196.md`. Excluded:
 `.github/`, `.codegraph/`, `.git`, `__pycache__/`, `*.pyc`, `.venv/`, `.DS_Store`.
+2026-11-19: sources relocated to src/ (paths only, contents unchanged) in the src-restructure commit.
