@@ -1,0 +1,33 @@
+{
+  "run_id": "20261120_114222_f2932b46",
+  "side": "before",
+  "captured_at": "2026-11-20T11:44:41+08:00",
+  "stock_calls": 1,
+  "records": [
+    {
+      "run_id": "20261120_114222_f2932b46",
+      "side": "before",
+      "tool_call_index": 0,
+      "tool_call_id": "call_00_tSt3oUNIXsiOqongZ6dT4893",
+      "request_args": {
+        "start_date": "2025-11-19",
+        "end_date": "2026-11-19"
+      },
+      "request_symbol": null,
+      "request_start": "2025-11-19",
+      "request_end": "2026-11-19",
+      "response_seen": true,
+      "response_file": "c-experiments/results/candidate_20261119_191921/supplement_before-20261120_034150/market_evidence/20261120_114222_f2932b46_stock_0.txt",
+      "response_sha256": "7b3105297f773ee51e98c8800f5c20e5f60618f60aa1837c3439825984408172",
+      "header_start": "2025-11-19",
+      "header_end": "2026-11-19",
+      "total_records": 252,
+      "csv_rows": 252,
+      "first_date": "2025-11-19",
+      "last_date": "2026-11-19",
+      "csv_sha256": "0a837aec158804bcd15a580fee9134dcb68938cf0872f45bcb6520add39c8203",
+      "parse_ok": true
+    }
+  ],
+  "note": "Captured from the graph's own stream: each get_stock_data call's args paired with the ToolMessage of matching tool_call_id. Raw response text saved verbatim. NOT from cache/report/re-query."
+}

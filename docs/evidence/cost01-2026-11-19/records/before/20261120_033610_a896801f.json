@@ -1,0 +1,169 @@
+{
+  "run_id": "20261120_033610_a896801f",
+  "ticker": "NVDA",
+  "date": "2026-11-19",
+  "phase": "before",
+  "expected_repo": "/Users/administrator/CityU/CS5351/tradingagents-upstream",
+  "imported_package_path": "/Users/administrator/CityU/CS5351/tradingagents-upstream/tradingagents/__init__.py",
+  "actual_commit": "9fa1196fffbcfd9de5146d2dd2869df84ab99838",
+  "expected_commit": "9fa1196fffbcfd9de5146d2dd2869df84ab99838",
+  "commit_matches": true,
+  "tree_dirty": null,
+  "models": {
+    "llm_provider": "openai_compatible",
+    "deep_think_llm": "CS5351/DeepSeek-V4-Flash",
+    "quick_think_llm": "CS5351/DeepSeek-V4-Flash"
+  },
+  "settings": {
+    "version": "0.7.1",
+    "llm_provider": "openai_compatible",
+    "deep_think_provider": "openai_compatible",
+    "deep_think_llm": "CS5351/DeepSeek-V4-Flash",
+    "quick_think_provider": "openai_compatible",
+    "quick_think_llm": "CS5351/DeepSeek-V4-Flash",
+    "analysts": [
+      "market",
+      "news"
+    ],
+    "max_debate_rounds": 1,
+    "max_risk_discuss_rounds": 1,
+    "output_language": "English",
+    "data_vendors": {
+      "core_stock_apis": "yfinance",
+      "technical_indicators": "yfinance",
+      "fundamental_data": "sec_edgar,yfinance",
+      "news_data": "yfinance",
+      "macro_data": "fred",
+      "prediction_markets": "polymarket"
+    },
+    "tool_vendors": {}
+  },
+  "config": {
+    "llm_provider": "openai_compatible",
+    "deep_think_llm": "CS5351/DeepSeek-V4-Flash",
+    "quick_think_llm": "CS5351/DeepSeek-V4-Flash",
+    "deep_think_provider": null,
+    "quick_think_provider": null,
+    "max_debate_rounds": 1,
+    "max_risk_discuss_rounds": 1,
+    "max_tool_rounds": 20,
+    "temperature": 0.0,
+    "max_tokens": null,
+    "output_language": "English",
+    "news_article_limit": 20,
+    "global_news_article_limit": 10,
+    "global_news_lookback_days": 7,
+    "checkpoint_enabled": false,
+    "benchmark_ticker": null,
+    "holding_period_days": 5,
+    "global_news_query_count": 5,
+    "data_vendors": {
+      "core_stock_apis": "yfinance",
+      "technical_indicators": "yfinance",
+      "fundamental_data": "sec_edgar,yfinance",
+      "news_data": "yfinance",
+      "macro_data": "fred",
+      "prediction_markets": "polymarket"
+    }
+  },
+  "status": "succeeded",
+  "error": null,
+  "error_detail": {
+    "exception_type": null,
+    "http_status": null
+  },
+  "started_at": "2026-11-20T03:36:10+08:00",
+  "finished_at": "2026-11-20T03:38:05+08:00",
+  "duration_s": 115.0,
+  "counts": {
+    "llm_calls": 16,
+    "tool_calls": 24,
+    "tool_rounds": 4
+  },
+  "tool_rounds_status": "measured",
+  "usage": {
+    "input_tokens": 123857,
+    "output_tokens": 21688,
+    "total_tokens": 145545
+  },
+  "usage_complete": true,
+  "usage_state": "complete",
+  "usage_verifiability": "per_call",
+  "provider_total_tokens": null,
+  "started_calls": 16,
+  "finished_calls": 16,
+  "unfinished_calls": 0,
+  "usage_calls": 16,
+  "unavailable_calls": 0,
+  "error_calls": 0,
+  "usage_note": "ok",
+  "data_fetch": {
+    "complete": true,
+    "market_complete": true,
+    "news_complete": true,
+    "macro_complete": false,
+    "macro_optional": true,
+    "tool_results": 24,
+    "unavailable_results": 0,
+    "details": [],
+    "per_category": {
+      "market": {
+        "results": 13,
+        "failures": 0
+      },
+      "news": {
+        "results": 3,
+        "failures": 0
+      },
+      "macro": {
+        "results": 5,
+        "failures": 5
+      },
+      "other": {
+        "results": 3,
+        "failures": 0
+      }
+    }
+  },
+  "news_delivered_count": {
+    "ticker_news": 20,
+    "global_news": 70,
+    "status": "counted"
+  },
+  "news_article_count": {
+    "ticker_news": 20,
+    "global_news": 70,
+    "status": "counted"
+  },
+  "market_rows": 264,
+  "failure_reasons": [
+    "macro_optional_unavailable"
+  ],
+  "isolated_dirs": {
+    "root": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_033610_a896801f",
+    "memory": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_033610_a896801f/memory",
+    "cache": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_033610_a896801f/cache",
+    "results": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_033610_a896801f/results"
+  },
+  "debug": false,
+  "valid": true,
+  "invalid_reasons": [],
+  "provenance": {
+    "side": "before",
+    "imported_package_path": "/Users/administrator/CityU/CS5351/tradingagents-upstream/tradingagents/__init__.py",
+    "runner_file_sha256": "4e809826a6b30f7f062bb3c5dd78529b780633018c6fb61cbb95b067931bce1b",
+    "news_py_path": "/Users/administrator/CityU/CS5351/tradingagents-upstream/tradingagents/dataflows/vendors/yahoo/news.py",
+    "news_py_sha256": "9f56dcc58bae002a4e7c19e0f659504fabfb7132aef535e248bc7d080b30b7eb",
+    "adapter": {
+      "adapter_id": "d4-news-window-adapter-v1",
+      "adapter_sha256": "4fb6cab37adc075aa51f5457653371a0959d14a834688f464eef7b67aacf91ca",
+      "applies_to": "get_news only",
+      "rule": "effective_end=trade_date; effective_start=trade_date-7days",
+      "window_days": 7,
+      "tells_model": true,
+      "out_of_window_injected": false
+    },
+    "adapter_trade_date": "2026-11-19",
+    "effective_window": "2026-11-12..2026-11-19"
+  }
+}

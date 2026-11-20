@@ -1,0 +1,99 @@
+{
+  "before_revised": {
+    "attempted_total": 12,
+    "runner_valid": 12,
+    "excluded": {
+      "20261120_032135_28a781b6": "141 rows; excluded per B/E (market completeness not independently evidenced)",
+      "20261120_032332_fe83feb4": "141 rows; excluded per B/E (market completeness not independently evidenced)"
+    },
+    "included_count": 10,
+    "included_run_ids": [
+      "20261120_031930_7ee093c9",
+      "20261120_032527_a9e526a1",
+      "20261120_032743_94d1daf7",
+      "20261120_032937_ca79330f",
+      "20261120_033139_ca7050f0",
+      "20261120_033355_9a8b9c5e",
+      "20261120_033610_a896801f",
+      "20261120_033805_8874d79d",
+      "20261120_114222_f2932b46",
+      "20261120_114441_2a33e022"
+    ],
+    "supplement_run_ids": [
+      "20261120_114222_f2932b46",
+      "20261120_114441_2a33e022"
+    ],
+    "total": {
+      "n": 10,
+      "mean": 160315.8,
+      "median": 159615.0,
+      "min": 145545,
+      "max": 174399,
+      "sum": 1603158
+    },
+    "input": {
+      "n": 10,
+      "mean": 136602.4,
+      "median": 136893.5,
+      "min": 123857,
+      "max": 149359,
+      "sum": 1366024
+    },
+    "output": {
+      "n": 10,
+      "mean": 23713.4,
+      "median": 23299.5,
+      "min": 21061,
+      "max": 26940,
+      "sum": 237134
+    }
+  },
+  "after": {
+    "attempted": 12,
+    "valid": 10,
+    "invalid_run_ids": [
+      "20261120_035236_01461635",
+      "20261120_040304_484e3073"
+    ],
+    "total": {
+      "n": 10,
+      "mean": 147754.2,
+      "median": 148087.0,
+      "min": 132330,
+      "max": 160591,
+      "sum": 1477542
+    },
+    "input": {
+      "n": 10,
+      "mean": 124466.1,
+      "median": 124441.0,
+      "min": 110322,
+      "max": 135184,
+      "sum": 1244661
+    },
+    "output": {
+      "n": 10,
+      "mean": 23288.1,
+      "median": 22721.0,
+      "min": 21436,
+      "max": 25407,
+      "sum": 232881
+    }
+  },
+  "comparison": {
+    "before_mean": 160315.8,
+    "before_median": 159615.0,
+    "after_mean": 147754.2,
+    "after_median": 148087.0,
+    "after_mean_lower": true,
+    "after_median_lower": true,
+    "mean_delta_pct": -7.84,
+    "median_delta_pct": -7.22
+  },
+  "prior_before_forbidden": {
+    "mean": 153510.4,
+    "median": 154416.5,
+    "note": "old values NOT used; replaced by before_revised"
+  },
+  "superseded_after_note": "After = original 10 valid (not re-run)."
+}

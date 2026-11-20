@@ -1,0 +1,25 @@
+run_id,side,status,market_rows,total_tokens,request_range,response_sha256,evidence_path,note
+20261120_031930_7ee093c9,before,included,252,161669,,,docs/evidence/cost01-2026-11-19/records/before/20261120_031930_7ee093c9.json,original 8 kept
+20261120_032135_28a781b6,before,excluded_per_BE,141,134915,,,docs/evidence/cost01-2026-11-19/records/before/20261120_032135_28a781b6.json,kept_original_json_unchanged; market completeness not independently evidenced (141 rows)
+20261120_032332_fe83feb4,before,excluded_per_BE,141,134349,,,docs/evidence/cost01-2026-11-19/records/before/20261120_032332_fe83feb4.json,kept_original_json_unchanged; market completeness not independently evidenced (141 rows)
+20261120_032527_a9e526a1,before,included,264,157561,,,docs/evidence/cost01-2026-11-19/records/before/20261120_032527_a9e526a1.json,original 8 kept
+20261120_032743_94d1daf7,before,included,264,152814,,,docs/evidence/cost01-2026-11-19/records/before/20261120_032743_94d1daf7.json,original 8 kept
+20261120_032937_ca79330f,before,included,252,147596,,,docs/evidence/cost01-2026-11-19/records/before/20261120_032937_ca79330f.json,original 8 kept
+20261120_033139_ca7050f0,before,included,252,174399,,,docs/evidence/cost01-2026-11-19/records/before/20261120_033139_ca7050f0.json,original 8 kept
+20261120_033355_9a8b9c5e,before,included,252,156019,,,docs/evidence/cost01-2026-11-19/records/before/20261120_033355_9a8b9c5e.json,original 8 kept
+20261120_033610_a896801f,before,included,264,145545,,,docs/evidence/cost01-2026-11-19/records/before/20261120_033610_a896801f.json,original 8 kept
+20261120_033805_8874d79d,before,included,264,170237,,,docs/evidence/cost01-2026-11-19/records/before/20261120_033805_8874d79d.json,original 8 kept
+20261120_114222_f2932b46,before_supplement,included,252,173115,2025-11-19_2026-11-19,7b3105297f773ee51e98c8800f5c20e5f60618f60aa1837c3439825984408172,docs/evidence/cost01-2026-11-19/supplement/market_evidence/20261120_114222_f2932b46_market_evidence.json,cross-UTC-day supplement; market evidence captured
+20261120_114441_2a33e022,before_supplement,included,264,164203,2025-11-01_2026-11-19,cada146663c0667c00502a6c9709e821b4365e1642ec5533574074b031ff6a11,docs/evidence/cost01-2026-11-19/supplement/market_evidence/20261120_114441_2a33e022_market_evidence.json,cross-UTC-day supplement; market evidence captured
+20261120_034452_e30e13b3,after,included,252,151666,,,docs/evidence/cost01-2026-11-19/records/after/20261120_034452_e30e13b3.json,retained_after_valid; not re-run
+20261120_035236_01461635,after,after_invalid,,101139,,,docs/evidence/cost01-2026-11-19/records/after/20261120_035236_01461635.json,market_data_incomplete;timeout
+20261120_034254_4abe43bc,after,included,252,156517,,,docs/evidence/cost01-2026-11-19/records/after/20261120_034254_4abe43bc.json,retained_after_valid; not re-run
+20261120_034856_366d2d63,after,included,264,144614,,,docs/evidence/cost01-2026-11-19/records/after/20261120_034856_366d2d63.json,retained_after_valid; not re-run
+20261120_034651_d075414f,after,included,264,154604,,,docs/evidence/cost01-2026-11-19/records/after/20261120_034651_d075414f.json,retained_after_valid; not re-run
+20261120_035047_a0423689,after,included,252,132330,,,docs/evidence/cost01-2026-11-19/records/after/20261120_035047_a0423689.json,retained_after_valid; not re-run
+20261120_034051_7cbc5158,after,included,252,141900,,,docs/evidence/cost01-2026-11-19/records/after/20261120_034051_7cbc5158.json,retained_after_valid; not re-run
+20261120_040112_fb2e6b11,after,included,252,144714,,,docs/evidence/cost01-2026-11-19/records/after/20261120_040112_fb2e6b11.json,retained_after_valid; not re-run
+20261120_035902_b4629375,after,included,264,160591,,,docs/evidence/cost01-2026-11-19/records/after/20261120_035902_b4629375.json,retained_after_valid; not re-run
+20261120_040304_484e3073,after,after_invalid,264,150635,,,docs/evidence/cost01-2026-11-19/records/after/20261120_040304_484e3073.json,news_data_incomplete;ssl_error
+20261120_035705_5fa4ed81,after,included,264,139146,,,docs/evidence/cost01-2026-11-19/records/after/20261120_035705_5fa4ed81.json,retained_after_valid; not re-run
+20261120_040714_cfaf7ee1,after,included,264,151460,,,docs/evidence/cost01-2026-11-19/records/after/20261120_040714_cfaf7ee1.json,retained_after_valid; not re-run
