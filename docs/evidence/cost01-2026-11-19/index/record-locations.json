@@ -1,0 +1,229 @@
+{
+  "analysis_date": "2026-11-19",
+  "prepared_on": "2026-11-20",
+  "timezone": "Asia/Shanghai",
+  "status": "repo_copy_for_delivery",
+  "note": "Repo-relative index for this evidence PR. Record files are verbatim copies of the original run JSON; their internal absolute paths (imported_package_path/isolated_dirs) are retained unchanged as provenance. Selection status comes from review/SAMPLE-LIST-REVISED.csv; original valid fields are NOT modified.",
+  "selection_source": "docs/evidence/cost01-2026-11-19/review/SAMPLE-LIST-REVISED.csv",
+  "selection_sha256": "98c70d7179b423cc693778ae74b6f0c083a45b4e67142623efdd9ba0251f2b8b",
+  "summary_source": "docs/evidence/cost01-2026-11-19/review/summary_revised.json",
+  "summary_sha256": "d2f94f56f12f192b1bdaba7b19644c88385df4d8c57875893293931e38b686d2",
+  "records": [
+    {
+      "run_id": "20261120_031930_7ee093c9",
+      "side": "before",
+      "selection_status": "included",
+      "total_tokens": 161669,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_031930_7ee093c9.json",
+      "record_sha256": "5bef48ce35676244701150d7635dca1d49b596442aad2c1e38b57a14f8e7622a",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_031930_7ee093c9.json"
+    },
+    {
+      "run_id": "20261120_032135_28a781b6",
+      "side": "before",
+      "selection_status": "excluded_per_BE",
+      "total_tokens": 134915,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_032135_28a781b6.json",
+      "record_sha256": "1b7434e4292d4b5963b29ad04a5e53ab3fe8d0371c37734d48ea6b126ab56623",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_032135_28a781b6.json"
+    },
+    {
+      "run_id": "20261120_032332_fe83feb4",
+      "side": "before",
+      "selection_status": "excluded_per_BE",
+      "total_tokens": 134349,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_032332_fe83feb4.json",
+      "record_sha256": "391bdc1ea06b063428756a442fbab68efe155b0afcdca3eeefd2449170534bf8",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_032332_fe83feb4.json"
+    },
+    {
+      "run_id": "20261120_032527_a9e526a1",
+      "side": "before",
+      "selection_status": "included",
+      "total_tokens": 157561,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_032527_a9e526a1.json",
+      "record_sha256": "43c0939e2e99046468ce2c33caf32922538e07a20136fb9a5320d0fe4190d5fa",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_032527_a9e526a1.json"
+    },
+    {
+      "run_id": "20261120_032743_94d1daf7",
+      "side": "before",
+      "selection_status": "included",
+      "total_tokens": 152814,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_032743_94d1daf7.json",
+      "record_sha256": "fc7a8add012ebc7d4318543c399d6603d93df2f1d952486d915a8644203f1a8a",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_032743_94d1daf7.json"
+    },
+    {
+      "run_id": "20261120_032937_ca79330f",
+      "side": "before",
+      "selection_status": "included",
+      "total_tokens": 147596,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_032937_ca79330f.json",
+      "record_sha256": "fd7726e5efbf85d4b21927d6116a92c759ee0514a3a696eb881570295bf00094",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_032937_ca79330f.json"
+    },
+    {
+      "run_id": "20261120_033139_ca7050f0",
+      "side": "before",
+      "selection_status": "included",
+      "total_tokens": 174399,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_033139_ca7050f0.json",
+      "record_sha256": "00e77a9fc85c7d540331966323cd370b4967a58cdc84a39a457de6f75210a38d",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_033139_ca7050f0.json"
+    },
+    {
+      "run_id": "20261120_033355_9a8b9c5e",
+      "side": "before",
+      "selection_status": "included",
+      "total_tokens": 156019,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_033355_9a8b9c5e.json",
+      "record_sha256": "b22c98e117f4a12d4a08a0b696aba199d18b91d8df71ff67ce51d2c84eb8d638",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_033355_9a8b9c5e.json"
+    },
+    {
+      "run_id": "20261120_033610_a896801f",
+      "side": "before",
+      "selection_status": "included",
+      "total_tokens": 145545,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_033610_a896801f.json",
+      "record_sha256": "813d08f13908cf9cf50ad0813e54b4b6fad2ceb8d5ffd175a0ec10a0be90fc0b",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_033610_a896801f.json"
+    },
+    {
+      "run_id": "20261120_033805_8874d79d",
+      "side": "before",
+      "selection_status": "included",
+      "total_tokens": 170237,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_033805_8874d79d.json",
+      "record_sha256": "6478fbd14c1fc8218ec28b5290cf572285d652b4a0933d8b13faf52395a77309",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/before/20261120_033805_8874d79d.json"
+    },
+    {
+      "run_id": "20261120_114222_f2932b46",
+      "side": "before_supplement",
+      "selection_status": "included",
+      "total_tokens": 173115,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_114222_f2932b46.json",
+      "record_sha256": "16d55376c8576a3c9563288cf03fd2616f4eb9cdce9bef1979f84334d423e7a6",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/supplement_before-20261120_034150/20261120_114222_f2932b46.json"
+    },
+    {
+      "run_id": "20261120_114441_2a33e022",
+      "side": "before_supplement",
+      "selection_status": "included",
+      "total_tokens": 164203,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/before/20261120_114441_2a33e022.json",
+      "record_sha256": "b8d102c9ac0602e20f78798795b7b0b73487952cbe8dc829e00df8c2a3685907",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/supplement_before-20261120_034150/20261120_114441_2a33e022.json"
+    },
+    {
+      "run_id": "20261120_034452_e30e13b3",
+      "side": "after",
+      "selection_status": "included",
+      "total_tokens": 151666,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_034452_e30e13b3.json",
+      "record_sha256": "ba93f45fc726888336006e6fbdbe8b99b05f9dc50e5ae0abff28c54c3160109b",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_034452_e30e13b3.json"
+    },
+    {
+      "run_id": "20261120_035236_01461635",
+      "side": "after",
+      "selection_status": "after_invalid",
+      "total_tokens": 101139,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_035236_01461635.json",
+      "record_sha256": "9b77b29619e42a74ad31052a7ead2ba166962c4d31b7d3b7a58b448aa1e7bef0",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_035236_01461635.json"
+    },
+    {
+      "run_id": "20261120_034254_4abe43bc",
+      "side": "after",
+      "selection_status": "included",
+      "total_tokens": 156517,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_034254_4abe43bc.json",
+      "record_sha256": "6545b995b5f72cb4f24b84e6b1ae6181bfe6ca902e7ae8ae93109ff53e3123ca",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_034254_4abe43bc.json"
+    },
+    {
+      "run_id": "20261120_034856_366d2d63",
+      "side": "after",
+      "selection_status": "included",
+      "total_tokens": 144614,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_034856_366d2d63.json",
+      "record_sha256": "3506e9708482b26a585a945cdc7f88e54e67897d1819b2d12a3aea3d6549d5fe",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_034856_366d2d63.json"
+    },
+    {
+      "run_id": "20261120_034651_d075414f",
+      "side": "after",
+      "selection_status": "included",
+      "total_tokens": 154604,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_034651_d075414f.json",
+      "record_sha256": "1b6ffdeaad1d1cda00c13be44f5d9149365f0d3bf29befcf862aa9cd6abcd8c7",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_034651_d075414f.json"
+    },
+    {
+      "run_id": "20261120_035047_a0423689",
+      "side": "after",
+      "selection_status": "included",
+      "total_tokens": 132330,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_035047_a0423689.json",
+      "record_sha256": "df3f8bfb6581e1d5abc2f19eb501cefffcea5ec9a1e6c1c2b42fb7163ac3f5c9",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_035047_a0423689.json"
+    },
+    {
+      "run_id": "20261120_034051_7cbc5158",
+      "side": "after",
+      "selection_status": "included",
+      "total_tokens": 141900,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_034051_7cbc5158.json",
+      "record_sha256": "a4c83b6a76d44fd43d024e64e701fda0aa0f37bfb2543fa174f3f9e680da2468",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_034051_7cbc5158.json"
+    },
+    {
+      "run_id": "20261120_040112_fb2e6b11",
+      "side": "after",
+      "selection_status": "included",
+      "total_tokens": 144714,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_040112_fb2e6b11.json",
+      "record_sha256": "9271c65b78bb54433f79aef72a13823a26a2c4fa4bbc677df453aa3a7ec6b589",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after-continuation-1/runs/20261120_040112_fb2e6b11.json"
+    },
+    {
+      "run_id": "20261120_035902_b4629375",
+      "side": "after",
+      "selection_status": "included",
+      "total_tokens": 160591,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_035902_b4629375.json",
+      "record_sha256": "cb5463a31f628c26b7fc0fa95434ea993ca8e8267c427a13b3ac427324c4d970",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after-continuation-1/runs/20261120_035902_b4629375.json"
+    },
+    {
+      "run_id": "20261120_040304_484e3073",
+      "side": "after",
+      "selection_status": "after_invalid",
+      "total_tokens": 150635,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_040304_484e3073.json",
+      "record_sha256": "a074aecef05ec21cfdd2d3ee7c23e46197384d9f8770f19b708a07f26d38136f",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after-continuation-1/runs/20261120_040304_484e3073.json"
+    },
+    {
+      "run_id": "20261120_035705_5fa4ed81",
+      "side": "after",
+      "selection_status": "included",
+      "total_tokens": 139146,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_035705_5fa4ed81.json",
+      "record_sha256": "4c28ea2c4d714df0c0a87b92de9d0d3b15de36608be0e207ddb5bfc5a81b4cde",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after-continuation-1/runs/20261120_035705_5fa4ed81.json"
+    },
+    {
+      "run_id": "20261120_040714_cfaf7ee1",
+      "side": "after",
+      "selection_status": "included",
+      "total_tokens": 151460,
+      "record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_040714_cfaf7ee1.json",
+      "record_sha256": "f8e3fb111eb4bd734e0b4ee1aaccbd9591fa1027ad97ae9e3a682ab022ebfcd2",
+      "original_local_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after-continuation-2/runs/20261120_040714_cfaf7ee1.json"
+    }
+  ]
+}
