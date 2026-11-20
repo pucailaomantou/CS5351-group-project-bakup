@@ -25,7 +25,7 @@ single point all of them pass through.
 |---|---|---|
 | orchestration | `src/tradingagents/graph/setup.py`, `src/tradingagents/graph/trading_graph.py`, `src/tradingagents/graph/conditional_logic.py`, `src/tradingagents/graph/propagation.py`, `src/tradingagents/graph/analyst_execution.py` | wire the agents, own the loop and its termination conditions |
 | agents | `src/tradingagents/agents/analysts/*`, `src/tradingagents/agents/researchers/*`, `src/tradingagents/agents/risk_mgmt/*`, `src/tradingagents/agents/trader/trader.py`, `src/tradingagents/agents/managers/*` | one node each; prompt in, structured output out |
-| contract | `src/tradingagents/agents/state.py`, `src/tradingagents/agents/schemas.py`, `src/tradingagents/agents/rating.py`, `src/tradingagents/agents/structured.py` | the shapes that cross a node boundary, and the enum guarding the final rating |
+| contract | `src/tradingagents/agents/state.py`, `src/tradingagents/agents/schemas.py`, `src/tradingagents/agents/rating.py`, `src/tradingagents/agents/structured.py`, `src/tradingagents/agents/researchers/debate.py`, `src/tradingagents/agents/researchers/debate_schemas.py` | the shapes that cross a node boundary, and the enum guarding the final rating |
 | data | `src/tradingagents/dataflows/router.py`, `src/tradingagents/dataflows/date_window.py`, `src/tradingagents/dataflows/vendors/*` | vendor dispatch, date clamping, per-vendor fetch |
 | cost | `src/tradingagents/default_config.py`, `src/tradingagents/agents/tools.py` | the configured limits, and the tool functions the model calls directly |
 | provenance | `src/tradingagents/memory/log.py`, `src/tradingagents/memory/settlement.py` | the decision record |
@@ -36,51 +36,61 @@ single point all of them pass through.
 | id | touchpoint | kind of change |
 |---|---|---|
 | FR-01 | `src/tradingagents/agents/researchers/bull_researcher.py`, `src/tradingagents/agents/researchers/bear_researcher.py`, `src/tradingagents/agents/managers/research_manager.py`, `src/tradingagents/agents/state.py` | idea-card schema added to the debate state; prompts rewritten; manager adjudicates from cards |
-| FR-02 | `src/tradingagents/graph/conditional_logic.py`, `src/tradingagents/graph/setup.py`, `src/tradingagents/agents/state.py` | record termination reason and convergence rounds on exit; convergence detection deferred |
+| FR-02 | `src/tradingagents/agents/researchers/debate.py`, `src/tradingagents/agents/researchers/bear_researcher.py`, `src/tradingagents/agents/managers/research_manager.py`, `src/tradingagents/agents/state.py` | record why the debate stopped and after how many rounds; convergence is decided structurally from the idea cards, so the reason is never a model opinion |
 | FR-03 | `src/tradingagents/agents/schemas.py`, `src/tradingagents/agents/managers/portfolio_manager.py` | four required fields; a validator that rejects a partial record |
 | FR-04 | `src/tradingagents/llm_clients/*`, `src/cli/stats_handler.py`, new exporter | usage accounting exists only in the CLI callback (`tokens_in`/`tokens_out` off `AIMessage.usage_metadata`); the core package never reads usage, so an aggregate has to be lifted out of the callback and exposed programmatically |
 | FR-05 | new `src/tradingagents/safety/guard.py`, wired in `src/tradingagents/graph/setup.py` | deterministic gate on the only path from decision to consumer |
 | INV-01 | `src/tradingagents/agents/rating.py`, `src/tradingagents/agents/schemas.py`, `src/tradingagents/agents/state.py` | the enum exists; add the REVIEW-is-not-tradeable rule where a rating becomes a position |
 | INV-02 | `src/tradingagents/agents/schemas.py`, `src/tradingagents/safety/guard.py` | position_sizing is free text today; parse to a percentage, apply the cap, unparseable resolves to REVIEW |
 | INV-03 | `src/tradingagents/dataflows/date_window.py`, `src/tradingagents/agents/state.py` | `as_of` clamps future data only; a stale-input check belongs at the decision layer |
-| COST-01 | `src/tradingagents/default_config.py`, `src/tradingagents/agents/tools.py` | three config values; the current implementation is config tightening plus measurement, and the tool-call budget proposed in ADR 001 is not yet in the code |
+| COST-01 | `src/tradingagents/default_config.py`, `src/tradingagents/agents/tools.py` | the three config values are set to 8 / 8 / 3 in `src/tradingagents/default_config.py`; the tool-call budget proposed in ADR 001 is still not implemented |
 | GOV-01 | `src/tradingagents/memory/log.py`, `src/tradingagents/agents/state.py` | four provenance fields written in the same commit as the decision |
 
 ## 4. State contract for FR-02
 
-Two fields are added to `InvestDebateState`, not to the top-level `AgentState`, because
-they describe the investment debate only. The risk debate is not changed in this
-deliverable.
+The debate's outcome lives on `InvestDebateState`, written by the researchers rather than by
+the routing edge. The bear speaks second in each round, so its node closes the round and
+records the outcome; `src/tradingagents/graph/conditional_logic.py` only reads `count` to
+decide whether another round starts.
 
 | field | type | written by | read by | allowed values |
 |---|---|---|---|---|
-| `count` (existing) | int | incremented by the debate loop per speaker turn | the termination check in `src/tradingagents/graph/conditional_logic.py` | 0 .. 2 x `max_debate_rounds` |
-| `convergence_rounds` (new) | `int \| None` | `src/tradingagents/graph/conditional_logic.py`, at the exit point | the decision record in `src/tradingagents/memory/log.py`; the FR-02 test | `None`, or the round at which convergence was detected |
-| `termination_reason` (new) | str | same point, same write | same | `"converged"` or `"max_rounds"` |
+| `count` (existing) | int | each researcher node, once per turn | the continuation check in `src/tradingagents/graph/conditional_logic.py` | 0 .. 2 x `max_debate_rounds` |
+| `debate_rounds` | list | `src/tradingagents/agents/researchers/bear_researcher.py`, at round close | the record builder in `src/tradingagents/agents/researchers/debate.py` | one entry per completed round |
+| `convergence_rounds` | `int \| None` | same point | the decision record; the FR-02 test | the round index at which convergence held, or `None` |
+| `termination_reason` | str | same point | same | `"converged"` or `"max_rounds"` |
+
+### How convergence is decided
+
+The rule is structural and needs no model call, so the termination reason is never a model's
+opinion. A round converges when each side's newly added cards carry the same stance signature
+as the cards that side added in the previous round: the participants are still speaking, but
+they are no longer saying anything new. Both sides must agree before the round counts.
+
+The empty case is excluded by construction. A side that produced no cards — which happens when
+structured output is unavailable and the turn falls back to prose — is not evidence that its
+position settled, so a round in which either side added nothing is never converged. Without
+that guard two empty sets would compare equal and every fallback run would report a convergence
+it did not have.
+
+`convergence_rounds` is the round index at which the comparison first held, and is `None` when
+the debate instead ran to `max_debate_rounds`. The two fields are written together, in the same
+node, from the same evaluation, so a reader never sees a reason without a round or the reverse.
+The debate record also carries `convergence_method` as a verbatim string, so a later change to
+the rule is visible in the data rather than inferred from a version number.
 
 Three constraints:
 
-- **`count` is speaker turns, not rounds.** Each round has a bull turn and a bear turn, so
-  `count` runs at twice the round count. Any code that reports a round number must divide.
-- **`convergence_rounds` is `None` when the debate did not converge.** It is not a copy of
-  the number of rounds run: a run that hit the cap reports `None`, and the round count is
-  recovered from `count`. Reporting the rounds run in this field would carry no information
-  the state does not already hold, and would make the field unassertable as evidence of
-  convergence.
-- **`termination_reason` is written in the same place as the routing decision, and both
-  fields are written together.** A reader must never see the debate finished with a reason
-  but no convergence round, or the reverse.
-
-### Why convergence is not claimed
-
-The research manager runs once, after the debate, rather than once per round. There is
-therefore no per-round verdict to compare, and no deterministic signal in
-`InvestDebateState` that indicates agreement. Convergence detection is deferred: in every
-run of this deliverable `convergence_rounds` is `None` and `termination_reason` is
-`"max_rounds"`, and the FR-02 test asserts exactly that. A rule that reads the debate text
-and judges whether the participants agreed cannot be tested, and would leave FR-02 as
-unfalsifiable as COST-01 was before its first amendment; if detection is added later it
-needs its own detector and its own criterion.
+- **`count` is speaker turns, not rounds.** Each round is one bull turn and one bear turn, so
+  `count` runs at twice the round count. `convergence_rounds` is the round index the node
+  recorded, not a value a reader derives from `count`.
+- **`"converged"` requires cards on both sides in both rounds.** A run that lost structured
+  output to the fallback cannot report convergence and reports `"max_rounds"` instead, which is
+  correct: it stopped because the cap was reached, not because the positions settled.
+- **The research manager validates rather than recomputes.**
+  `src/tradingagents/agents/managers/research_manager.py` checks that the reason is one of the
+  two legal values and falls back to `("max_rounds", None)` otherwise, so a malformed state
+  degrades to the cap instead of to an unlabelled finish.
 
 ## 5. Seams
 
