@@ -1,6 +1,6 @@
 # 001 — Bound cost at the tool-call boundary, not at the round boundary
 
-- Status: Proposed
+- Status: Proposed — not yet implemented
 - Date: 2026-11-19
 - Supersedes: the mechanism assumed by COST-01 as first written
 - Related: COST-01, `architecture-blueprint.md`
@@ -17,7 +17,7 @@ market+news, one research round, one risk round):
 |---|---|---|---|
 | tool_rounds | 3-5 in every run | 20, target 8 | no |
 | tool_calls | 20-28, mean 24.2 | no limit | — |
-| global news articles | 30 or 70 | 10 per query × 5 queries | not shown to bind |
+| global news articles | 30 or 70 | 10 per query × 5 queries | not shown to bind (superseded — see Addendum, 2026-11-20) |
 
 Three correlations from the same batch:
 
@@ -95,27 +95,6 @@ To re-measure: the same ten-run protocol, recording `tool_calls`, `tool_rounds`,
 - 2026-11-18 baseline review package: ten valid runs, one excluded for
   `OpenAIConnectionError` with no usage recorded
 - PR #3 and #4 discussion
-
-## Addendum, 2026-11-20
-
-The 2026-11-19 comparison measures 20/20/5 against 8/8/3 under a single protocol and
-finds a 7.84% drop in mean total tokens (160315.8 to 147754.2), with input tokens falling
-8.9% and output tokens 1.8%. That contradicts the Context table above, which recorded the
-article and query limits as "not shown to bind".
-
-The revision is partial, not a refutation of the decision:
-
-- The drop is input-side, consistent with fewer global news queries (5 to 3) returning
-  fewer articles and therefore a shorter context. It is not evidence that
-  `max_tool_rounds` binds; rounds stayed at 3-5 in every run of both batches.
-- The 2026-11-18 measurement could not separate the article axis, because that batch ran
-  against a date the news adapter could not reach, so article counts were distorted. The
-  2026-11-19 protocol anchors the news window and removes that distortion.
-- What survives is the narrower claim: a round cap does not bound cost. The call budget in
-  the Decision remains the control that acts on the quantity observed to move.
-
-For the record: "not shown to bind" was a statement about one batch's data, written as if
-it were a statement about the mechanism. It should have been scoped to that batch.
 
 ## Addendum, 2026-11-20
 
