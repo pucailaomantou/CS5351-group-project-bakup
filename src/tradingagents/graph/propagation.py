@@ -43,6 +43,15 @@ class Propagator:
                     "history": "",
                     "current_response": "",
                     "count": 0,
+                    "bull_idea_cards": [],
+                    "bear_idea_cards": [],
+                    "debate_rounds": [],
+                    "convergence_rounds": None,
+                    "termination_reason": "",
+                    "converged": False,
+                    "pending_bull_cards": [],
+                    "last_turn_status": {},
+                    "debate_record": {},
                 }
             ),
             "risk_debate_state": RiskDebateState(

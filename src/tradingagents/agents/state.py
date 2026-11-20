@@ -15,6 +15,26 @@ class InvestDebateState(TypedDict):
     history: Annotated[str, "Conversation history"]
     current_response: Annotated[str, "Latest response"]
     count: Annotated[int, "Length of the current conversation"]
+    # --- Two-phase structured debate (D3) -----------------------------------
+    # Phase 1 accumulates each side's Osborn idea cards; phase 2 is the
+    # Research Manager adjudicating from them. These are lists of JSON-safe card
+    # dicts (see researchers.debate_schemas.card_to_dict) so the debate record serialises directly.
+    bull_idea_cards: Annotated[list, "Bull side idea cards produced under Osborn's rules"]
+    bear_idea_cards: Annotated[list, "Bear side idea cards produced under Osborn's rules"]
+    # Per-round trace: one entry per completed debate round with both sides' cards.
+    debate_rounds: Annotated[list, "Per-round debate trace for the JSON record"]
+    # How the debate ended and after how many rounds (FR-02).
+    convergence_rounds: Annotated[int | None, "Round at which the debate converged; None when it did not converge (hit the cap)"]
+    termination_reason: Annotated[str, "Why the debate stopped: 'converged' or 'max_rounds'"]
+    converged: Annotated[bool, "Set when the latest completed round added no new claims on either side"]
+    # Cards the bull added in the round currently in progress; the bear closes
+    # the round using this plus its own additions, then this is cleared.
+    pending_bull_cards: Annotated[list, "Bull cards added in the round currently in progress"]
+    # Diagnostic status of each side's latest turn generation path
+    # ("ok" / "no_structured" / "structured_failed"), for fallback tracking.
+    last_turn_status: Annotated[dict, "Per-side status of the last turn's generation path"]
+    # The fully structured record the run saves alongside its prose history.
+    debate_record: Annotated[dict, "Structured JSON debate record (phases, cards, rounds, outcome)"]
 
 
 # Risk management team state

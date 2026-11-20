@@ -180,6 +180,53 @@ def format_tokens(n):
     return str(n)
 
 
+def format_agent_usage(stats_handler):
+    """Token usage per agent plus a global line stating how complete it is.
+
+    A real zero (every call reported usage) is shown as such; a partial or
+    fully missing usage is labeled, so an unmeasured run is never read as a
+    free one. Calls whose provider reported no usage add no token numbers.
+    """
+    if stats_handler is None:
+        return ["[dim]Token usage unavailable (no stats handler).[/dim]"]
+    stats = stats_handler.get_stats()
+    per_agent = stats.get("per_agent") or {}
+    if not per_agent:
+        return ["[dim]Token usage unavailable (no model calls recorded).[/dim]"]
+
+    state = stats.get("usage_state", "unavailable")
+    if state == "complete":
+        header = (
+            f"[bold]Global:[/bold] {format_tokens(stats['tokens_in'])}\u2191 "
+            f"{format_tokens(stats['tokens_out'])}\u2193 total "
+            f"{format_tokens(stats['total_tokens'])} ([dim]complete[/dim])"
+        )
+    elif state == "no_calls":
+        header = "[bold]Global:[/bold] no model calls recorded"
+    else:
+        measured = f"{stats['usage_calls']}/{stats['llm_calls']} calls reported usage"
+        label = "partial" if state == "partial" else "usage unavailable"
+        header = (
+            f"[bold]Global:[/bold] {format_tokens(stats['tokens_in'])}\u2191 "
+            f"{format_tokens(stats['tokens_out'])}\u2193 total "
+            f"{format_tokens(stats['total_tokens'])} ({label}; {measured})"
+        )
+    lines = [header]
+    for name, agg in per_agent.items():
+        reported = agg["calls"] - agg["unavailable_calls"]
+        if reported <= 0:
+            tokens = "tokens unavailable"
+        else:
+            tokens = (
+                f"{format_tokens(agg['input_tokens'])}\u2191 "
+                f"{format_tokens(agg['output_tokens'])}\u2193 "
+                f"total {format_tokens(agg['total_tokens'])}"
+            )
+        note = f" ({agg['unavailable_calls']} call(s) without usage)" if agg["unavailable_calls"] else ""
+        lines.append(f"  {name}: {tokens}{note}")
+    return lines
+
+
 def update_display(layout, spinner_text=None, stats_handler=None, start_time=None):
     # Header with welcome message
     layout["header"].update(

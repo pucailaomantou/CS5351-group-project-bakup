@@ -134,11 +134,11 @@ def build_default_config() -> dict:
         "max_risk_discuss_rounds": 1,
         "max_recur_limit": 100,
         # Rounds of tool calls an analyst may make before it is asked for its report.
-        "max_tool_rounds": 20,
+        "max_tool_rounds": 8,
         # News / data fetching parameters
         # Increase for longer lookback strategies or to broaden macro coverage;
         # decrease to reduce token usage in agent prompts.
-        "news_article_limit": 20,             # max articles per ticker (ticker-news)
+        "news_article_limit": 8,              # max articles per ticker (ticker-news)
         "global_news_article_limit": 10,      # max articles for global/macro news
         "global_news_lookback_days": 7,       # macro news lookback window
         # Search queries used by get_global_news for macro headlines. Extend or
@@ -147,8 +147,6 @@ def build_default_config() -> dict:
             "Federal Reserve interest rates inflation",
             "S&P 500 earnings GDP economic outlook",
             "geopolitical risk trade war sanctions",
-            "ECB Bank of England BOJ central bank policy",
-            "oil commodities supply chain energy",
         ],
         # Data vendor configuration
         # Category-level configuration (default for all tools in category).

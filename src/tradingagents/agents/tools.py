@@ -12,6 +12,7 @@ from langgraph.prebuilt import InjectedState
 from tradingagents.dataflows.date_window import as_of, as_of_window
 from tradingagents.dataflows.errors import NoMarketDataError, VendorUnavailableError
 from tradingagents.dataflows.router import no_data_available, route_to_vendor, vendor_unavailable
+from tradingagents.dataflows.vendors.yahoo import provider_fixtures
 from tradingagents.dataflows.vendors.yahoo.snapshot import build_verified_market_snapshot
 
 
@@ -261,7 +262,11 @@ def get_macro_indicators(
     Returns:
         str: A formatted markdown report of the macro series
     """
-    return route_to_vendor("get_macro_indicators", indicator, as_of(curr_date, trade_date), look_back_days)
+    return provider_fixtures.tool_text(
+        "macro",
+        f"{indicator}|{as_of(curr_date, trade_date)}|{look_back_days}",
+        lambda: route_to_vendor("get_macro_indicators", indicator, as_of(curr_date, trade_date), look_back_days),
+    )
 
 
 @tool
@@ -288,4 +293,8 @@ def get_prediction_markets(
     Returns:
         str: A formatted markdown report of matching prediction markets
     """
-    return route_to_vendor("get_prediction_markets", topic, limit, trade_date or None)
+    return provider_fixtures.tool_text(
+        "prediction",
+        f"{topic}|{limit}|{trade_date or None}",
+        lambda: route_to_vendor("get_prediction_markets", topic, limit, trade_date or None),
+    )

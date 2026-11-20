@@ -17,6 +17,7 @@ from cli.display import (
     console,
     create_layout,
     display_complete_report,
+    format_agent_usage,
     message_buffer,
     update_analyst_statuses,
     update_display,
@@ -384,6 +385,10 @@ def run_analysis(checkpoint: bool | None = None, portfolio=None, flags=None):
             "decision text below and judge it yourself.[/yellow]\n"
         )
     console.print(f"[dim]{analyst_wall_time_tracker.format_summary()}[/dim]")
+
+    console.print("[bold]Token usage by agent[/bold]")
+    for line in format_agent_usage(stats_handler):
+        console.print(line)
 
     _offer_reports(final_state, graph, selections["ticker"],
                    save=flags.get("save"), show=flags.get("show"), html=flags.get("html"))

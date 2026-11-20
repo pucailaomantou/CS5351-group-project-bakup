@@ -437,6 +437,7 @@ class TradingAgentsGraph:
 
     def _log_state(self, trade_date, final_state):
         """Write a run's final state to JSON under the run's own ticker."""
+        debate = final_state["investment_debate_state"]
         entry = {
             "company_of_interest": final_state["company_of_interest"],
             "trade_date": final_state["trade_date"],
@@ -445,12 +446,19 @@ class TradingAgentsGraph:
             "news_report": final_state["news_report"],
             "fundamentals_report": final_state["fundamentals_report"],
             "investment_debate_state": {
-                "bull_history": final_state["investment_debate_state"]["bull_history"],
-                "bear_history": final_state["investment_debate_state"]["bear_history"],
-                "history": final_state["investment_debate_state"]["history"],
-                "current_response": final_state["investment_debate_state"][
-                    "current_response"
-                ],
+                "bull_history": debate["bull_history"],
+                "bear_history": debate["bear_history"],
+                "history": debate["history"],
+                "current_response": debate["current_response"],
+                # Two-phase structured debate (D3): cards, round trace and how
+                # it terminated. Read defensively so a state from an older run
+                # (or a bare one) still logs.
+                "bull_idea_cards": debate.get("bull_idea_cards", []),
+                "bear_idea_cards": debate.get("bear_idea_cards", []),
+                "debate_rounds": debate.get("debate_rounds", []),
+                "convergence_rounds": debate.get("convergence_rounds"),
+                "termination_reason": debate.get("termination_reason", ""),
+                "debate_record": debate.get("debate_record", {}),
             },
             "trader_investment_plan": final_state["trader_investment_plan"],
             "risk_debate_state": {
@@ -473,4 +481,7 @@ class TradingAgentsGraph:
         log_path = directory / f"full_states_log_{trade_date}.json"
         with open(log_path, "w", encoding="utf-8") as f:
             # Reports can be in any language and this file is read by a person.
+            # The structured debate record lives inside this log under
+            # investment_debate_state.debate_record; no separate record file is
+            # written, so a run produces exactly one top-level JSON log.
             json.dump(entry, f, indent=4, ensure_ascii=False)
