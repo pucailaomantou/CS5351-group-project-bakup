@@ -14,7 +14,8 @@ Update it when you merge something.
 | upstream | https://github.com/tauricresearch/tradingagents | 2026-11-17 |
 | source layout | `src/tradingagents/` (package), `src/cli/` and `src/main.py` beside it, `test/offline/`, `test/live/`. Upstream contents unmodified; see `BASELINE.md`. | 2026-11-19 |
 | cost measurement point (superseded 2026-11-20) | NVDA / 2026-09-01, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash | 2026-11-18 |
-| cost measurement point | NVDA / 2026-11-19, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash, seven-day ticker news window anchored to the analysis date | 2026-11-20 |
+| cost measurement point (on main) | NVDA / 2026-11-18, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash; ten valid runs, mean 163633.2, median 160664 | 2026-11-19 |
+| comparison measurement (not a baseline) | NVDA / 2026-11-19, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash, seven-day ticker news window anchored to the analysis date; 20/20/5 against 8/8/3 | 2026-11-20 |
 
 ## Changes so far
 
@@ -23,9 +24,9 @@ Update it when you merge something.
 | #1 | `docs/req/requirements.yaml` (10 ids), `notes/three-changes.md`, `transcripts/60211808-袁舞扬.md` | D1 baseline |
 | #2 | COST-01 `baseline` field filled with the measured ten-run mean | Workstream C measurement |
 | #3 (superseded by #4) | COST-01 `fit_criterion` rewritten; `baseline_median` and `baseline_observations` added; `amended` records both revisions | the measurement invalidated the original criterion |
-| #4 | COST-01 second revision merged to main; `BASELINE.md` added; sources relocated under `src/`, tests under `test/` | vendoring and baseline correction |
+| #4 | COST-01 amendment merged to main | the measurement invalidated the original criterion |
+| direct merge by A (no PR) | `BASELINE.md`; sources relocated under `src/`, tests under `test/` | vendoring: upstream version fixed, contents unmodified |
 | #5 (open) | `architecture-blueprint.md`; `docs/architecture/adr/001-bound-cost-at-tool-calls.md`; ADR 002 on context layers; FR-02 state contract | D2 architecture deliverable |
-| #6 (open) | COST-01 baseline migrated from 2026-11-18 to 2026-11-19 | the 11-18 news window could not be reached by the adapter, so that batch could not separate the article axis |
 
 ## Measurements on record
 
@@ -44,8 +45,10 @@ temperature 0.0, analysts market+news, one research round, one risk round:
 - CV fell from 11.4% on the 2026-11-18 batch to 6.4% here, which measures the protocol, not the
   token level
 
-The 2026-09-01 and 2026-11-18 batches are superseded and are never mixed with this one. Raw
-records live in `c-baseline-work/results/` (Workstream C, local, not in this repo).
+This batch is a comparison measurement, not a baseline. The baseline on main is the 2026-11-18
+batch, measured ten runs at mean 163633.2; the 2026-09-01 batch is superseded. The three are
+never mixed. Raw records live in `c-baseline-work/results/` (Workstream C, local, not in this
+repo).
 
 ## Open questions
 
