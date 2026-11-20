@@ -163,7 +163,14 @@ class GraphSetup:
             first_steps.append("Memory Log")
         for node in first_steps:
             workflow.add_edge(START, node)
-        workflow.add_edge(first_steps, "Bull Researcher")
+        # The debate may be skipped entirely (max_debate_rounds == 0), in which
+        # case the Research Manager records the capped result without a turn.
+        for node in first_steps:
+            workflow.add_conditional_edges(
+                node,
+                self.conditional_logic.should_start_debate,
+                {"Bull Researcher": "Bull Researcher", "Research Manager": "Research Manager"},
+            )
 
         # Both research-debate edges share the complete DEBATE_PATH_MAP (#1088).
         for debate_node in ("Bull Researcher", "Bear Researcher"):
