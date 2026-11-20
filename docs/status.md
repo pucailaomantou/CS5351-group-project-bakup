@@ -27,6 +27,7 @@ Update it when you merge something.
 | #4 | COST-01 amendment merged to main | the measurement invalidated the original criterion |
 | direct merge by A (no PR) | `BASELINE.md`; sources relocated under `src/`, tests under `test/` | vendoring: upstream version fixed, contents unmodified |
 | #5 (open) | `architecture-blueprint.md`; `docs/architecture/adr/001-bound-cost-at-tool-calls.md`; ADR 002 on context layers; FR-02 state contract | D2 architecture deliverable |
+| #6 (merged) | COST-01 baseline migrated from 2026-09-01 to 2026-11-18; ten valid runs, mean 163633.2, median 160664; the two 141-row records excluded and retained | the 09-01 batch lacked data-integrity evidence, so the baseline was re-measured |
 
 ## Measurements on record
 
