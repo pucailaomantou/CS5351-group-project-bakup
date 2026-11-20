@@ -48,19 +48,32 @@ any criterion.
 **2. Trigger on a token threshold at the analyst loop boundary, not on steps.** The check
 belongs at the conditional edge in `src/tradingagents/graph/setup.py` that already inspects
 the message history to decide between another round and wrap-up; that is the only point where
-the loop is between rounds and the history is readable. The threshold is expressed as a ratio
-of the model's declared context window rather than a fixed token count, because a hardcoded
-number drifts the moment the model changes and cannot be justified against a window the
-configuration does not record. If the client cannot report its window, the check fails closed
-rather than assuming a value.
+the loop is between rounds and the history is readable.
 
-**3. Compact by deterministic digest, not by asking a model to summarise.** Each compacted
-tool result is replaced by a digest built mechanically from fields the tool already returns:
-the tool name, the ticker, the requested date range, the row count, and the first and last
-timestamp in the payload. The reason is testability: a digest generated from a fixed field set
-can be asserted against the raw response, while a model-written summary cannot be checked
-without a second judgement call, and it would transfer cost from the context being compressed
-to the call doing the compressing.
+The threshold is a ratio of the model's declared context window rather than a fixed token
+count, because a hardcoded number drifts the moment the model changes and cannot be justified
+against a window the configuration does not record. The live context is estimated rather than
+counted. The default estimator is `ceil(characters / 4)` over the concatenated message content:
+an approximation whose error is small on prose and worse on markdown tables, and deliberately a
+pure function of the text so that it can be exercised offline and replaced by a real tokeniser
+without touching the threshold logic. The estimator is injected, not called directly, so the
+offline test supplies an exact counter and asserts the trigger fires at the boundary. If no
+estimator is configured, the check fails closed rather than assuming a window size.
+
+**3. Compact by deterministic digest, not by asking a model to summarise.** The digest is
+built mechanically from fields the tool already returns, in two tiers:
+
+| tier | fields | applies to |
+|---|---|---|
+| mandatory | tool name, the arguments it was called with (ticker, requested date range, limit), response length in characters | every tool |
+| tabular | row count, first and last timestamp in the payload | tools that declare a tabular shape, such as the price and indicator tools |
+
+The tabular tier is not universal, and pretending otherwise would produce empty fields for the
+news tools, whose payload is prose rather than rows. A news result therefore digests to its
+query, its character length, and the earliest and latest publication date present in the
+payload when a date is present at all. The rule is that the mandatory tier is always
+satisfiable and the tabular tier is asserted only for tools that declare it, so the digest is
+testable per tool class rather than only in aggregate.
 
 **4. Re-inject a fixed set after compaction, and state it as a closed list.** What a later
 agent must not lose is small: the analysis date and `as_of`, the resolved instrument context,
@@ -69,6 +82,13 @@ state fields, so compacting `messages` does not touch them; that is why this des
 where a naive message-trimming approach would not be. The re-injection set is closed so that a
 test can assert the post-compaction state contains all four, and the digest carries the tool
 provenance that the raw results used to carry.
+
+**5. Compact in place; never remove a message.** Compaction rewrites the `content` of the
+`ToolMessage` and keeps the message, its `tool_call_id` and its position. The message list is
+handed to the provider as-is, so deleting a tool result while the assistant turn that requested
+it still carries the `tool_call` produces a request the provider rejects outright. Replacing
+rather than deleting also keeps the history length stable, which makes the compaction event
+observable as a content change instead of a disappearance.
 
 ## Consequences
 
@@ -119,4 +139,10 @@ Negative:
 - `src/tradingagents/graph/setup.py` — the conditional edge that already reads the history
 - `src/tradingagents/memory/reflection.py` — the 2-4 sentence re-injection contract
 - `src/tradingagents/graph/trading_graph.py` — `_memory_step`, `get_past_context(..., as_of=...)`
-- COST-01 `baseline_observations` — input/output split and the correlations cited above
+- COST-01 `baseline_observations` — the batch aggregate and the validity rules. It does not
+  carry the per-run correlations cited above, and it never carried the run records.
+- Workstream C local records, not in this repo: the run batches behind every figure quoted in
+  Context, including `r(input_tokens, total_tokens) = 0.9995` and the 124k-of-147k input
+  share. These are measured but not committed, so they cannot be checked from a clone until
+  `c-baseline-work/results/` is added. Read them as external evidence, not as repository
+  evidence.

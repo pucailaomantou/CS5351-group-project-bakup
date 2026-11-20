@@ -91,10 +91,13 @@ To re-measure: the same ten-run protocol, recording `tool_calls`, `tool_rounds`,
 
 ## Evidence
 
-- `docs/req/requirements.yaml`, COST-01 `baseline_observations`
-- 2026-11-18 baseline review package: ten valid runs, one excluded for
-  `OpenAIConnectionError` with no usage recorded
-- PR #3 and #4 discussion
+- `docs/req/requirements.yaml`, COST-01 `baseline_observations` — the batch aggregate and the
+  validity rules. Since the 2026-11-19 migration this entry no longer carries the per-run
+  correlations quoted in Context, and it never carried the run records themselves.
+- Workstream C local records, not in this repo: both ten-run batches, 2026-11-18 and
+  2026-11-19, and the 160315.8 to 147754.2 totals in the Addendum. Measured but not committed,
+  so they cannot be verified from a clone until `c-baseline-work/results/` is added.
+- PR #3, #4 and #5 discussion
 
 ## Addendum, 2026-11-20
 

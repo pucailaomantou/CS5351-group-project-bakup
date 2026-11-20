@@ -39,9 +39,9 @@ single point all of them pass through.
 | FR-02 | `src/tradingagents/graph/conditional_logic.py`, `src/tradingagents/graph/setup.py`, `src/tradingagents/agents/state.py` | record termination reason and convergence rounds on exit; convergence detection deferred |
 | FR-03 | `src/tradingagents/agents/schemas.py`, `src/tradingagents/agents/managers/portfolio_manager.py` | four required fields; a validator that rejects a partial record |
 | FR-04 | `src/tradingagents/llm_clients/*`, `src/cli/stats_handler.py`, new exporter | usage accounting exists only in the CLI callback (`tokens_in`/`tokens_out` off `AIMessage.usage_metadata`); the core package never reads usage, so an aggregate has to be lifted out of the callback and exposed programmatically |
-| FR-05 | new `src/tradingagents/agents/guard.py`, wired in `src/tradingagents/graph/setup.py` | deterministic gate on the only path from decision to consumer |
+| FR-05 | new `src/tradingagents/safety/guard.py`, wired in `src/tradingagents/graph/setup.py` | deterministic gate on the only path from decision to consumer |
 | INV-01 | `src/tradingagents/agents/rating.py`, `src/tradingagents/agents/schemas.py`, `src/tradingagents/agents/state.py` | the enum exists; add the REVIEW-is-not-tradeable rule where a rating becomes a position |
-| INV-02 | `src/tradingagents/agents/schemas.py`, `src/tradingagents/agents/guard.py` | position_sizing is free text today; parse to a percentage, apply the cap, unparseable resolves to REVIEW |
+| INV-02 | `src/tradingagents/agents/schemas.py`, `src/tradingagents/safety/guard.py` | position_sizing is free text today; parse to a percentage, apply the cap, unparseable resolves to REVIEW |
 | INV-03 | `src/tradingagents/dataflows/date_window.py`, `src/tradingagents/agents/state.py` | `as_of` clamps future data only; a stale-input check belongs at the decision layer |
 | COST-01 | `src/tradingagents/default_config.py`, `src/tradingagents/agents/tools.py` | three config values; the current implementation is config tightening plus measurement, and the tool-call budget proposed in ADR 001 is not yet in the code |
 | GOV-01 | `src/tradingagents/memory/log.py`, `src/tradingagents/agents/state.py` | four provenance fields written in the same commit as the decision |
@@ -87,7 +87,7 @@ needs its own detector and its own criterion.
 A seam is a place where a change is allowed to cross a module boundary. There are
 four, and every requirement above lands on one of them.
 
-1. **Decision boundary.** Everything a consumer may read passes `src/tradingagents/agents/guard.py`.
+1. **Decision boundary.** Everything a consumer may read passes `src/tradingagents/safety/guard.py`.
    No consumer keeps a bypass. This is what makes FR-05, INV-01, INV-02 and INV-03
    checkable by one assertion instead of four.
 2. **Tool-usage boundary.** There is no dispatcher to hook: `src/tradingagents/agents/tools.py` defines
