@@ -50,6 +50,12 @@ verbatim raw response file + SHA256. See supplement `market_evidence/`.
   evidence CSV historical note); this supplement does not retro-fix them.
 
 ## 6. Files
-- `MARKET-EVIDENCE.csv` (+2 supplement rows), `SHA256SUMS.pre-supplement.txt`,
-  `SAMPLE-LIST-REVISED.csv`, `summary_revised.json`, this file.
-- supplement evidence: `docs/evidence/cost01-2026-11-19/supplement/`
+Delivered in this evidence PR (`docs/evidence/cost01-2026-11-19/`):
+- `review/MARKET-EVIDENCE.csv` (24 rows: 12 before + 12 after, including the 2
+  supplement rows), `review/SAMPLE-LIST-REVISED.csv`, `review/summary_revised.json`,
+  and this file `review/CANDIDATE-REVIEW-REVISED.md`.
+- `records/before/` and `records/after/` — the 24 verbatim run JSONs.
+- `supplement/market_evidence/` — supplement market manifests + verbatim responses.
+- `index/record-locations.json` — repo-relative locator + per-record sha256.
+- `SHA256SUMS.txt` (evidence-root checksum manifest, self-excluded).
+- supplement evidence: `docs/evidence/cost01-2026-11-19/supplement/`.

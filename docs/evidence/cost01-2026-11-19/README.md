@@ -110,8 +110,10 @@ after attempted sum `1729316`; deltas `-7.84` / `-7.22`.
 - **The other 8 Before samples lack direct request-range evidence** (only their run
   records are shipped; the original local cache path is not in the repo). This
   supplement does not retro-fix them.
-- **252 vs 264 market rows** correspond to different requested start ranges, not data
-  loss; completeness is judged from the request/response, not from row count or
+- **252 vs 264 market rows** correspond to different requested start ranges (the
+  request and response show the differing start date). A different row count alone
+  cannot prove data loss; it also does not by itself establish that no data are
+  missing — completeness is judged from the request/response, not from row count or
   first/last date alone.
 - The original **2026-11-18** experiment is preserved separately and is **not** mixed
   into these numbers.

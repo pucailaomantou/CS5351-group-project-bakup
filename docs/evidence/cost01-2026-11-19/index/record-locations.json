@@ -5,7 +5,7 @@
   "status": "repo_copy_for_delivery",
   "note": "Repo-relative index for this evidence PR. Record files are verbatim copies of the original run JSON; their internal absolute paths (imported_package_path/isolated_dirs) are retained unchanged as provenance. Selection status comes from review/SAMPLE-LIST-REVISED.csv; original valid fields are NOT modified.",
   "selection_source": "docs/evidence/cost01-2026-11-19/review/SAMPLE-LIST-REVISED.csv",
-  "selection_sha256": "6b36482993723cea77490f7d04777e6fd7b997a0b304cb0067349972fe9b0caa",
+  "selection_sha256": "98c70d7179b423cc693778ae74b6f0c083a45b4e67142623efdd9ba0251f2b8b",
   "summary_source": "docs/evidence/cost01-2026-11-19/review/summary_revised.json",
   "summary_sha256": "d2f94f56f12f192b1bdaba7b19644c88385df4d8c57875893293931e38b686d2",
   "records": [
