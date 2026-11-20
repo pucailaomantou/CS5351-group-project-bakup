@@ -17,6 +17,7 @@ Update it when you merge something.
 | cost measurement point (on main) | NVDA / 2026-11-18, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash; ten valid runs, mean 163633.2, median 160664 | 2026-11-19 |
 | comparison measurement (not a baseline) | NVDA / 2026-11-19, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash, seven-day ticker news window anchored to the analysis date; 20/20/5 against 8/8/3 | 2026-11-20 |
 
+| effective cost config | `max_tool_rounds` 8, `news_article_limit` 8, `global_news_queries` 3 items, `global_news_article_limit` 10 | 2026-11-20 |
 ## Changes so far
 
 | PR | what changed | why |
@@ -57,20 +58,18 @@ repo).
    window, which removes the date distortion, but no per-run article count is captured, so the
    article axis still cannot be separated from the query axis. The input-side drop is consistent
    with both and isolates neither.
-2. **Which lever binds, and through what.** `max_tool_rounds` is unreachable (observed rounds
-   3-5 against a configured cap of 20). The 8/8/3 tightening did move the total by 7.84%, and it
+2. **Which lever binds, and through what.** `max_tool_rounds` did not bind at measurement time
+   (observed rounds 3-5 against a cap of 20; the cap is now 8). The 8/8/3 tightening did move the total by 7.84%, and it
    moved on the input side only, so the levers do bind — but through query count, then article
    volume, then context length, not through the article limit acting directly on the total.
-3. **No reader of a global query-count setting was found.** A grep over `agents/tools.py` and the
-   Yahoo news adapter turned up no code path that reads a global query count; the observed 30 and
-   70 article counts divide by the per-query limit of 10 into 3 and 7, consistent with the model
-   choosing the query count itself. The grep covered those two files only, so a repo-wide read is
-   needed before this becomes an ADR.
-4. **FR-02's `"converged"` branch is unreachable.** The research manager runs once after the
-   debate rather than once per round, so there is no per-round verdict to compare. The state
-   contract records this and reserves the value; the requirement wording still says the debate
-   terminates when it converges, so the two disagree until the wording is revised. Deferred until
-   #5 and #6 both merge.
+3. **The per-query article limit is still unverified.** `global_news_queries` is now a configured
+   list of three queries and is read by the adapter, so the query axis is fixed rather than left to
+   the model. `global_news_article_limit` remains 10 and no per-run article count is recorded, so
+   whether that ceiling binds is still open.
+4. **Convergence requires structured output, and the fallback rate is not measured.** The rule
+   compares the stance signatures of successive rounds' idea cards, so a run whose structured
+   output fell back to prose can never report `"converged"`. How often that happens is not
+   recorded, so the share of runs structurally unable to converge is unknown.
 
 ## Rule for this file
 
