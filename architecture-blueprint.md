@@ -103,6 +103,14 @@ four, and every requirement above lands on one of them.
 4. **Record boundary.** `src/tradingagents/memory/log.py` is the only writer of the decision log, so
    GOV-01's four fields go there rather than into each consumer.
 
+5. **Context boundary.** Of the five context layers, only one is compactable: the tool
+   results in `messages`, which the `add_messages` reducer inherited from `MessagesState`
+   makes append-only. The check sits at the conditional edge in
+   `src/tradingagents/graph/setup.py` that already reads the history. The other four layers
+   are pinned because a criterion or a downstream agent reads them directly — FR-02 reads
+   `count` and the debate state, and the manager agents read the report fields. Compaction
+   therefore cannot invalidate a criterion. See ADR 002.
+
 ## 6. Out of scope
 
 - The vendor layer, beyond the news-window change already made. No other requirement needs
