@@ -126,44 +126,77 @@ requirements:
       baseline, using only runs whose data-fetch integrity preconditions hold.
     fit_criterion:
       metric: "effective config values; ten-run batch mean and median total tokens versus the active baseline; per-run data-fetch integrity of the After batch"
-      threshold: "the three config values equal 8 / 8 / 3; over ten VALID After runs on NVDA / 2026-11-18 the batch mean total token count is < 163633.2 and the batch median is < 160664; each sample must pass the After data-integrity preconditions below"
-      verification: "assert build_default_config() returns 8 / 8 / 3 (this fails today: 20 / 20 / 5); then run ten After analyses under the baseline protocol (temperature 0.0, analysts market+news, one research round, one risk round, isolated memory/cache/results) and, per run, assert the After data-integrity preconditions before the run may enter the batch; compare the batch mean and median of usage.total_tokens against the active 2026-11-18 baseline. Record articles fetched (ticker and global) per run as an explanatory covariate, not a threshold."
+      threshold: "the three config values equal 8 / 8 / 3; over ten VALID After runs on NVDA / 2026-11-19 the batch mean total token count is < 160315.8 and the batch median is < 159615; each sample must pass the After data-integrity preconditions below"
+      verification: "assert build_default_config() returns 8 / 8 / 3 (satisfied on main since 2026-11-20; see test/offline/test_config_cost.py); the After batch runs under the baseline protocol (temperature 0.0, analysts market+news, one research round, one risk round, isolated memory/cache/results), and per run the After data-integrity preconditions are asserted before the run may enter the batch; the batch mean and median of usage.total_tokens are then compared against the active 2026-11-19 baseline. The 2026-11-20 After batch (ten valid runs, mean 147754.2, median 148087) satisfies both comparisons. Articles fetched (ticker and global) are recorded per run as an explanatory covariate, not a threshold."
     priority: must
 
-    baseline_date: "2026-11-18"
+    baseline_date: "2026-11-19"
     baseline_status: active
     baseline_ticker: "NVDA"
     baseline_valid_runs: 10
-    baseline_mean_total_tokens: 163633.2
-    baseline_median_total_tokens: 160664
-    baseline_min_total_tokens: 140232
-    baseline_max_total_tokens: 196055
-    baseline: "mean total_tokens = 163633.2 (median 160664, min 140232, max 196055) over 10 valid Before runs on NVDA / 2026-11-18, analysts market+news, temperature 0.0, model CS5351/DeepSeek-V4-Flash, commit 9fa1196; raw records in c-baseline-work/results/ (Workstream C, local)."
-    baseline_median: 160664
+    baseline_mean_total_tokens: 160315.8
+    baseline_median_total_tokens: 159615
+    baseline_min_total_tokens: 145545
+    baseline_max_total_tokens: 174399
+    baseline: "mean total_tokens = 160315.8 (median 159615, min 145545, max 174399) over 10 valid Before runs on NVDA / 2026-11-19, analysts market+news, temperature 0.0, model CS5351/DeepSeek-V4-Flash, config 20 / 20 / 5, seven-day ticker news window anchored to the analysis date; raw records in docs/evidence/cost01-2026-11-19/records/before/, each record carrying the code version it ran on."
+    baseline_median: 159615
     baseline_run_ids:
-      - "20261119_125350_542a61ee"
-      - "20261119_130440_0773676b"
-      - "20261119_131333_744d8cb2"
-      - "20261119_132227_27c66d32"
-      - "20261119_133107_9bcef095"
-      - "20261119_133929_2b330452"
-      - "20261119_134852_da982920"
-      - "20261119_140955_4ca247d3"
-      - "20261119_141425_46929e09"
-      - "20261119_141943_eb1953b4"
-    baseline_evidence_dir: "c-baseline-work/results/"
+      - "20261120_031930_7ee093c9"
+      - "20261120_032527_a9e526a1"
+      - "20261120_032743_94d1daf7"
+      - "20261120_032937_ca79330f"
+      - "20261120_033139_ca7050f0"
+      - "20261120_033355_9a8b9c5e"
+      - "20261120_033610_a896801f"
+      - "20261120_033805_8874d79d"
+      - "20261120_114222_f2932b46"
+      - "20261120_114441_2a33e022"
+    baseline_evidence_dir: "docs/evidence/cost01-2026-11-19/records/before/"
+    baseline_supplements:
+      - run_id: "20261120_114222_f2932b46"
+        total_tokens: 173115
+        replaces: "20261120_032135_28a781b6"
+        reason: >
+          The replaced run failed the market_rows precondition (141 rows against a 252-row
+          requested window), so it could not enter the batch. The supplement was run on the
+          same ticker and analysis date under the same protocol; its market evidence is
+          committed under docs/evidence/cost01-2026-11-19/supplement/market_evidence/.
+      - run_id: "20261120_114441_2a33e022"
+        total_tokens: 164203
+        replaces: "20261120_032332_fe83feb4"
+        reason: >
+          Same failure and same remedy as the entry above.
     baseline_excluded:
-      - run_id: "20261119_135741_a64673c1"
-        reason: "B8: status=failed, usage fields all null (usage_incomplete); excluded from the 10 valid runs and from all statistics."
+      - run_id: "20261120_032135_28a781b6"
+        reason: "market_rows = 141 against a 252-row requested window; retained as a record, replaced by a same-protocol supplement, never counted as a valid sample."
+      - run_id: "20261120_032332_fe83feb4"
+        reason: "market_rows = 141 against a 252-row requested window; retained as a record, replaced by a same-protocol supplement, never counted as a valid sample."
     baseline_observations: >
-      Ten valid runs on NVDA / 2026-11-18, all succeeded, valid=true, data_fetch.complete=true,
-      usage complete. This 2026-11-18 batch replaces the withdrawn 2026-09-01 batch (see
-      baseline_superseded). The new mean (163633.2) is about 50.3% above the withdrawn
-      batch's mean (108901.0); the two are not comparable because the withdrawn batch lacked
-      sufficient data_fetch integrity records (see below), not because the 2026-11-18 batch
-      is an optimization of it.
+      Ten valid runs on NVDA / 2026-11-19, config 20 / 20 / 5, all succeeded with
+      data_fetch.complete = true and complete usage. Two of the twelve records failed the
+      market_rows precondition and were replaced by same-protocol supplements, so the batch
+      is ten supplemented runs, not the first ten recorded. The batch mean (160315.8) sits
+      2.03% below the 2026-11-18 mean (163633.2) at identical config values, which is
+      consistent with the ticker news window being anchored to the analysis date and not
+      with any config change; the two batches are therefore separate baselines, not a
+      Before/After pair, and must not be compared as a cost result.
 
     baseline_superseded:
+      - baseline_date: "2026-11-18"
+        baseline_status: superseded
+        baseline_mean_total_tokens: 163633.2
+        baseline_median: 160664
+        baseline_min_total_tokens: 140232
+        baseline_max_total_tokens: 196055
+        baseline_valid_runs: 10
+        baseline: "mean total_tokens = 163633.2 over 10 valid runs on NVDA / 2026-11-18, analysts market+news, model CS5351/DeepSeek-V4-Flash, commit 9fa1196, config 20 / 20 / 5, no news-window anchoring"
+        evidence_ref: "c-baseline-work/results/ (Workstream C, local); not committed, so the figures cannot be recomputed from a clone"
+        superseded_reason: >
+          Superseded by the 2026-11-19 baseline, which holds the same ticker and the same
+          config values but anchors the ticker news window to the analysis date. The two
+          are not comparable as a cost result because the input window changed. The
+          2026-11-18 batch is retained unchanged for audit, not deleted and not restated.
+        replaced_by: "2026-11-19"
       - baseline_date: "2026-09-01"
         baseline_status: superseded
         baseline_mean_total_tokens: 108901.0
@@ -178,7 +211,7 @@ requirements:
           data_fetch completeness evidence: the 2026-09-01 runs carry no data_fetch
           status, so Market/News input completeness cannot be verified, and Yahoo news
           cannot reach a window ~78 days in the past. The evidence is retained unchanged
-          for audit. Superseded by the active 2026-11-18 baseline above.
+          for audit. Superseded by the 2026-11-18 baseline above, which is itself now superseded by the 2026-11-19 baseline.
         replaced_by: "2026-11-18"
         old_vs_new_difference_pct: 50.3
         difference_note: >
@@ -193,7 +226,7 @@ requirements:
     # MUST NOT enter the After batch statistics, even if its token count is lower.
     after_integrity_preconditions:
       - data_fetch.complete == true
-      - market_rows == 252
+      - market_rows equals the row count of the requested range (252 or 264)
       - ticker news delivered_count > 0 (non-empty)
       - global news delivered_count > 0 (non-empty)
     after_integrity_note: >
@@ -207,9 +240,11 @@ requirements:
       - "Token statistics use only records that satisfy the validity conditions."
       - "After runs from different code versions must not be mixed into one batch."
       - "Reduced token usage caused by reduced/failed data acquisition is not a valid cost reduction."
+      - "Before and After must share the same protocol except for the config values under test; a change to the data window creates a new baseline, it does not create a Before/After pair."
+      - "A supplemented run counts once in the batch; the run it replaces is retained as an excluded record and is never counted."
 
-    amended: "2026-11-18, after the baseline measurement and after PR #2 was merged. Removed the unfalsifiable 'every observed tool-call count and article count is within those limits' clause (observed tool_rounds were 3-5 against a cap of 8, so it held by construction as rounds, while observed tool_calls were 12-25 because calls run in parallel within a round, so it could never hold as calls). Replaced the per-run 'strictly below baseline' clause with a ten-run batch comparison on mean and median because the baseline distribution was bimodal (7 runs at 80968-94687, 3 runs at 146263-167483 with 22-25 tool calls), making individual-run comparison unstable. 2026-11-19: with B's approval, the active baseline date changed from 2026-09-01 to 2026-11-18 (10 valid runs, mean 163633.2, median 160664); the 2026-09-01 batch is retained and marked superseded (insufficient data_fetch integrity evidence) rather than deleted. Added per-run After data-integrity preconditions (data_fetch.complete, market_rows==252, non-empty ticker/global news) and comparison rules forbidding mixing code versions or counting data-loss as cost reduction."
-    source: "tradingagents/default_config.py (max_tool_rounds: 20, news_article_limit: 20, global_news_queries: 5 items); notes/three-changes.md goal 1; c-baseline-work/results/ (2026-11-18 Before batch, Workstream C)"
+    amended: "2026-11-18, after the baseline measurement and after PR #2 was merged. Removed the unfalsifiable 'every observed tool-call count and article count is within those limits' clause (observed tool_rounds were 3-5 against a cap of 8, so it held by construction as rounds, while observed tool_calls were 12-25 because calls run in parallel within a round, so it could never hold as calls). Replaced the per-run 'strictly below baseline' clause with a ten-run batch comparison on mean and median because the baseline distribution was bimodal (7 runs at 80968-94687, 3 runs at 146263-167483 with 22-25 tool calls), making individual-run comparison unstable. 2026-11-19: with B's approval, the active baseline date changed from 2026-09-01 to 2026-11-18 (10 valid runs, mean 163633.2, median 160664); the 2026-09-01 batch is retained and marked superseded (insufficient data_fetch integrity evidence) rather than deleted. Added per-run After data-integrity preconditions (data_fetch.complete, market_rows==252, non-empty ticker/global news) and comparison rules forbidding mixing code versions or counting data-loss as cost reduction. 2026-11-21: the active baseline moved from 2026-11-18 to 2026-11-19, measured under the same config values but with the ticker news window anchored to the analysis date, so the baseline now shares the protocol the After batch is measured under. Two Before runs failed the market_rows precondition (141 rows against a 252-row window) and were replaced by same-protocol supplement runs committed under docs/evidence/cost01-2026-11-19/; the replaced runs are retained as excluded records. The market_rows precondition now reads 'equals the row count of the requested range' so a 264-row window is not treated as a failure. The 2026-11-18 batch is retained and marked superseded rather than deleted."
+    source: "src/tradingagents/default_config.py (max_tool_rounds: 8, news_article_limit: 8, global_news_queries: 3 items); notes/three-changes.md goal 1; docs/evidence/cost01-2026-11-19/ (2026-11-19 Before batch, 12 records of which 10 valid); docs/evidence/cost01-2026-11-19/records/after/ (2026-11-20 After batch)"
 
   - id: GOV-01
     type: governance
