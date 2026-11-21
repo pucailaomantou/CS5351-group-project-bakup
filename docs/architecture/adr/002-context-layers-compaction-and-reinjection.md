@@ -21,7 +21,7 @@ of them grows without a bound.
 The growth is structural, not incidental. `AgentState` inherits `MessagesState`, so `messages`
 is append-only: every tool result stays in the history for the rest of the run, and every
 subsequent model call in that agent's phase re-reads it. The cost measurement supports this:
-`r(input_tokens, total_tokens) = 0.9995` across the baseline batch, and input is 124k of the
+`r(input_tokens, total_tokens) = 0.9874` across the 2026-11-19 baseline batch, and input is 124k of the
 147k mean total, so cost is dominated by what the model re-reads rather than what it writes.
 
 There is exactly one bound today, and it is the wrong unit. `max_recur_limit: 100`
@@ -141,7 +141,10 @@ Negative:
 - `src/tradingagents/graph/trading_graph.py` — `_memory_step`, `get_past_context(..., as_of=...)`
 - COST-01 `baseline_observations` — the batch aggregate and the validity rules. It does not
   carry the per-run correlations cited above, and it never carried the run records.
-- Workstream C local records, not in this repo: the run batches behind every figure quoted in
+- `docs/evidence/cost01-2026-11-19/` — the run records behind the 11-19 figures quoted in
+  Context, committed, so they can be recomputed from a clone. The 2026-11-18 batch is not
+  committed and the 0.9995 correlation quoted in Context belongs to the withdrawn 2026-09-01
+  batch; neither can be checked from a clone.
   Context, including `r(input_tokens, total_tokens) = 0.9995` and the 124k-of-147k input
   share. These are measured but not committed, so they cannot be checked from a clone until
   `c-baseline-work/results/` is added. Read them as external evidence, not as repository

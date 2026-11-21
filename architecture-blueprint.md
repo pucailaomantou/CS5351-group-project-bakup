@@ -48,14 +48,13 @@ single point all of them pass through.
 
 ## 4. State contract for FR-02
 
-The debate's outcome lives on `InvestDebateState`, written by the researchers rather than by
-the routing edge. The bear speaks second in each round, so its node closes the round and
-records the outcome; `src/tradingagents/graph/conditional_logic.py` only reads `count` to
-decide whether another round starts.
+The debate's outcome lives on `InvestDebateState`. The researchers write it and the routing edge only reads it: the bear speaks second in each round, so its node closes the round and records the outcome, and `src/tradingagents/graph/conditional_logic.py` then decides where to go from three fields — `converged` first, then `count` against the cap, then `current_response` to choose the next speaker.
 
 | field | type | written by | read by | allowed values |
 |---|---|---|---|---|
-| `count` (existing) | int | each researcher node, once per turn | the continuation check in `src/tradingagents/graph/conditional_logic.py` | 0 .. 2 x `max_debate_rounds` |
+| `count` (existing) | int | each researcher node, once per turn | the continuation check in `src/tradingagents/graph/conditional_logic.py`, after `converged` is checked | 0 .. 2 x `max_debate_rounds` |
+| `converged` (existing) | bool | `src/tradingagents/agents/researchers/bear_researcher.py`, at round close | the continuation check in `src/tradingagents/graph/conditional_logic.py`, which exits on `True` without looking at `count` | `True` or `False` |
+| `current_response` (existing) | str | each researcher node, when it speaks | the continuation check, to pick the next speaker | begins with `"Bull"` or `"Bear"` |
 | `debate_rounds` | list | `src/tradingagents/agents/researchers/bear_researcher.py`, at round close | the record builder in `src/tradingagents/agents/researchers/debate.py` | one entry per completed round |
 | `convergence_rounds` | `int \| None` | same point | the decision record; the FR-02 test | the round index at which convergence held, or `None` |
 | `termination_reason` | str | same point | same | `"converged"` or `"max_rounds"` |
@@ -79,7 +78,7 @@ node, from the same evaluation, so a reader never sees a reason without a round 
 The debate record also carries `convergence_method` as a verbatim string, so a later change to
 the rule is visible in the data rather than inferred from a version number.
 
-Three constraints:
+Four constraints:
 
 - **`count` is speaker turns, not rounds.** Each round is one bull turn and one bear turn, so
   `count` runs at twice the round count. `convergence_rounds` is the round index the node
@@ -87,6 +86,10 @@ Three constraints:
 - **`"converged"` requires cards on both sides in both rounds.** A run that lost structured
   output to the fallback cannot report convergence and reports `"max_rounds"` instead, which is
   correct: it stopped because the cap was reached, not because the positions settled.
+- **Zero rounds is a legal configuration, and it does not run one turn.**
+  `should_start_debate` routes straight to the research manager when `max_debate_rounds <= 0`, so
+  no side speaks and the manager records a capped result. A cap of zero is observable in the state
+  instead of silently becoming a single round.
 - **The research manager validates rather than recomputes.**
   `src/tradingagents/agents/managers/research_manager.py` checks that the reason is one of the
   two legal values and falls back to `("max_rounds", None)` otherwise, so a malformed state
