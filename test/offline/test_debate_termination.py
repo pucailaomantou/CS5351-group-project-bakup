@@ -21,7 +21,7 @@ import pytest
 
 from tradingagents.agents.researchers import debate
 from tradingagents.agents.researchers.bear_researcher import create_bear_researcher
-from tradingagents.agents.researchers.debate_schemas import ResearcherTurn
+from tradingagents.agents.researchers.debate_schemas import DebateStance, IdeaCard, ResearcherTurn
 from tradingagents.graph.conditional_logic import ConditionalLogic
 
 
@@ -76,7 +76,8 @@ def test_zero_risk_rounds_terminates_immediately():
 # --------------------------------------------------------------------------- #
 
 
-def _researcher_state(count=0):
+def _researcher_state(count=0, *, bull_idea_cards=None, pending_bull_cards=None,
+                      debate_rounds=None, termination_reason="", convergence_rounds=None):
     """Minimal AgentState for the bear researcher node."""
     return {
         "company_of_interest": "NVDA",
@@ -93,26 +94,33 @@ def _researcher_state(count=0):
             "bear_history": "",
             "current_response": "",
             "count": count,
-            "bull_idea_cards": [],
+            "bull_idea_cards": bull_idea_cards or [],
             "bear_idea_cards": [],
-            "debate_rounds": [],
-            "convergence_rounds": None,
-            "termination_reason": "",
+            "debate_rounds": debate_rounds or [],
+            "convergence_rounds": convergence_rounds,
+            "termination_reason": termination_reason,
             "converged": False,
-            "pending_bull_cards": [],
+            "pending_bull_cards": pending_bull_cards or [],
             "last_turn_status": {},
             "debate_record": {},
         },
     }
 
 
-def _bear_llm(argument="bear prose"):
+def _bear_llm(argument="bear prose", cards=None):
     """A MagicMock LLM whose structured binding returns a bare ResearcherTurn."""
     structured = mock.MagicMock()
-    structured.invoke.return_value = ResearcherTurn(argument=argument, cards=[])
+    structured.invoke.return_value = ResearcherTurn(argument=argument, cards=cards or [])
     llm = mock.MagicMock()
     llm.with_structured_output.return_value = structured
     return llm
+
+
+def _card(card_id, claim, stance=DebateStance.BEARISH):
+    return IdeaCard(
+        id=card_id, claim=claim, evidence="evidence", stance=stance,
+        uncertainty="what would falsify this", osborn_rule="defer_judgement", builds_on=[],
+    )
 
 
 @pytest.mark.unit
@@ -140,3 +148,78 @@ def test_bear_node_records_max_rounds_at_a_one_round_cap():
     assert debate_state["termination_reason"] == debate.MAX_ROUNDS
     assert debate_state["convergence_rounds"] is None
     assert debate_state["converged"] is False
+
+
+# --------------------------------------------------------------------------- #
+# FR-02: the converged path.
+#
+# Convergence is structural and round-to-round (see debate._round_converged): a
+# round converges when BOTH sides introduce no claim they did not already carry
+# in the *previous* round. Two consequences shape these tests:
+#
+#   * Round 1 can never converge -- `converged = bool(prev_rounds) and ...`, so
+#     there must be a completed prior round to compare against. The earliest a
+#     debate can converge is the second round the bear closes, which records
+#     `convergence_rounds == 2`. Asserting 1 would be asserting a value the
+#     source can never produce.
+#   * Both bull and bear must be identical across the two rounds: _round_converged
+#     returns False if *either* side is empty, so a test that varied only the bear
+#     cards while the bull side was empty would never converge for the wrong reason.
+#
+# The bear closes each round. Round 1 is driven first to populate debate_rounds;
+# its returned state is then fed into round 2, exactly as the graph would.
+# --------------------------------------------------------------------------- #
+
+
+def _close_round_one(bull_cards, bear_cards):
+    """Close round 1: the first bear turn, which records the round-1 trace."""
+    with mock.patch.object(debate, "max_debate_rounds", lambda: 3):
+        out = create_bear_researcher(_bear_llm(cards=bear_cards))(
+            _researcher_state(count=1, pending_bull_cards=bull_cards))
+    return out["investment_debate_state"]
+
+
+def _close_round_two(round_one, bull_cards, bear_cards):
+    """Close round 2 from round 1's recorded state."""
+    with mock.patch.object(debate, "max_debate_rounds", lambda: 3):
+        out = create_bear_researcher(_bear_llm(cards=bear_cards))(
+            _researcher_state(
+                count=3,
+                bull_idea_cards=bull_cards,
+                pending_bull_cards=bull_cards,
+                debate_rounds=round_one["debate_rounds"],
+                termination_reason=round_one["termination_reason"],
+                convergence_rounds=round_one["convergence_rounds"],
+            ))
+    return out["investment_debate_state"]
+
+
+@pytest.mark.unit
+def test_debate_converges_when_both_sides_repeat_their_cards():
+    """Identical bull and bear cards in round 2 add nothing over round 1, so the
+    debate converges at round 2 and records ``converged`` as the reason."""
+    bull = [_card("bull-x", "AI backlog", DebateStance.BULLISH)]
+    bear = [_card("bear-x", "margin compression", DebateStance.BEARISH)]
+
+    round_one = _close_round_one(bull, bear)
+    assert round_one["converged"] is False  # round 1 cannot converge
+
+    round_two = _close_round_two(round_one, bull, bear)
+    assert round_two["termination_reason"] == debate.CONVERGED
+    assert round_two["converged"] is True
+    assert round_two["convergence_rounds"] == 2
+
+
+@pytest.mark.unit
+def test_debate_does_not_converge_when_a_side_adds_a_new_card():
+    """A new bear claim in round 2 is progress, so the debate does not converge."""
+    bull = [_card("bull-x", "AI backlog", DebateStance.BULLISH)]
+    bear_round_one = [_card("bear-x", "margin compression", DebateStance.BEARISH)]
+    bear_round_two = [_card("bear-y", "valuation risk", DebateStance.BEARISH)]
+
+    round_one = _close_round_one(bull, bear_round_one)
+    round_two = _close_round_two(round_one, bull, bear_round_two)
+
+    assert round_two["converged"] is False
+    assert round_two["termination_reason"] != debate.CONVERGED
+    assert round_two["convergence_rounds"] is None
