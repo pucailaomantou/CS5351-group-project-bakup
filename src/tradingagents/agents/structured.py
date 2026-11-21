@@ -24,6 +24,8 @@ from typing import Any, TypeVar
 
 from pydantic import BaseModel
 
+from tradingagents.agents import structured_capture
+
 logger = logging.getLogger(__name__)
 
 T = TypeVar("T", bound=BaseModel)
@@ -62,9 +64,20 @@ def invoke_structured(structured_llm: Any | None, prompt: Any, agent_name: str) 
     ``prompt`` is whatever the underlying LLM accepts (a string for chat
     invocations, a list of message dicts for chat models that take that
     shape), so a caller can forward the same value to its free-text fallback.
+
+    Observation (Round 2 evidence): when a ``structured_capture`` recorder is
+    active, this records one ``structured_attempts`` when a binding exists and
+    one ``structured_success`` on a parsed result; on any miss it records one
+    ``fallback_attempts`` (the caller will answer in free text). With no
+    recorder active every hook is a no-op, so behaviour is unchanged.
     """
+    rec = structured_capture.active()
     if structured_llm is None:
+        if rec is not None:
+            rec.record_fallback(agent_name)  # no binding -> free-text path
         return None
+    if rec is not None:
+        rec.record_attempt(agent_name)
     try:
         result = structured_llm.invoke(prompt)
         if result is None:
@@ -72,12 +85,16 @@ def invoke_structured(structured_llm: Any | None, prompt: Any, agent_name: str) 
             # the tool, leaving the parser with nothing to return. Treat it
             # as a structured miss and fall back, with a clear reason.
             raise ValueError("structured output returned no parsed result")
+        if rec is not None:
+            rec.record_success(agent_name)
         return result
     except Exception as exc:
         logger.warning(
             "%s: structured-output invocation failed (%s); retrying once as free text",
             agent_name, exc,
         )
+        if rec is not None:
+            rec.record_fallback(agent_name)
         return None
 
 

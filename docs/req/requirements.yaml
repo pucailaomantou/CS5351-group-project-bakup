@@ -122,26 +122,94 @@ requirements:
     statement: >
       A single-ticker analysis shall run with max_tool_rounds = 8, news_article_limit = 8,
       and three global news queries, and a ten-run batch on the same ticker and date shall
-      have both a lower mean and a lower median total token usage than the pre-change baseline.
+      have both a lower mean and a lower median total token usage than the active pre-change
+      baseline, using only runs whose data-fetch integrity preconditions hold.
     fit_criterion:
-      metric: "effective config values; ten-run batch mean and median total tokens versus baseline"
-      threshold: "the three config values equal 8 / 8 / 3; over ten runs on NVDA / 2026-09-01 the batch mean total token count is < 108901 and the batch median is < 92713"
-      verification: "assert build_default_config() returns 8 / 8 / 3 (this fails today: 20 / 20 / 5); then run ten analyses under the baseline protocol (temperature 0.0, analysts market+news, one research round, one risk round, isolated memory/cache/results) and compare the batch mean and median of usage.total_tokens. Record articles fetched (ticker and global) per run in the after batch; they were not recorded in the baseline, so they serve as an explanatory covariate, not as a threshold."
+      metric: "effective config values; ten-run batch mean and median total tokens versus the active baseline; per-run data-fetch integrity of the After batch"
+      threshold: "the three config values equal 8 / 8 / 3; over ten VALID After runs on NVDA / 2026-11-18 the batch mean total token count is < 163633.2 and the batch median is < 160664; each sample must pass the After data-integrity preconditions below"
+      verification: "assert build_default_config() returns 8 / 8 / 3 (this fails today: 20 / 20 / 5); then run ten After analyses under the baseline protocol (temperature 0.0, analysts market+news, one research round, one risk round, isolated memory/cache/results) and, per run, assert the After data-integrity preconditions before the run may enter the batch; compare the batch mean and median of usage.total_tokens against the active 2026-11-18 baseline. Record articles fetched (ticker and global) per run as an explanatory covariate, not a threshold."
     priority: must
-    baseline: "mean total_tokens = 108901.0 over 10 valid baseline runs (measured by C on D1, commit 9fa1196, NVDA/2026-09-01, analysts market+news, model CS5351/DeepSeek-V4-Flash)"
-    baseline_median: 92713
+
+    baseline_date: "2026-11-18"
+    baseline_status: active
+    baseline_ticker: "NVDA"
+    baseline_valid_runs: 10
+    baseline_mean_total_tokens: 163633.2
+    baseline_median_total_tokens: 160664
+    baseline_min_total_tokens: 140232
+    baseline_max_total_tokens: 196055
+    baseline: "mean total_tokens = 163633.2 (median 160664, min 140232, max 196055) over 10 valid Before runs on NVDA / 2026-11-18, analysts market+news, temperature 0.0, model CS5351/DeepSeek-V4-Flash, commit 9fa1196; raw records in c-baseline-work/results/ (Workstream C, local)."
+    baseline_median: 160664
+    baseline_run_ids:
+      - "20261119_125350_542a61ee"
+      - "20261119_130440_0773676b"
+      - "20261119_131333_744d8cb2"
+      - "20261119_132227_27c66d32"
+      - "20261119_133107_9bcef095"
+      - "20261119_133929_2b330452"
+      - "20261119_134852_da982920"
+      - "20261119_140955_4ca247d3"
+      - "20261119_141425_46929e09"
+      - "20261119_141943_eb1953b4"
+    baseline_evidence_dir: "c-baseline-work/results/"
+    baseline_excluded:
+      - run_id: "20261119_135741_a64673c1"
+        reason: "B8: status=failed, usage fields all null (usage_incomplete); excluded from the 10 valid runs and from all statistics."
     baseline_observations: >
-      Ten runs on NVDA / 2026-09-01. total_tokens tracks input_tokens almost
-      exactly (r = 0.9995), and tool_calls explains the spread (r = 0.90): the three
-      runs at 22-25 tool calls produced 146263 / 157933 / 167483 tokens, while the
-      seven runs at 12-19 calls stayed at 80968-94687 (mean 88190). tool_rounds were
-      3-5 in every run, so max_tool_rounds was never approached; tokens per tool call
-      stayed at 4859-7613, so the per-call payload is stable and the call count is
-      what moves. Article counts were not recorded per run in this batch, so the
-      effect of news_article_limit cannot be separated from the effect of the global
-      query count.
-    amended: "2026-11-18, after the baseline measurement and after PR #2 was merged. Removed the unfalsifiable 'every observed tool-call count and article count is within those limits' clause (observed tool_rounds were 3-5 against a cap of 8, so it held by construction as rounds, while observed tool_calls were 12-25 because calls run in parallel within a round, so it could never hold as calls). Replaced the per-run 'strictly below baseline' clause with a ten-run batch comparison on mean and median because the baseline distribution was bimodal (7 runs at 80968-94687, 3 runs at 146263-167483 with 22-25 tool calls), making individual-run comparison unstable. The observed variance is driven by tool-call count, which none of the three configured limits bounds directly, since several calls run inside a single round; the config assertions are therefore necessary but not sufficient for the token target."
-    source: "tradingagents/default_config.py (max_tool_rounds: 20, news_article_limit: 20, global_news_queries: 5 items); notes/three-changes.md goal 1"
+      Ten valid runs on NVDA / 2026-11-18, all succeeded, valid=true, data_fetch.complete=true,
+      usage complete. This 2026-11-18 batch replaces the withdrawn 2026-09-01 batch (see
+      baseline_superseded). The new mean (163633.2) is about 50.3% above the withdrawn
+      batch's mean (108901.0); the two are not comparable because the withdrawn batch lacked
+      sufficient data_fetch integrity records (see below), not because the 2026-11-18 batch
+      is an optimization of it.
+
+    baseline_superseded:
+      - baseline_date: "2026-09-01"
+        baseline_status: superseded
+        baseline_mean_total_tokens: 108901.0
+        baseline_median: 92713
+        baseline_min_total_tokens: 80968
+        baseline_max_total_tokens: 167483
+        baseline_valid_runs: 10
+        baseline: "mean total_tokens = 108901.0 over 10 valid baseline runs (measured by C on D1, commit 9fa1196, NVDA/2026-09-01, analysts market+news, model CS5351/DeepSeek-V4-Flash)"
+        evidence_ref: "c-baseline-work/results/summary.json (Workstream C, local); raw 2026-09-01 records retained, not deleted or modified."
+        superseded_reason: >
+          Withdrawn as an active baseline because the record set lacks sufficient
+          data_fetch completeness evidence: the 2026-09-01 runs carry no data_fetch
+          status, so Market/News input completeness cannot be verified, and Yahoo news
+          cannot reach a window ~78 days in the past. The evidence is retained unchanged
+          for audit. Superseded by the active 2026-11-18 baseline above.
+        replaced_by: "2026-11-18"
+        old_vs_new_difference_pct: 50.3
+        difference_note: >
+          New-vs-old batch mean differs by about 50.3% (163633.2 vs 108901.0). This is
+          NOT an optimization effect and NOT evidence that either batch is cheaper: the
+          withdrawn batch had unverifiable data completeness, so the token difference
+          reflects differing/unsafe input completeness, not a cost improvement. The two
+          batches must not be mixed or compared as a cost result.
+
+    # After-side data-integrity preconditions (per run, not batch-level). A run that
+    # fails ANY of these is invalid and must be kept (with its failure reason) but
+    # MUST NOT enter the After batch statistics, even if its token count is lower.
+    after_integrity_preconditions:
+      - data_fetch.complete == true
+      - market_rows == 252
+      - ticker news delivered_count > 0 (non-empty)
+      - global news delivered_count > 0 (non-empty)
+    after_integrity_note: >
+      Checked individually for every After run, not only in the batch aggregate. Invalid
+      runs (failed or failed-precondition) are retained as records and never counted as
+      valid samples; a lower token count caused by missing/failed data acquisition must
+      never be treated as a valid cost reduction.
+
+    comparison_rules:
+      - "Baseline and After must share the same ticker, the same trade_date, and the same data-integrity requirements."
+      - "Token statistics use only records that satisfy the validity conditions."
+      - "After runs from different code versions must not be mixed into one batch."
+      - "Reduced token usage caused by reduced/failed data acquisition is not a valid cost reduction."
+
+    amended: "2026-11-18, after the baseline measurement and after PR #2 was merged. Removed the unfalsifiable 'every observed tool-call count and article count is within those limits' clause (observed tool_rounds were 3-5 against a cap of 8, so it held by construction as rounds, while observed tool_calls were 12-25 because calls run in parallel within a round, so it could never hold as calls). Replaced the per-run 'strictly below baseline' clause with a ten-run batch comparison on mean and median because the baseline distribution was bimodal (7 runs at 80968-94687, 3 runs at 146263-167483 with 22-25 tool calls), making individual-run comparison unstable. 2026-11-19: with B's approval, the active baseline date changed from 2026-09-01 to 2026-11-18 (10 valid runs, mean 163633.2, median 160664); the 2026-09-01 batch is retained and marked superseded (insufficient data_fetch integrity evidence) rather than deleted. Added per-run After data-integrity preconditions (data_fetch.complete, market_rows==252, non-empty ticker/global news) and comparison rules forbidding mixing code versions or counting data-loss as cost reduction."
+    source: "tradingagents/default_config.py (max_tool_rounds: 20, news_article_limit: 20, global_news_queries: 5 items); notes/three-changes.md goal 1; c-baseline-work/results/ (2026-11-18 Before batch, Workstream C)"
 
   - id: GOV-01
     type: governance

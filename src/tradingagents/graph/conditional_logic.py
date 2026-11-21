@@ -9,9 +9,24 @@ class ConditionalLogic:
         self.max_debate_rounds = max_debate_rounds
         self.max_risk_discuss_rounds = max_risk_discuss_rounds
 
+    def should_start_debate(self, state: AgentState) -> str:
+        """Route from the analysts into the research debate, or straight past it.
+
+        With ``max_debate_rounds == 0`` the debate must terminate immediately
+        with a recorded reason (FR-02), not run a single Bull turn. Zero rounds
+        means no side speaks; the Research Manager records the capped result.
+        """
+        if self.max_debate_rounds <= 0:
+            return "Research Manager"
+        return "Bull Researcher"
+
     def should_continue_debate(self, state: AgentState) -> str:
         """Determine if debate should continue."""
 
+        if state["investment_debate_state"].get("converged"):
+            # The latest completed round added no new claims on either side;
+            # the manager can adjudicate now (FR-02).
+            return "Research Manager"
         if (
             state["investment_debate_state"]["count"] >= 2 * self.max_debate_rounds
         ):  # max_debate_rounds turns each for bull and bear

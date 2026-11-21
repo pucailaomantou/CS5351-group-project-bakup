@@ -1,0 +1,604 @@
+{
+  "run_id": "20261120_034651_d075414f",
+  "ticker": "NVDA",
+  "date": "2026-11-19",
+  "phase": "after",
+  "round": 2,
+  "expected_repo": "/Users/administrator/CityU/CS5351/c-round2-src-migration",
+  "imported_package_path": "/Users/administrator/CityU/CS5351/c-round2-src-migration/src/tradingagents/__init__.py",
+  "actual_commit": "4c45ee8d5610ca2c09f3eee3fd4f77b3a76b2178",
+  "baseline_commit": "9fa1196fffbcfd9de5146d2dd2869df84ab99838",
+  "tree_dirty": true,
+  "d2d3_file_sha256": {
+    "src/cli/stats_handler.py": "948402653e7524210f429ede2431dee825281b60deb51505370f6bd81dcb668e",
+    "src/cli/display.py": "fd062471458ad3d8c87efa80f6af799525284578aae3f436df818a238546ac2a",
+    "src/cli/run.py": "e0c92a1b5b7d2b2420e6cd38d07d14696b56f91794dcbc2369e817bca432e561",
+    "src/tradingagents/default_config.py": "8b4357cdf518d883b76c4aa687581469888c404209e5f6a18ec12e1aac57a0fe",
+    "src/tradingagents/agents/state.py": "4f46274056814c2e3ca28e8717729324419417a3219b8e4489a66da6e1ea588f",
+    "src/tradingagents/graph/setup.py": "b5b7b6f5dc3674ebc5e6e8b0d8fc5136fb0e72c09ab12aa16ecdb2c3ed25d002",
+    "src/tradingagents/graph/conditional_logic.py": "db1c2b3690427d14457a35bde6408e3ba37a9899af09895c2dd33c42d1550f57",
+    "src/tradingagents/graph/propagation.py": "8797400939ee6028d7df18622a6b6e4c88ec657e2a0b0f2fa0ab212ccdf69445",
+    "src/tradingagents/graph/trading_graph.py": "6a7aefb9e43fc4d0fbd2939cbcd4c34ebf84f9ad1216b75246419894cd2d5be8",
+    "src/tradingagents/agents/managers/research_manager.py": "43defc83798357a0f02b62fe6cc951632ff3e18c2c273c9441641b137457f1db",
+    "src/tradingagents/agents/researchers/bull_researcher.py": "2a3ffd68aadcfca1a39270990b09a3f1403b02b6c0e3311951436d0ff83a2426",
+    "src/tradingagents/agents/researchers/bear_researcher.py": "733a2c602e2c09efcaf19a0fbee783cd965e6d9d676e5215d587c0574c067dd8",
+    "src/tradingagents/agents/researchers/debate.py": "4fd1a5fbd669357aa972df3a0d11830dfb3abfd42cad8e3023447b865e211c29",
+    "src/tradingagents/agents/researchers/debate_schemas.py": "a3301195b464661eb08d06ae85ebf6c492e28b41072720e705bf089dccde4981",
+    "src/tradingagents/dataflows/vendors/yahoo/news.py": "0233bb76019e6425b0f90a2bfa150a49d22dd84822d489296cd2ee6be047edef",
+    "src/tradingagents/dataflows/vendors/yahoo/market.py": "dc47e4342fac495742689614d634556fc316a2daf6e8e698f0ce83d16cfc5893"
+  },
+  "models": {
+    "llm_provider": "openai_compatible",
+    "deep_think_llm": "CS5351/DeepSeek-V4-Flash",
+    "quick_think_llm": "CS5351/DeepSeek-V4-Flash"
+  },
+  "settings": {
+    "version": "0.7.1",
+    "llm_provider": "openai_compatible",
+    "deep_think_provider": "openai_compatible",
+    "deep_think_llm": "CS5351/DeepSeek-V4-Flash",
+    "quick_think_provider": "openai_compatible",
+    "quick_think_llm": "CS5351/DeepSeek-V4-Flash",
+    "analysts": [
+      "market",
+      "news"
+    ],
+    "max_debate_rounds": 1,
+    "max_risk_discuss_rounds": 1,
+    "output_language": "English",
+    "data_vendors": {
+      "core_stock_apis": "yfinance",
+      "technical_indicators": "yfinance",
+      "fundamental_data": "sec_edgar,yfinance",
+      "news_data": "yfinance",
+      "macro_data": "fred",
+      "prediction_markets": "polymarket"
+    },
+    "tool_vendors": {}
+  },
+  "config": {
+    "llm_provider": "openai_compatible",
+    "deep_think_llm": "CS5351/DeepSeek-V4-Flash",
+    "quick_think_llm": "CS5351/DeepSeek-V4-Flash",
+    "deep_think_provider": null,
+    "quick_think_provider": null,
+    "max_debate_rounds": 1,
+    "max_risk_discuss_rounds": 1,
+    "max_tool_rounds": 8,
+    "temperature": 0.0,
+    "max_tokens": null,
+    "output_language": "English",
+    "news_article_limit": 8,
+    "global_news_article_limit": 10,
+    "global_news_lookback_days": 7,
+    "checkpoint_enabled": false,
+    "benchmark_ticker": null,
+    "holding_period_days": 5,
+    "global_news_query_count": 3,
+    "global_news_queries": [
+      "Federal Reserve interest rates inflation",
+      "S&P 500 earnings GDP economic outlook",
+      "geopolitical risk trade war sanctions"
+    ],
+    "data_vendors": {
+      "core_stock_apis": "yfinance",
+      "technical_indicators": "yfinance",
+      "fundamental_data": "sec_edgar,yfinance",
+      "news_data": "yfinance",
+      "macro_data": "fred",
+      "prediction_markets": "polymarket"
+    }
+  },
+  "status": "succeeded",
+  "error": null,
+  "error_detail": {
+    "exception_type": null,
+    "http_status": null
+  },
+  "started_at": "2026-11-20T03:46:51+08:00",
+  "finished_at": "2026-11-20T03:48:56+08:00",
+  "duration_s": 125.0,
+  "counts": {
+    "llm_calls": 15,
+    "tool_calls": 27,
+    "tool_rounds": 4
+  },
+  "tool_rounds_status": "measured",
+  "usage": {
+    "input_tokens": 129621,
+    "output_tokens": 24983,
+    "total_tokens": 154604
+  },
+  "usage_complete": true,
+  "usage_state": "complete",
+  "usage_verifiability": "per_call",
+  "provider_total_tokens": 154604,
+  "started_calls": 15,
+  "finished_calls": 15,
+  "unfinished_calls": 0,
+  "usage_calls": 15,
+  "unavailable_calls": 0,
+  "error_calls": null,
+  "usage_note": "ok",
+  "per_agent": {
+    "Aggressive Analyst": {
+      "calls": 1,
+      "unavailable_calls": 0,
+      "input_tokens": 8434,
+      "output_tokens": 1146,
+      "total_tokens": 9580
+    },
+    "Bear Researcher": {
+      "calls": 1,
+      "unavailable_calls": 0,
+      "input_tokens": 11106,
+      "output_tokens": 3385,
+      "total_tokens": 14491
+    },
+    "Bull Researcher": {
+      "calls": 1,
+      "unavailable_calls": 0,
+      "input_tokens": 8822,
+      "output_tokens": 2463,
+      "total_tokens": 11285
+    },
+    "Conservative Analyst": {
+      "calls": 1,
+      "unavailable_calls": 0,
+      "input_tokens": 10695,
+      "output_tokens": 1934,
+      "total_tokens": 12629
+    },
+    "Market Analyst": {
+      "calls": 3,
+      "unavailable_calls": 0,
+      "input_tokens": 33670,
+      "output_tokens": 5911,
+      "total_tokens": 39581
+    },
+    "Neutral Analyst": {
+      "calls": 1,
+      "unavailable_calls": 0,
+      "input_tokens": 14530,
+      "output_tokens": 1698,
+      "total_tokens": 16228
+    },
+    "News Analyst": {
+      "calls": 3,
+      "unavailable_calls": 0,
+      "input_tokens": 13258,
+      "output_tokens": 3298,
+      "total_tokens": 16556
+    },
+    "Portfolio Manager": {
+      "calls": 1,
+      "unavailable_calls": 0,
+      "input_tokens": 8095,
+      "output_tokens": 2361,
+      "total_tokens": 10456
+    },
+    "Research Manager": {
+      "calls": 1,
+      "unavailable_calls": 0,
+      "input_tokens": 6524,
+      "output_tokens": 1578,
+      "total_tokens": 8102
+    },
+    "Trader": {
+      "calls": 2,
+      "unavailable_calls": 0,
+      "input_tokens": 14487,
+      "output_tokens": 1209,
+      "total_tokens": 15696
+    }
+  },
+  "per_call_usage": [
+    {
+      "agent": "Market Analyst",
+      "input_tokens": 1944,
+      "output_tokens": 143,
+      "total_tokens": 2087
+    },
+    {
+      "agent": "News Analyst",
+      "input_tokens": 1770,
+      "output_tokens": 836,
+      "total_tokens": 2606
+    },
+    {
+      "agent": "News Analyst",
+      "input_tokens": 4816,
+      "output_tokens": 171,
+      "total_tokens": 4987
+    },
+    {
+      "agent": "Market Analyst",
+      "input_tokens": 12139,
+      "output_tokens": 830,
+      "total_tokens": 12969
+    },
+    {
+      "agent": "News Analyst",
+      "input_tokens": 6672,
+      "output_tokens": 2291,
+      "total_tokens": 8963
+    },
+    {
+      "agent": "Market Analyst",
+      "input_tokens": 19587,
+      "output_tokens": 4938,
+      "total_tokens": 24525
+    },
+    {
+      "agent": "Bull Researcher",
+      "input_tokens": 8822,
+      "output_tokens": 2463,
+      "total_tokens": 11285
+    },
+    {
+      "agent": "Bear Researcher",
+      "input_tokens": 11106,
+      "output_tokens": 3385,
+      "total_tokens": 14491
+    },
+    {
+      "agent": "Research Manager",
+      "input_tokens": 6524,
+      "output_tokens": 1578,
+      "total_tokens": 8102
+    },
+    {
+      "agent": "Trader",
+      "input_tokens": 7532,
+      "output_tokens": 546,
+      "total_tokens": 8078
+    },
+    {
+      "agent": "Trader",
+      "input_tokens": 6955,
+      "output_tokens": 663,
+      "total_tokens": 7618
+    },
+    {
+      "agent": "Aggressive Analyst",
+      "input_tokens": 8434,
+      "output_tokens": 1146,
+      "total_tokens": 9580
+    },
+    {
+      "agent": "Conservative Analyst",
+      "input_tokens": 10695,
+      "output_tokens": 1934,
+      "total_tokens": 12629
+    },
+    {
+      "agent": "Neutral Analyst",
+      "input_tokens": 14530,
+      "output_tokens": 1698,
+      "total_tokens": 16228
+    },
+    {
+      "agent": "Portfolio Manager",
+      "input_tokens": 8095,
+      "output_tokens": 2361,
+      "total_tokens": 10456
+    }
+  ],
+  "listener_counts": {
+    "structured_ok": 2,
+    "structured_failed": 0,
+    "no_structured": 0,
+    "no_structured_result": 0,
+    "by_side": {
+      "bull": "ok",
+      "bear": "ok"
+    },
+    "structured": {
+      "per_agent": {
+        "Portfolio Manager": {
+          "structured_attempts": 1,
+          "structured_success": 1,
+          "fallback_attempts": 0
+        },
+        "Research Manager": {
+          "structured_attempts": 1,
+          "structured_success": 0,
+          "fallback_attempts": 1
+        },
+        "Trader": {
+          "structured_attempts": 1,
+          "structured_success": 0,
+          "fallback_attempts": 1
+        }
+      },
+      "totals": {
+        "structured_attempts": 3,
+        "structured_success": 1,
+        "fallback_attempts": 2
+      }
+    },
+    "global_structured_attempts": 3,
+    "global_structured_success": 1,
+    "global_fallback_attempts": 2
+  },
+  "debate": {
+    "debate_rounds": 1,
+    "convergence_rounds": null,
+    "termination_reason": "max_rounds",
+    "convergence_method": "structural_no_new_claims: a round converges when both sides' new cards add no (stance, claim) pair absent from the previous round; deterministic, no LLM call; checked once per completed bull+bear round.",
+    "osborn_rules_used": [
+      "defer_judgement",
+      "pursue_quantity",
+      "build_on_others",
+      "combine_and_improve"
+    ],
+    "turn_status": {
+      "bull": "ok",
+      "bear": "ok"
+    },
+    "rationale_citations": [
+      "bull-1-1",
+      "bull-1-2",
+      "bull-1-3",
+      "bull-1-4",
+      "bull-1-5",
+      "bear-1-1",
+      "bear-1-3",
+      "bear-1-4",
+      "bear-1-5"
+    ]
+  },
+  "data_fetch": {
+    "complete": true,
+    "market_complete": true,
+    "news_complete": true,
+    "macro_complete": false,
+    "macro_optional": true,
+    "tool_results": 27,
+    "unavailable_results": 0,
+    "details": [],
+    "per_category": {
+      "market": {
+        "results": 13,
+        "failures": 0
+      },
+      "news": {
+        "results": 4,
+        "failures": 0
+      },
+      "macro": {
+        "results": 7,
+        "failures": 7
+      },
+      "other": {
+        "results": 3,
+        "failures": 0
+      }
+    }
+  },
+  "news_delivered_count": {
+    "ticker_news": 16,
+    "global_news": 20,
+    "status": "counted"
+  },
+  "news_article_count": {
+    "ticker_news": 16,
+    "global_news": 20,
+    "status": "counted"
+  },
+  "news_queries": {
+    "global_queries": [
+      {
+        "query": "Federal Reserve interest rates inflation",
+        "requested_limit": 50,
+        "delivered_limit": 10,
+        "fetched_count": 48,
+        "windowed_count": 48,
+        "deduped_added": 47
+      },
+      {
+        "query": null,
+        "summary": true,
+        "delivered_limit": 10,
+        "formatted_count": 10,
+        "delivered_count": 10,
+        "total_in_window": 47
+      },
+      {
+        "query": "Federal Reserve interest rates inflation",
+        "requested_limit": 50,
+        "delivered_limit": 10,
+        "fetched_count": 48,
+        "windowed_count": 48,
+        "deduped_added": 47
+      },
+      {
+        "query": null,
+        "summary": true,
+        "delivered_limit": 10,
+        "formatted_count": 10,
+        "delivered_count": 10,
+        "total_in_window": 47
+      }
+    ],
+    "ticker_calls": [
+      {
+        "ticker": "NVDA",
+        "requested_limit": 50,
+        "delivered_limit": 8,
+        "feed_nonempty": true,
+        "used_search_fallback": false,
+        "fetched_count": 50,
+        "windowed_count": 50,
+        "deduped_count": 50,
+        "formatted_count": 8,
+        "delivered_count": 8
+      },
+      {
+        "ticker": "NVDA",
+        "requested_limit": 50,
+        "delivered_limit": 8,
+        "feed_nonempty": true,
+        "used_search_fallback": false,
+        "fetched_count": 50,
+        "windowed_count": 50,
+        "deduped_count": 50,
+        "formatted_count": 8,
+        "delivered_count": 8
+      }
+    ]
+  },
+  "fixtures": {
+    "enabled": true,
+    "mode": "record",
+    "root": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/_fixtures/20261120_034651_d075414f",
+    "files": [
+      {
+        "kind": "macro",
+        "key": "10y_treasury_2026-11-19_365",
+        "occurrence": 0,
+        "path": "objects/720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b.json",
+        "sha256": "720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b",
+        "exists": true
+      },
+      {
+        "kind": "macro",
+        "key": "core_pce_2026-11-19_365",
+        "occurrence": 0,
+        "path": "objects/720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b.json",
+        "sha256": "720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b",
+        "exists": true
+      },
+      {
+        "kind": "macro",
+        "key": "cpi_2026-11-19_365",
+        "occurrence": 0,
+        "path": "objects/720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b.json",
+        "sha256": "720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b",
+        "exists": true
+      },
+      {
+        "kind": "macro",
+        "key": "fed_funds_rate_2026-11-19_365",
+        "occurrence": 0,
+        "path": "objects/720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b.json",
+        "sha256": "720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b",
+        "exists": true
+      },
+      {
+        "kind": "macro",
+        "key": "unemployment_2026-11-19_365",
+        "occurrence": 0,
+        "path": "objects/720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b.json",
+        "sha256": "720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b",
+        "exists": true
+      },
+      {
+        "kind": "macro",
+        "key": "vix_2026-11-19_180",
+        "occurrence": 0,
+        "path": "objects/720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b.json",
+        "sha256": "720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b",
+        "exists": true
+      },
+      {
+        "kind": "macro",
+        "key": "yield_curve_2026-11-19_365",
+        "occurrence": 0,
+        "path": "objects/720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b.json",
+        "sha256": "720fd3a4e5641d1b5a1712da101d3256ff48b21c4a7997a2ec627ac1beb5fd9b",
+        "exists": true
+      },
+      {
+        "kind": "market",
+        "key": "NVDA_2021-11-20_2026-11-21_auto_adjust",
+        "occurrence": 0,
+        "path": "objects/6a1ddb2d42192ab8e2032590ad5dca89b87304cc1d326f04afb37b4a63502529.csv",
+        "sha256": "6a1ddb2d42192ab8e2032590ad5dca89b87304cc1d326f04afb37b4a63502529",
+        "exists": true
+      },
+      {
+        "kind": "market",
+        "key": "NVDA_2025-11-01_2026-11-20",
+        "occurrence": 0,
+        "path": "objects/89ce2e071cfbc8c54ce689c1432e3da601e38f41f6b02c46e99ec303c095265f.csv",
+        "sha256": "89ce2e071cfbc8c54ce689c1432e3da601e38f41f6b02c46e99ec303c095265f",
+        "exists": true
+      },
+      {
+        "kind": "news",
+        "key": "NVDA_50",
+        "occurrence": 0,
+        "path": "objects/711880f2409a38707b86d626b1394a0ae1d5032e05e021fd312facd32ddc80c9.json",
+        "sha256": "711880f2409a38707b86d626b1394a0ae1d5032e05e021fd312facd32ddc80c9",
+        "exists": true
+      },
+      {
+        "kind": "prediction",
+        "key": "Fed_rate_cut_6_2026-11-19",
+        "occurrence": 0,
+        "path": "objects/79bc5cef810252cf4c7caa6c48a09628c496851c0e490099e243bb9ed76aceb0.json",
+        "sha256": "79bc5cef810252cf4c7caa6c48a09628c496851c0e490099e243bb9ed76aceb0",
+        "exists": true
+      },
+      {
+        "kind": "prediction",
+        "key": "Nvidia_6_2026-11-19",
+        "occurrence": 0,
+        "path": "objects/79bc5cef810252cf4c7caa6c48a09628c496851c0e490099e243bb9ed76aceb0.json",
+        "sha256": "79bc5cef810252cf4c7caa6c48a09628c496851c0e490099e243bb9ed76aceb0",
+        "exists": true
+      },
+      {
+        "kind": "prediction",
+        "key": "recession_2026_6_2026-11-19",
+        "occurrence": 0,
+        "path": "objects/79bc5cef810252cf4c7caa6c48a09628c496851c0e490099e243bb9ed76aceb0.json",
+        "sha256": "79bc5cef810252cf4c7caa6c48a09628c496851c0e490099e243bb9ed76aceb0",
+        "exists": true
+      },
+      {
+        "kind": "search",
+        "key": "Federal_Reserve_interest_rates_inflation_50",
+        "occurrence": 0,
+        "path": "objects/9d15e5f6da5309d9ff597c358a01451f260d16dba0691960948cbc8023b08452.json",
+        "sha256": "9d15e5f6da5309d9ff597c358a01451f260d16dba0691960948cbc8023b08452",
+        "exists": true
+      }
+    ]
+  },
+  "market_rows": 264,
+  "failure_reasons": [
+    "macro_optional_unavailable"
+  ],
+  "final_output_path": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_034651_d075414f/results/NVDA/TradingAgentsStrategy_logs/full_states_log_2026-11-19.json",
+  "isolated_dirs": {
+    "root": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_034651_d075414f",
+    "memory": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_034651_d075414f/memory",
+    "cache": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_034651_d075414f/cache",
+    "results": "/Users/administrator/CityU/CS5351/c-experiments/results/candidate_20261119_191921/after/20261120_034651_d075414f/results"
+  },
+  "debug": false,
+  "valid": true,
+  "invalid_reasons": [],
+  "provenance": {
+    "side": "after",
+    "imported_package_path": "/Users/administrator/CityU/CS5351/c-round2-src-migration/src/tradingagents/__init__.py",
+    "runner_file_sha256": "064d9f2dc51c3e38131b746b153968ac021b7af72c6837aa73f40736841a0200",
+    "news_py_path": "/Users/administrator/CityU/CS5351/c-round2-src-migration/src/tradingagents/dataflows/vendors/yahoo/news.py",
+    "news_py_sha256": "0233bb76019e6425b0f90a2bfa150a49d22dd84822d489296cd2ee6be047edef",
+    "adapter": {
+      "adapter_id": "d4-news-window-adapter-v1",
+      "adapter_sha256": "4fb6cab37adc075aa51f5457653371a0959d14a834688f464eef7b67aacf91ca",
+      "applies_to": "get_news only",
+      "rule": "effective_end=trade_date; effective_start=trade_date-7days",
+      "window_days": 7,
+      "tells_model": true,
+      "out_of_window_injected": false
+    },
+    "adapter_trade_date": "2026-11-19",
+    "effective_window": "2026-11-12..2026-11-19",
+    "after_bear_researcher_sha256": "733a2c602e2c09efcaf19a0fbee783cd965e6d9d676e5215d587c0574c067dd8",
+    "after_research_manager_sha256": "43defc83798357a0f02b62fe6cc951632ff3e18c2c273c9441641b137457f1db"
+  }
+}
