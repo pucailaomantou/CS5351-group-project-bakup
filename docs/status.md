@@ -29,8 +29,7 @@ Update it when you merge something.
 | direct merge by A (no PR) | `BASELINE.md`; sources relocated under `src/`, tests under `test/` | vendoring: upstream version fixed, contents unmodified |
 | #5 (open) | `architecture-blueprint.md`; `docs/architecture/adr/001-bound-cost-at-tool-calls.md`; ADR 002 on context layers; FR-02 state contract | D2 architecture deliverable |
 | #6 (merged) | COST-01 baseline migrated from 2026-09-01 to 2026-11-18; ten valid runs, mean 163633.2, median 160664; the two 141-row records excluded and retained | the 09-01 batch lacked data-integrity evidence, so the baseline was re-measured |
->>>>>>> b88ac95021c65022bf6536108ea055c98292113e
-
+| #10 (merged) | `test/offline/test_config_cost.py`, `test_debate_termination.py`, `test_rating_invariants.py` | E's verification work: adds offline tests for COST-01 (8/8/3), FR-02 (termination + convergence), and INV-01 (rating). All 25 tests passed. |
 ## Measurements on record
 
 Two ten-run batches on NVDA / 2026-11-19 under one protocol, ten valid runs on each side,
