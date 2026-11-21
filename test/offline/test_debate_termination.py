@@ -1,19 +1,27 @@
 """FR-02: the debate terminates at its cap and records why.
 
-The research debate runs bull and bear once each per round, so it ends when
+The research debate runs bull and bear once each per round, so the router
+(``ConditionalLogic.should_continue_debate``) ends it when
 ``count >= 2 * max_debate_rounds`` and the Research Manager adjudicates. With
-``max_debate_rounds = 0`` there is no round to run: the very first check must
-route straight to the Research Manager rather than to a researcher. The risk
-debate follows the same shape with three speakers per round.
+``max_debate_rounds = 0`` there is no round to run: the very first check routes
+straight to the Research Manager rather than to a researcher. The risk debate
+follows the same shape with three speakers per round.
 
-The recorded termination reason lives in the debate state, which is what the
-requirement's fit criterion reads (``convergence_rounds`` and
-``termination_reason``). That field is asserted separately and is allowed to
-fail until the source records it; see the module note on the third test.
+The router decides *where* to go; it does not write the state. The
+``termination_reason`` and ``convergence_rounds`` fields are written by the
+researcher nodes (the bear speaks second and closes each round) and the Research
+Manager. So proving FR-02's "records why it stopped" requires driving the
+*writer*, not the router: the last test here invokes the real bear node with the
+round cap at zero and reads the recorded fields back out of the state it returns.
 """
+
+from unittest import mock
 
 import pytest
 
+from tradingagents.agents.researchers import debate
+from tradingagents.agents.researchers.bear_researcher import create_bear_researcher
+from tradingagents.agents.researchers.debate_schemas import ResearcherTurn
 from tradingagents.graph.conditional_logic import ConditionalLogic
 
 
@@ -56,18 +64,79 @@ def test_zero_risk_rounds_terminates_immediately():
     assert logic.should_continue_risk_analysis(_risk_state(count=0)) == "Portfolio Manager"
 
 
-@pytest.mark.unit
-def test_termination_reason_is_recorded():
-    """FR-02 also requires the reason to be recorded alongside the round count.
+# --------------------------------------------------------------------------- #
+# FR-02: the writer records termination_reason and convergence_rounds.
+#
+# These drive the real bear node (create_bear_researcher) — the node that closes
+# each round and writes the provenance fields — rather than the router, which
+# only routes. The bear node reads the cap from debate.max_debate_rounds(), so we
+# patch that to the case under test. The structured model is a MagicMock whose
+# bound output returns a ResearcherTurn, exactly as the other offline node tests
+# drive it; no provider and no network are involved.
+# --------------------------------------------------------------------------- #
 
-    TEST-FIRST (expected red): ``termination_reason`` is not yet a field of
-    ``InvestDebateState``, so reading it below raises ``KeyError`` today. This
-    assertion encodes FR-02 and will stay red until C adds the field to the
-    debate state. The router decision ("Research Manager") is already correct;
-    only the recorded provenance is missing. Do not weaken this to make it pass.
-    """
-    logic = ConditionalLogic(max_debate_rounds=0)
-    state = _debate_state(count=0)
-    assert logic.should_continue_debate(state) == "Research Manager"
-    debate = state["investment_debate_state"]
-    assert debate["termination_reason"] == "max_rounds"
+
+def _researcher_state(count=0):
+    """Minimal AgentState for the bear researcher node."""
+    return {
+        "company_of_interest": "NVDA",
+        "asset_type": "stock",
+        "market_report": "market R",
+        "sentiment_report": "",
+        "news_report": "news R",
+        "fundamentals_report": "",
+        "instrument_context": "NVDA",
+        "messages": [],
+        "investment_debate_state": {
+            "history": "",
+            "bull_history": "",
+            "bear_history": "",
+            "current_response": "",
+            "count": count,
+            "bull_idea_cards": [],
+            "bear_idea_cards": [],
+            "debate_rounds": [],
+            "convergence_rounds": None,
+            "termination_reason": "",
+            "converged": False,
+            "pending_bull_cards": [],
+            "last_turn_status": {},
+            "debate_record": {},
+        },
+    }
+
+
+def _bear_llm(argument="bear prose"):
+    """A MagicMock LLM whose structured binding returns a bare ResearcherTurn."""
+    structured = mock.MagicMock()
+    structured.invoke.return_value = ResearcherTurn(argument=argument, cards=[])
+    llm = mock.MagicMock()
+    llm.with_structured_output.return_value = structured
+    return llm
+
+
+@pytest.mark.unit
+def test_bear_node_records_max_rounds_termination():
+    """max_debate_rounds = 0: the bear closes round 1, which is already past the
+    cap, so it records ``max_rounds`` and leaves ``convergence_rounds`` None."""
+    bear = create_bear_researcher(_bear_llm())
+    with mock.patch.object(debate, "max_debate_rounds", lambda: 0):
+        out = bear(_researcher_state(count=0))
+    debate_state = out["investment_debate_state"]
+    assert debate_state["termination_reason"] == debate.MAX_ROUNDS
+    assert debate_state["convergence_rounds"] is None
+    assert debate_state["count"] == 1
+
+
+@pytest.mark.unit
+def test_bear_node_records_max_rounds_at_a_one_round_cap():
+    """A one-round cap that is not converged closes on ``max_rounds`` (round 1
+    is the cap), proving the field is written by the real node for the ordinary
+    capped case too, not only the degenerate zero."""
+    bear = create_bear_researcher(_bear_llm())
+    with mock.patch.object(debate, "max_debate_rounds", lambda: 1):
+        out = bear(_researcher_state(count=0))
+    debate_state = out["investment_debate_state"]
+    assert debate_state["termination_reason"] == debate.MAX_ROUNDS
+    assert debate_state["convergence_rounds"] is None
+    assert debate_state["converged"] is False

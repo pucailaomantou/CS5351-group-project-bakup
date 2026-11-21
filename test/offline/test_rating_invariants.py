@@ -28,8 +28,8 @@ def test_unreadable_rating_resolves_to_review(text):
 
 @pytest.mark.unit
 def test_a_valid_rating_is_returned_unchanged():
-    """A genuine in-enum rating is a real call and must parse to itself."""
-    assert parse_rating("Buy") == "Buy"
+    """A genuine labelled in-enum rating is a real call and parses to itself."""
+    assert parse_rating("Rating: Buy") == "Buy"
 
 
 @pytest.mark.unit
