@@ -108,14 +108,43 @@ requirements:
   - id: INV-03
     type: invariant
     statement: >
-      At the decision layer, when any key input's as-of date differs from the analysis
-      trade_date, the run shall resolve to REVIEW and shall not continue on stale data.
+      At the decision layer, every input the decision reads as a single dated value shall be
+      checked against the freshness limit configured for its input class. When an input is older
+      than its class limit, or when its class has no configured limit, the run shall resolve to
+      REVIEW and shall not emit a tradeable decision. An input dated earlier than the trade date
+      by no more than its class limit is normal and shall not by itself force REVIEW.
+      Window-based fetches are out of scope: they are bounded by the date-window clamp, which
+      guarantees that no input is dated after the trade date, not that an input is recent.
     fit_criterion:
-      metric: "tradeable decisions emitted on date-mismatched inputs"
-      threshold: "0; 100% of mismatched runs resolve to REVIEW"
-      verification: "build a date-mismatch fixture (1 day and 7 days old) and assert final_rating is REVIEW"
+      metric: "tradeable decisions emitted on inputs older than their class limit; tradeable decisions emitted on inputs whose class has no configured limit"
+      threshold: "0 for both; 100% of such runs resolve to REVIEW"
+      verification: >
+        For each configured class, build two fixtures from the same input, one dated limit - 1
+        day and one dated limit + 1 day: the first must not resolve to REVIEW on freshness
+        grounds, the second must. Then remove that class's limit from the configuration and
+        assert the run resolves to REVIEW rather than to a default. Each fixture uses the class's
+        own configured limit, so no test asserts a calendar interval that the configuration does
+        not fix.
     priority: must
-    source: "tradingagents/dataflows/date_window.py (as_of clamps future data only, not stale data); tradingagents/agents/state.py (trade_date)"
+
+    freshness_limits:
+      market_close: 4
+      fundamentals: 120
+      macro_latest: 45
+    freshness_limits_note: >
+      The requirement fixes that a limit exists per input class and that a missing limit fails
+      closed; the numbers are configuration and may be revised without changing the invariant.
+      The values above are initial values derived from publication cadence, not from measurement:
+      market_close 4 is the longest gap the exchange calendar produces (Friday close to Monday,
+      plus a holiday Monday); fundamentals 120 is a quarterly reporting cycle; macro_latest 45 is
+      a monthly release cycle. Window-based inputs (news, StockTwits, Reddit) are not classes here
+      because a window bounds them by range, not by age.
+    freshness_scope_note: >
+      The check keys on the input's class, not on the analyst that fetched it, because one
+      analyst can read several classes: the news analyst reads both a dated window of articles
+      and present-day social feeds.
+    amended: "2026-11-21: the statement previously required REVIEW whenever any key input's as-of date differed from the analysis trade_date, with no tolerance and no definition of key inputs. As written it was unsatisfiable rather than strict: a Monday run reads Friday's market close and a quarterly filing is months old by construction, so every run would resolve to REVIEW and the invariant could only be met by never emitting a decision. Rewrote it as a per-class comparison against a configured limit, with fail-closed behaviour when a class carries no limit, and excluded window-based fetches, which the date-window clamp already bounds. Added freshness_limits, freshness_limits_note and freshness_scope_note. The verification changed from a fixed 1-day and 7-day fixture, which would have demanded REVIEW for ordinary market data, to a fixture built from each class's own limit."
+    source: "src/tradingagents/dataflows/date_window.py (as_of clamps future data only, not stale data); src/tradingagents/agents/state.py (trade_date); src/tradingagents/default_config.py (global_news_lookback_days bounds the news window)"
 
   - id: COST-01
     type: cost
