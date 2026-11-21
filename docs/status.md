@@ -21,6 +21,7 @@ open. Update it when you merge something.
 | #1 | `docs/req/requirements.yaml` (10 ids), `notes/three-changes.md`, `transcripts/60211808-袁舞扬.md` | D1 baseline |
 | #2 | COST-01 `baseline` field filled with the measured ten-run mean | Workstream C measurement |
 | #3 (open) | COST-01 `fit_criterion` rewritten; `baseline_median` and `baseline_observations` added; `amended` records both revisions | the measurement invalidated the original criterion |
+| \#4 (open) | E's verification work: 5 intentional red lights for COST-01 and FR-02, 17 passes for existing logic |  |
 
 ## Measurements on record
 
