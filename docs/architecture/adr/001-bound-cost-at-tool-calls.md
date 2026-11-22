@@ -92,8 +92,6 @@ To re-measure: the same ten-run protocol, recording `tool_calls`, `tool_rounds`,
   some runs by accident, and it would truncate the analysts' tool use, not the debate. The debate
   is bounded by `max_debate_rounds`, which is a separate control on a separate loop, so tightening
   the tool-round cap to steer cost couples the analyst loop to a knob that does not govern it.
-  would bind in some runs by accident, and it would truncate the debate rather than
-  the data fetching. It couples cost to an unrelated control.
 - **Cap article counts harder.** Rejected: the measured correlation between article
   count and cost is negative, so the mechanism is unsupported.
 - **Cap context size at the LLM client.** Rejected for now: it is the most direct
@@ -109,8 +107,6 @@ To re-measure: the same ten-run protocol, recording `tool_calls`, `tool_rounds`,
   raw records, so the 160315.8, 147754.2 and 0.9874 figures in this ADR can be recomputed from a
   clone. The 2026-11-18 batch is not committed: its records remain Workstream C local, so the
   0.79, 0.9981 and -0.19 correlations and the 163633.2 baseline cannot be verified this way.
-  2026-11-19, and the 160315.8 to 147754.2 totals in the Addendum. Measured but not committed,
-  so they cannot be verified from a clone until `c-baseline-work/results/` is added.
 - PR #3, #4 and #5 discussion
 
 ## Addendum, 2026-11-20
@@ -134,8 +130,6 @@ The revision is partial, not a refutation of the decision:
   to a different run: the **After** attempt, whose quote feed returned only items dated after
   `as_of`. That is a fetch failure in the After run, not a distortion of the Before measurement.
   The 2026-11-19 protocol anchors the news window and removes the fetch failure.
-  against a date the news adapter could not reach, so article counts were distorted. The
-  2026-11-19 protocol anchors the news window and removes that distortion.
 - What survives is the narrower claim: a round cap does not bound cost. The call budget in
   the Decision remains the control that acts on the quantity observed to move.
 
