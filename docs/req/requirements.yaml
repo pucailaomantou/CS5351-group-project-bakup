@@ -175,7 +175,9 @@ requirements:
         reason: >
           Returned 141 market rows; the record carries no requested range, so the request is not
           independently confirmed by it. Against the ten runs that returned 252 rows under the
-          same date and config, the shortfall is an incomplete fetch. Retained as a record,
+          same date and config, and with 252 and 264 the only requested ranges the batch
+          observed, 141 matches neither, so the return is an incomplete fetch rather than a
+          narrower window. Retained as a record,
           replaced by a same-protocol supplement, never counted as a valid sample.
       - run_id: "20261120_032332_fe83feb4"
         reason: >
@@ -183,9 +185,11 @@ requirements:
 
     baseline_observations: >
       Ten valid runs on NVDA / 2026-11-19, config 20 / 20 / 5, all succeeded with
-      data_fetch.complete = true and complete usage. Two of the twelve records failed the
-      market_rows precondition and were replaced by same-protocol supplements, so the batch
-      is ten supplemented runs, not the first ten recorded. The batch mean (160315.8) sits
+      data_fetch.complete = true and complete usage. Two of the twelve records returned 141
+      market rows where the other ten returned 252, and 141 matches neither requested
+      range the batch observed (252 or 264), so both are incomplete fetches rather than
+      narrower windows. They were replaced by same-protocol supplements, so the batch is
+      eight original runs plus two supplements, not the first ten recorded. The batch mean (160315.8) sits
       2.03% below the 2026-11-18 mean (163633.2) at identical config values, which is
       consistent with the ticker news window being anchored to the analysis date and not
       with any config change; the two batches are therefore separate baselines, not a
@@ -253,7 +257,7 @@ requirements:
       - "Before and After must share the same protocol except for the config values under test; a change to the data window creates a new baseline, it does not create a Before/After pair."
       - "A supplemented run counts once in the batch; the run it replaces is retained as an excluded record and is never counted."
 
-    amended: "2026-11-18, after the baseline measurement and after PR #2 was merged. Removed the unfalsifiable 'every observed tool-call count and article count is within those limits' clause (observed tool_rounds were 3-5 against a cap of 8, so it held by construction as rounds, while observed tool_calls were 12-25 because calls run in parallel within a round, so it could never hold as calls). Replaced the per-run 'strictly below baseline' clause with a ten-run batch comparison on mean and median because the baseline distribution was bimodal (7 runs at 80968-94687, 3 runs at 146263-167483 with 22-25 tool calls), making individual-run comparison unstable. 2026-11-19: with B's approval, the active baseline date changed from 2026-09-01 to 2026-11-18 (10 valid runs, mean 163633.2, median 160664); the 2026-09-01 batch is retained and marked superseded (insufficient data_fetch integrity evidence) rather than deleted. Added per-run After data-integrity preconditions (data_fetch.complete, market_rows==252, non-empty ticker/global news) and comparison rules forbidding mixing code versions or counting data-loss as cost reduction. 2026-11-21: the active baseline moved from 2026-11-18 to 2026-11-19, measured under the same config values but with the ticker news window anchored to the analysis date, so the baseline now shares the protocol the After batch is measured under. Two Before runs failed the market_rows precondition returned 141 market rows where the rest of the batch returned 252 and were replaced by same-protocol supplement runs committed under docs/evidence/cost01-2026-11-19/; the replaced runs are retained as excluded records. The market_rows precondition now reads 'equals the row count of the requested range' so a 264-row window is not treated as a failure. The 2026-11-18 batch is retained and marked superseded rather than deleted."
+    amended: "2026-11-18, after the baseline measurement and after PR #2 was merged. Removed the unfalsifiable 'every observed tool-call count and article count is within those limits' clause (observed tool_rounds were 3-5 against a cap of 8, so it held by construction as rounds, while observed tool_calls were 12-25 because calls run in parallel within a round, so it could never hold as calls). Replaced the per-run 'strictly below baseline' clause with a ten-run batch comparison on mean and median because the baseline distribution was bimodal (7 runs at 80968-94687, 3 runs at 146263-167483 with 22-25 tool calls), making individual-run comparison unstable. 2026-11-19: with B's approval, the active baseline date changed from 2026-09-01 to 2026-11-18 (10 valid runs, mean 163633.2, median 160664); the 2026-09-01 batch is retained and marked superseded (insufficient data_fetch integrity evidence) rather than deleted. Added per-run After data-integrity preconditions (data_fetch.complete, market_rows==252, non-empty ticker/global news) and comparison rules forbidding mixing code versions or counting data-loss as cost reduction. 2026-11-21: the active baseline moved from 2026-11-18 to 2026-11-19, measured under the same config values but with the ticker news window anchored to the analysis date, so the baseline now shares the protocol the After batch is measured under. Two Before runs returned 141 market rows where the rest of the batch returned 252; 141 matches neither requested range the batch observed (252 or 264), so both are incomplete fetches. They were replaced by same-protocol supplement runs committed under docs/evidence/cost01-2026-11-19/, and the replaced runs are retained as excluded records. The market_rows precondition now reads 'equals the row count of the requested range' so a 264-row window is not treated as a failure. The 2026-11-18 batch is retained and marked superseded rather than deleted."
     source: "src/tradingagents/default_config.py (max_tool_rounds: 8, news_article_limit: 8, global_news_queries: 3 items); notes/three-changes.md goal 1; docs/evidence/cost01-2026-11-19/ (2026-11-19 Before batch, 12 records of which 10 valid); docs/evidence/cost01-2026-11-19/records/after/ (2026-11-20 After batch)"
 
   - id: GOV-01
