@@ -18,6 +18,7 @@ Update it when you merge something.
 | comparison measurement (not a baseline) | NVDA / 2026-11-19, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash, seven-day ticker news window anchored to the analysis date; 20/20/5 against 8/8/3 | 2026-11-20 |
 
 | effective cost config | `max_tool_rounds` 8, `news_article_limit` 8, `global_news_queries` 3 items, `global_news_article_limit` 10 | 2026-11-20 |
+| CI Gates | Schema validation, offline tests, and `ruff check src/` must pass before merge | 2026-11-21 |
 ## Changes so far
 
 | PR | what changed | why |
@@ -30,6 +31,7 @@ Update it when you merge something.
 | #5 (open) | `architecture-blueprint.md`; `docs/architecture/adr/001-bound-cost-at-tool-calls.md`; ADR 002 on context layers; FR-02 state contract | D2 architecture deliverable |
 | #6 (merged) | COST-01 baseline migrated from 2026-09-01 to 2026-11-18; ten valid runs, mean 163633.2, median 160664; the two 141-row records excluded and retained | the 09-01 batch lacked data-integrity evidence, so the baseline was re-measured |
 | #10 (merged) | `test/offline/test_config_cost.py`, `test_debate_termination.py`, `test_rating_invariants.py` | E's verification work: adds offline tests for COST-01 (8/8/3), FR-02 (termination + convergence), and INV-01 (rating). All 25 tests passed. |
+| #10 (update) | `.github/workflows/ci.yml`, `scripts/validate_requirements.py`, `docs/req/req-schema.json`, `docs/debt-register.md`, `.gitattributes` | E's D3 & D4 work: Implements GitHub Actions blocking gates (Schema, Test, Static Analysis), auto-fixes 9 ruff errors in `src/`, and logs remaining tech debt. |
 ## Measurements on record
 
 Two ten-run batches on NVDA / 2026-11-19 under one protocol, ten valid runs on each side,
