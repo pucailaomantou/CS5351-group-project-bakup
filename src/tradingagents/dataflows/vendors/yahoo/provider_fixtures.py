@@ -30,11 +30,12 @@ import contextlib
 import hashlib
 import json
 import re
+from collections.abc import Callable, Iterator
 from contextvars import ContextVar
 from pathlib import Path
-from typing import Any, Callable, Iterator
+from typing import Any
 
-_active: ContextVar["FixtureStore | None"] = ContextVar("provider_fixtures", default=None)
+_active: ContextVar[FixtureStore | None] = ContextVar("provider_fixtures", default=None)
 
 
 def _safe_key(key: str) -> str:
@@ -310,7 +311,6 @@ def history(key: str, thunk: Callable[[], Any]) -> Any:
         return thunk()
     if store.mode == "replay":
         def _read(path: Path):
-            import pandas as pd
             return _read_history_csv(path)
         return store.load_csv("market", key, _read)
     data = thunk()

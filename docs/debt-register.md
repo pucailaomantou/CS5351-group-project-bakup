@@ -8,8 +8,11 @@ rows — mark them resolved and date the change.
 
 | id | area | description | deferred to | recorded |
 |---|---|---|---|---|
-| DEBT-01 | CI / lint | The static-analysis gate runs `ruff check src/` only. Legacy code outside `src/` (tests, evidence scripts) carries **46 unresolved ruff errors** and is not gated. Within `src/`, **9 pre-existing ruff errors** remain (I001 import sorting, UP035/UP037 typing modernisation, one F401 unused import), all auto-fixable and in vendored/fixture code, none introduced by the D3 work. Scoped down in the sprint of 2026-11-21 to avoid blocking all PRs on pre-existing debt. | next sprint | 2026-11-21 |
+| DEBT-02 | CI / lint | Legacy code **outside `src/`** (tests and evidence scripts) still carries **37 unresolved ruff errors** and is not gated, because the static-analysis gate runs `ruff check src/` only. `src/` itself is now clean (see DEBT-01). | next sprint | 2026-11-21 |
 
 ## Resolved
 
-_(none yet)_
+| id | area | description | resolved |
+|---|---|---|---|
+| DEBT-01 | CI / lint | The static-analysis gate runs `ruff check src/` only. The 9 pre-existing ruff errors within `src/` (I001 import sorting, UP035/UP037 typing modernisation, one F401 unused import; all in vendored/fixture code) were auto-fixed, so `ruff check src/` now exits 0 and the gate is green. The remaining lint debt is outside `src/` and tracked as DEBT-02. | 2026-11-21 |
+
