@@ -1,0 +1,195 @@
+{
+  "review_date": "2026-11-21",
+  "reviewer": "LI Runyao",
+  "student_id": "60671980",
+  "review_type": "post_merge_cross_review",
+  "reviewed_commit": "b88ac95021c65022bf6536108ea055c98292113e",
+  "reviewed_pr": 5,
+  "reviewed_pr_merge": "5024360a415d249e1811f0932b62002baed572ee",
+  "files": [
+    {
+      "path": "architecture-blueprint.md",
+      "sha256": "58f19589de5ae4ecac0dab37f828082391226b256945eeb423c44bfc98de4c51",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/architecture-blueprint.md"
+    },
+    {
+      "path": "docs/architecture/adr/001-bound-cost-at-tool-calls.md",
+      "sha256": "e9c1545f0c475c2567582b96618571c1db0360d57c4f35b8a6be1e9e0b03f0a0",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/docs/architecture/adr/001-bound-cost-at-tool-calls.md"
+    },
+    {
+      "path": "docs/architecture/adr/002-context-layers-compaction-and-reinjection.md",
+      "sha256": "84ed8c2a7aed690f6dc33ad4eae4249f79bb1ef80d084d62014c48c371c98499",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/docs/architecture/adr/002-context-layers-compaction-and-reinjection.md"
+    },
+    {
+      "path": "transcripts/60211808-袁舞扬.md",
+      "sha256": "65bfd73b79367ae75e9e6dd13e1d8c112e6aa1bc301d615c36e812145fffd660",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/transcripts/60211808-%E8%A2%81%E8%88%9E%E6%89%AC.md"
+    },
+    {
+      "path": "docs/req/requirements.yaml",
+      "sha256": "f4eacc9e5c7811adc817211d8e22c4fee4a85f133d431ecc70a2233889e76fa8",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/docs/req/requirements.yaml"
+    },
+    {
+      "path": "src/tradingagents/agents/state.py",
+      "sha256": "4f46274056814c2e3ca28e8717729324419417a3219b8e4489a66da6e1ea588f",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/src/tradingagents/agents/state.py"
+    },
+    {
+      "path": "src/tradingagents/agents/researchers/debate.py",
+      "sha256": "4fd1a5fbd669357aa972df3a0d11830dfb3abfd42cad8e3023447b865e211c29",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/src/tradingagents/agents/researchers/debate.py"
+    },
+    {
+      "path": "src/tradingagents/agents/researchers/bear_researcher.py",
+      "sha256": "733a2c602e2c09efcaf19a0fbee783cd965e6d9d676e5215d587c0574c067dd8",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/src/tradingagents/agents/researchers/bear_researcher.py"
+    },
+    {
+      "path": "src/tradingagents/graph/conditional_logic.py",
+      "sha256": "db1c2b3690427d14457a35bde6408e3ba37a9899af09895c2dd33c42d1550f57",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/src/tradingagents/graph/conditional_logic.py"
+    },
+    {
+      "path": "src/tradingagents/graph/setup.py",
+      "sha256": "b5b7b6f5dc3674ebc5e6e8b0d8fc5136fb0e72c09ab12aa16ecdb2c3ed25d002",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/src/tradingagents/graph/setup.py"
+    },
+    {
+      "path": "src/cli/stats_handler.py",
+      "sha256": "948402653e7524210f429ede2431dee825281b60deb51505370f6bd81dcb668e",
+      "url": "https://github.com/Lukelalalalll/cs5351-group-project/blob/b88ac95021c65022bf6536108ea055c98292113e/src/cli/stats_handler.py"
+    }
+  ],
+  "local_historical_fact_check": {
+    "note": "Existing 11-18 Before batch; original records are local. Per-run input/total and source hashes are listed below.",
+    "n": 10,
+    "mean_total_tokens": 163633.2,
+    "pearson_r_input_total": 0.9980636644120322,
+    "records": [
+      {
+        "run_id": "20261119_125350_542a61ee",
+        "source_sha256": "1d4607d16b32343fae0324fd5a1e22b9b2dba6ae252590884ed4573898546a3e",
+        "source_local_batch": "step5a-smoke-before-20261118",
+        "source_in_repository": false,
+        "input_tokens": 141290,
+        "total_tokens": 163613,
+        "market_rows": 252,
+        "data_complete": true,
+        "ticker_news": 4,
+        "global_news": 30
+      },
+      {
+        "run_id": "20261119_130440_0773676b",
+        "source_sha256": "2d6aa6e8122e78a18ee07e9eee2df9715c178e84a1bd5f65ad1d001bfd1b828d",
+        "source_local_batch": "step5a-smoke-before-20261118",
+        "source_in_repository": false,
+        "input_tokens": 150855,
+        "total_tokens": 173783,
+        "market_rows": 252,
+        "data_complete": true,
+        "ticker_news": 4,
+        "global_news": 30
+      },
+      {
+        "run_id": "20261119_131333_744d8cb2",
+        "source_sha256": "c8cc01e38ade8d46f51b8afd09cbdac28f9938fcbb66c0f8c81020ee1dfac15d",
+        "source_local_batch": "step5a-smoke-before-20261118",
+        "source_in_repository": false,
+        "input_tokens": 160673,
+        "total_tokens": 185461,
+        "market_rows": 252,
+        "data_complete": true,
+        "ticker_news": 4,
+        "global_news": 30
+      },
+      {
+        "run_id": "20261119_132227_27c66d32",
+        "source_sha256": "d96024f69a29ef3f7aecbfb40193bc7c3ddd46f23ad2e69d9c85dfcfe1ec94d4",
+        "source_local_batch": "step5a-smoke-before-20261118",
+        "source_in_repository": false,
+        "input_tokens": 121620,
+        "total_tokens": 143926,
+        "market_rows": 252,
+        "data_complete": true,
+        "ticker_news": 4,
+        "global_news": 30
+      },
+      {
+        "run_id": "20261119_133107_9bcef095",
+        "source_sha256": "927ddf9455f48347143edef70c4b21eb332b372af7f2c8a519f385ff36f44eba",
+        "source_local_batch": "step5a-smoke-before-20261118",
+        "source_in_repository": false,
+        "input_tokens": 124873,
+        "total_tokens": 146584,
+        "market_rows": 252,
+        "data_complete": true,
+        "ticker_news": 8,
+        "global_news": 70
+      },
+      {
+        "run_id": "20261119_133929_2b330452",
+        "source_sha256": "a5b8b47f2d95bafa562675285ef6f3b8e964457fc672e3007b4f6fb21e7ccdfd",
+        "source_local_batch": "step5a-smoke-before-20261118",
+        "source_in_repository": false,
+        "input_tokens": 150436,
+        "total_tokens": 175872,
+        "market_rows": 252,
+        "data_complete": true,
+        "ticker_news": 8,
+        "global_news": 70
+      },
+      {
+        "run_id": "20261119_134852_da982920",
+        "source_sha256": "d485b02d466ed6a6b6cc6315f1b24d9dce3f7ae96ff30bcadcf7e87b63c3c370",
+        "source_local_batch": "step5a-smoke-before-20261118",
+        "source_in_repository": false,
+        "input_tokens": 129031,
+        "total_tokens": 153091,
+        "market_rows": 252,
+        "data_complete": true,
+        "ticker_news": 8,
+        "global_news": 70
+      },
+      {
+        "run_id": "20261119_140955_4ca247d3",
+        "source_sha256": "e6e19b72fdfbcbe2ef8f1823938cebce9fca5bd78e5c37d3212f3ff273213ffc",
+        "source_local_batch": "step5b-suppl-before-20261118",
+        "source_in_repository": false,
+        "input_tokens": 132858,
+        "total_tokens": 157715,
+        "market_rows": 252,
+        "data_complete": true,
+        "ticker_news": 3,
+        "global_news": 30
+      },
+      {
+        "run_id": "20261119_141425_46929e09",
+        "source_sha256": "061590a64ad3bbc15731eb382acbee514ae89576c2193ca595ed67c39aded1bb",
+        "source_local_batch": "step5b-suppl-before-20261118",
+        "source_in_repository": false,
+        "input_tokens": 169096,
+        "total_tokens": 196055,
+        "market_rows": 252,
+        "data_complete": true,
+        "ticker_news": 3,
+        "global_news": 30
+      },
+      {
+        "run_id": "20261119_141943_eb1953b4",
+        "source_sha256": "4eb1ad5ba652799827381de876f3bf19747effc424dac02bd241de03eee63cca",
+        "source_local_batch": "step5b-suppl-before-20261118",
+        "source_in_repository": false,
+        "input_tokens": 117547,
+        "total_tokens": 140232,
+        "market_rows": 252,
+        "data_complete": true,
+        "ticker_news": 3,
+        "global_news": 30
+      }
+    ]
+  },
+  "current_11_19_evidence": "docs/evidence/cost01-2026-11-19/review/summary_revised.json"
+}

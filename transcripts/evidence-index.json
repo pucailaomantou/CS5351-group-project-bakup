@@ -1,0 +1,606 @@
+{
+  "student_name": "LI Runyao",
+  "student_id": "60671980",
+  "role": "C",
+  "status": "local_delivery_student_identity_provided",
+  "archive_note": "完整原件（full/、sources/）不在本仓库；下列 source_file/readable_file 为外部归档 c-transcript-archive-20261123/ 下的相对路径。",
+  "archive_root": "/Users/administrator/CityU/CS5351/c-transcript-archive-20261123",
+  "repo_layout": "仓库内仅保留本索引、source-inventory.json、SHA256SUMS.txt、SHA256SUMS.archive.txt 与精简转录 60671980-LI Runyao.md",
+  "timezone": "Asia/Shanghai (UTC+08:00)",
+  "source_sessions": [
+    {
+      "session_id": "ses_e129250b1ffewLkzD51Z5gxpN0",
+      "title": "只读检查项目环境与 Git 状态",
+      "scope": "核心：基线审计、计划批准及实现",
+      "source_file": "sources/2026-11-18 14-52-30_ses_e129250b1ffewLkzD51Z5gxpN0.json",
+      "source_sha256": "c6e5d041dc306b6427d4a9a805e24962a1db3637231dc1ab30cb37754b150d5f",
+      "readable_file": "full/baseline-planning.md",
+      "message_count": 173,
+      "role_counts": {
+        "user": 15,
+        "assistant": 158
+      },
+      "part_counts": {
+        "text": 114,
+        "step-start": 157,
+        "tool": 195,
+        "step-finish": 157,
+        "patch": 3
+      },
+      "first_message_local": "2026-11-18 14:52:31 +08:00",
+      "last_message_local": "2026-11-18 18:42:51 +08:00"
+    },
+    {
+      "session_id": "ses_e119773e3ffeahvgH7B6svRc5Y",
+      "title": "C D2 开发环境检查与实施",
+      "scope": "核心：配置、计量、辩论及优化验证",
+      "source_file": "sources/2026-11-18 19-26-31_ses_e119773e3ffeahvgH7B6svRc5Y.json",
+      "source_sha256": "63131fd777d4d9481ddd5987c6390fcbe1b6832bce2ddce92bc5a1dca4d831c6",
+      "readable_file": "full/c-d2.md",
+      "message_count": 957,
+      "role_counts": {
+        "user": 52,
+        "assistant": 905
+      },
+      "part_counts": {
+        "text": 792,
+        "step-start": 903,
+        "tool": 952,
+        "step-finish": 902,
+        "patch": 93
+      },
+      "first_message_local": "2026-11-18 19:26:31 +08:00",
+      "last_message_local": "2026-11-20 04:37:45 +08:00"
+    },
+    {
+      "session_id": "ses_e0e5ef85cffeBSdr12aoCc1fwi",
+      "title": "CS5351 项目 AGENTS.md 工作约束",
+      "scope": "核心：需求、基线与治理",
+      "source_file": "sources/2026-11-19 10-27-04_ses_e0e5ef85cffeBSdr12aoCc1fwi.json",
+      "source_sha256": "1a6d340a747a1da8358bc7f293dd065889a9b5daba1d55298af5c0ce1b743273",
+      "readable_file": "full/agents-governance.md",
+      "message_count": 1365,
+      "role_counts": {
+        "user": 84,
+        "assistant": 1281
+      },
+      "part_counts": {
+        "text": 1040,
+        "step-start": 1282,
+        "tool": 1232,
+        "step-finish": 1280,
+        "patch": 16
+      },
+      "first_message_local": "2026-11-19 10:27:04 +08:00",
+      "last_message_local": "2026-11-19 23:25:34 +08:00"
+    },
+    {
+      "session_id": "ses_e0b8ce435fferr1SzcdX1TF1iT",
+      "title": "Ticker 新闻日期窗口修复与离线回归",
+      "scope": "核心：新闻修复、补样、集成和证据交付",
+      "source_file": "sources/2026-11-19 23-35-46_ses_e0b8ce435fferr1SzcdX1TF1iT.json",
+      "source_sha256": "9903d3c1fc7892628828a45af1741a8aa1adaa6a72f7f70aa73a470aecfd3730",
+      "readable_file": "full/ticker-news.md",
+      "message_count": 438,
+      "role_counts": {
+        "user": 14,
+        "assistant": 424
+      },
+      "part_counts": {
+        "text": 385,
+        "step-start": 424,
+        "tool": 444,
+        "step-finish": 424
+      },
+      "first_message_local": "2026-11-19 23:35:47 +08:00",
+      "last_message_local": "2026-11-20 22:09:28 +08:00"
+    },
+    {
+      "session_id": "ses_e12d212a1ffeBJghqWvARsT2zc",
+      "title": "问候语",
+      "scope": "辅助归档：问候、历史会话恢复及完整导出",
+      "source_file": "sources/2026-11-18 13-42-52_ses_e12d212a1ffeBJghqWvARsT2zc.json",
+      "source_sha256": "de17f372e49f5f549b99797868da85001b9746c57f278978aa7a83f5d44950cf",
+      "readable_file": "full/export-recovery.md",
+      "message_count": 46,
+      "role_counts": {
+        "user": 17,
+        "assistant": 29
+      },
+      "part_counts": {
+        "text": 40,
+        "step-start": 27,
+        "step-finish": 26,
+        "tool": 17,
+        "patch": 5
+      },
+      "first_message_local": "2026-11-18 13:42:52 +08:00",
+      "last_message_local": "2026-11-20 22:22:07 +08:00"
+    }
+  ],
+  "annotations": [
+    {
+      "annotation_id": "C-A01",
+      "title": "先审计方案再批准构建 Baseline Runner",
+      "source_file": "sources/2026-11-18 14-52-30_ses_e129250b1ffewLkzD51Z5gxpN0.json",
+      "source_sha256": "c6e5d041dc306b6427d4a9a805e24962a1db3637231dc1ab30cb37754b150d5f",
+      "requirement_basis": "COST-01 的可靠基线；FR-04 的 token 计量；团队要求先批准计划再构建成本引擎。",
+      "continuous_message_range_0": [
+        37,
+        81
+      ],
+      "records": [
+        {
+          "kind": "student_instruction",
+          "message_index_0": 37,
+          "message_id": "msg_1edb04250001ghAsF3SDCpOrTf",
+          "user_ordinal_1": 4,
+          "created_local": "2026-11-18 16:05:13 +08:00",
+          "verbatim_excerpt_lines": [
+            "只输出已验证事实、潜在风险和实施计划。提供文件路径与行号，等待人工批准后再写代码。"
+          ]
+        },
+        {
+          "kind": "student_instruction",
+          "message_index_0": 46,
+          "message_id": "msg_1edb6d894001TWXv35671jMcPv",
+          "user_ordinal_1": 5,
+          "created_local": "2026-11-18 16:12:25 +08:00",
+          "verbatim_excerpt_lines": [
+            "我作为 CS5351 Workstream C 负责人，现批准实施之前提出的最小 Baseline Runner 方案。",
+            "3. 测量工具轮次时不要直接用 tool_calls 代替；如果无法可靠测量，请标记 unavailable，不要编造。",
+            "4. 每次运行隔离 memory/cache/results；保留失败及缺失 Usage 的记录，不将缺失 Token 当作 0。"
+          ]
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 45,
+          "message_id": "msg_1edb5a8ba001DP4bseGjsdPzqO",
+          "created_local": "2026-11-18 16:11:07 +08:00"
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 81,
+          "message_id": "msg_1edb9eb5a001I59PE5FkRqLhLf",
+          "created_local": "2026-11-18 16:15:47 +08:00"
+        }
+      ],
+      "previous_annotation_id": null,
+      "sentences": [
+        "2026-11-18 16:05 至 16:15，在构建成本测量工具前，我先要求只读检查基线版本、现有计量能力及最小实施方案。",
+        "agent 审计发现仅调用 propagate 可能漏掉工具回调，且 tool_calls 与工具轮次不同，原始统计也不直接提供 total_tokens。",
+        "若未明确计数路径就开始测量，COST-01 的成本对照和 FR-04 的计量依据可能不可靠，也不符合先审查计划再实施的团队要求。",
+        "我在 16:12 明确批准仅于 c-baseline-work 构建 Runner、隔离每次运行并保留缺失和失败；agent 随后报告按 CLI 等价回调路径实现且十三项离线测试通过，未调用真实 API。"
+      ]
+    },
+    {
+      "annotation_id": "C-A02",
+      "title": "纠正缺失 usage 被理解为零消耗",
+      "source_file": "sources/2026-11-18 19-26-31_ses_e119773e3ffeahvgH7B6svRc5Y.json",
+      "source_sha256": "63131fd777d4d9481ddd5987c6390fcbe1b6832bce2ddce92bc5a1dca4d831c6",
+      "requirement_basis": "FR-04；COST-01 的 token 对比必须依赖可解释的计量记录。",
+      "continuous_message_range_0": [
+        62,
+        80
+      ],
+      "records": [
+        {
+          "kind": "student_instruction",
+          "message_index_0": 62,
+          "message_id": "msg_1ee7228df001sYqz68C8ZMafO5",
+          "user_ordinal_1": 2,
+          "created_local": "2026-11-18 19:37:01 +08:00",
+          "verbatim_excerpt_lines": [
+            "3. 检查全局 Token 统计：当 Usage 缺失时，不能将全局 0 误认为真实消耗。增加 usage_complete 或等效状态，明确区分完整、部分缺失和全部缺失。"
+          ]
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 80,
+          "message_id": "msg_1ee7691fa001Gx5ZFoyQRzejbV",
+          "created_local": "2026-11-18 19:41:50 +08:00"
+        }
+      ],
+      "previous_annotation_id": "C-A01",
+      "sentences": [
+        "2026-11-18 19:37，在 D2 实施后的交付检查中，我要求核查全局 token 统计是否把缺失 usage 显示成真实的零消耗，同时恢复被修改的 editable finder。",
+        "我关注到缺失 usage 可能在全局统计中显示为零，且 editable finder 曾被修改。",
+        "如果未知消耗被读成零消耗，FR-04 的完整计量及 COST-01 的比较都可能失真，因此需要独立表达完整、部分缺失和全部缺失状态。",
+        "我下达了增加 usage_complete 或等效状态、通过 PYTHONPATH 指向本地 C 树并保留 upstream 环境的指令；后续 agent 报告给出 complete、partial、unavailable、no_calls 的离线验证及导入路径核查。"
+      ]
+    },
+    {
+      "annotation_id": "C-A03",
+      "title": "把辩论终止要求落实到零轮和未收敛语义",
+      "source_file": "sources/2026-11-18 19-26-31_ses_e119773e3ffeahvgH7B6svRc5Y.json",
+      "source_sha256": "63131fd777d4d9481ddd5987c6390fcbe1b6832bce2ddce92bc5a1dca4d831c6",
+      "requirement_basis": "FR-02 的零轮立即终止、轮数上限及终止原因；FR-01 的 Osborn 卡片记录。",
+      "continuous_message_range_0": [
+        168,
+        202
+      ],
+      "records": [
+        {
+          "kind": "student_instruction",
+          "message_index_0": 168,
+          "message_id": "msg_1ee8392dd001JUfkeaRd71JCjJ",
+          "user_ordinal_1": 4,
+          "created_local": "2026-11-18 19:56:02 +08:00",
+          "verbatim_excerpt_lines": [
+            "1. 检查 max_debate_rounds=0 的行为。根据现有 FR-02 正式要求，决定是实现真正的零轮终止，还是拒绝非法配置。不能保留 Bull 仍执行一次的模糊行为。",
+            "2. 检查 convergence_rounds=-1 的使用是否符合需求定义。未收敛时应明确表达未收敛，不要让负数被误认为实际轮数。"
+          ]
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 202,
+          "message_id": "msg_1ee859600001QSvIJBXGBww3xE",
+          "created_local": "2026-11-18 19:58:14 +08:00"
+        }
+      ],
+      "previous_annotation_id": "C-A02",
+      "sentences": [
+        "2026-11-18 19:56，在 D3 核心功能完成后，我要求检查 max_debate_rounds=0、convergence_rounds=-1 以及 Osborn 规则是否真正进入生成提示词。",
+        "我关注到零轮配置仍可能让 Bull 发言，未收敛又用 -1 表达，提示词与记录的语义需要核齐。",
+        "FR-02 明确要求零轮立即终止并记录原因，允许 Bull 仍执行一次或把负数当作轮数都会使需求和行为不一致。",
+        "我限定为交付前收尾，要求明确零轮入口、未收敛表示、确定性收敛方法及实际使用的 Osborn 规则，而不是继续增加功能；agent 随后报告零轮 turns=0、termination_reason=max_rounds、未收敛为 null，并给出封顶、收敛及记录字段的离线检查；同轮暴露的 schemas.py 归属问题在下一条批注继续处理。"
+      ]
+    },
+    {
+      "annotation_id": "C-A04",
+      "title": "暂停越界修改并批准迁回 C 负责的模块",
+      "source_file": "sources/2026-11-18 19-26-31_ses_e119773e3ffeahvgH7B6svRc5Y.json",
+      "source_sha256": "63131fd777d4d9481ddd5987c6390fcbe1b6832bce2ddce92bc5a1dca4d831c6",
+      "requirement_basis": "团队分工：一个文件只有一个主人；C 的 researchers 路径与 D 的 schemas.py 边界。",
+      "continuous_message_range_0": [
+        203,
+        250
+      ],
+      "records": [
+        {
+          "kind": "student_instruction",
+          "message_index_0": 203,
+          "message_id": "msg_1ee87e98e001BHEXPE72zvkAye",
+          "user_ordinal_1": 5,
+          "created_local": "2026-11-18 20:00:47 +08:00",
+          "verbatim_excerpt_lines": [
+            "请暂停新功能开发，先进行一次只读的文件归属审计。"
+          ]
+        },
+        {
+          "kind": "student_instruction",
+          "message_index_0": 211,
+          "message_id": "msg_1ee8a8547001t1iqk2tLa1sWZr",
+          "user_ordinal_1": 6,
+          "created_local": "2026-11-18 20:03:37 +08:00",
+          "verbatim_excerpt_lines": [
+            "现在批准采用方案 A，解决 C 对 D 负责文件 agents/schemas.py 的越界修改。"
+          ]
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 210,
+          "message_id": "msg_1ee883fc20013NmDjB4Z1cO8Qv",
+          "created_local": "2026-11-18 20:01:09 +08:00"
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 232,
+          "message_id": "msg_1ee8bde2f001SndtBB1eR6s3hG",
+          "created_local": "2026-11-18 20:05:06 +08:00"
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 250,
+          "message_id": "msg_1ee94a92f0012sdkm8g36GkXA6",
+          "created_local": "2026-11-18 20:14:42 +08:00"
+        }
+      ],
+      "previous_annotation_id": "C-A03",
+      "sentences": [
+        "2026-11-18 20:00，我针对 Idea Card 定义进入 D 负责的 agents/schemas.py 的情况，暂停新功能并要求只读审计实际差异。",
+        "Idea Card 定义被放入 D 负责的 agents/schemas.py，超出了 C 的单文件所有权范围。",
+        "该修改违反团队单文件单负责人边界，即使功能可用也不能直接按 C 自有文件处理。",
+        "在 agent 提出迁移方案后，我于 20:03 明确批准把六个 Idea Card 符号迁入 researchers/debate_schemas.py，随后另行授权清理旧追加内容，并要求保持字段与行为不变；agent 的后续核查报告确认新模块及导入已迁移、schemas.py 恢复到基线且功能回归通过。"
+      ]
+    },
+    {
+      "annotation_id": "C-A05",
+      "title": "阻止不完整输入进入成本验收统计",
+      "source_file": "sources/2026-11-18 19-26-31_ses_e119773e3ffeahvgH7B6svRc5Y.json",
+      "source_sha256": "63131fd777d4d9481ddd5987c6390fcbe1b6832bce2ddce92bc5a1dca4d831c6",
+      "requirement_basis": "COST-01 的有效样本对照；FR-04 的 usage 完整性；保留实验原始记录的治理约束。",
+      "continuous_message_range_0": [
+        280,
+        298
+      ],
+      "records": [
+        {
+          "kind": "student_instruction",
+          "message_index_0": 280,
+          "message_id": "msg_1ee9dba6e001Tn41J3DDdl1z0J",
+          "user_ordinal_1": 9,
+          "created_local": "2026-11-18 20:24:36 +08:00",
+          "verbatim_excerpt_lines": [
+            "   - 将数据获取不完整的记录标记为 invalid；",
+            "另外，检查 Before Baseline 的数据获取完整性。如果无法确认，也必须在报告中明确标注，不能假设 Before 的数据都是完整的。"
+          ]
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 298,
+          "message_id": "msg_1ee9f03bd001N2XOphkAyBo20N",
+          "created_local": "2026-11-18 20:26:01 +08:00"
+        }
+      ],
+      "previous_annotation_id": "C-A04",
+      "sentences": [
+        "2026-11-18 20:24，在授权 D4 批量运行前，我要求检查 data_fetch.complete=false 是否被统计脚本排除，并同时检查 Before 的完整性证据。",
+        "缺少行情、新闻或 usage 的运行可能因输入减少而显得 token 更低，Before 的完整性也不能未经核查就假定成立。",
+        "缺少行情、新闻或 usage 的样本可能因为少获取或少记录数据而显得更便宜，不能用来证明 COST-01 达标。",
+        "我要求保留全部 JSON 和 LOG，只把满足状态、usage 和数据完整性条件的运行纳入统计，并在无法证实 Before 输入完整时明确报告；agent 随后报告统一分类规则，并以五条混合记录验证全部原件保留而仅两条完整样本进入对比。"
+      ]
+    },
+    {
+      "annotation_id": "C-A06",
+      "title": "先审查修复方案再批准修改日志写入",
+      "source_file": "sources/2026-11-18 19-26-31_ses_e119773e3ffeahvgH7B6svRc5Y.json",
+      "source_sha256": "63131fd777d4d9481ddd5987c6390fcbe1b6832bce2ddce92bc5a1dca4d831c6",
+      "requirement_basis": "FR-01、FR-02 的完整辩论记录；团队 E 负责测试的边界；AGENTS.md 的先审计后修改。",
+      "continuous_message_range_0": [
+        559,
+        572
+      ],
+      "records": [
+        {
+          "kind": "student_instruction",
+          "message_index_0": 559,
+          "message_id": "msg_1ef2900ce001q5gnveTeOewwz3",
+          "user_ordinal_1": 23,
+          "created_local": "2026-11-18 22:56:44 +08:00",
+          "verbatim_excerpt_lines": [
+            "本次任务只做调查，不允许修改任何文件。",
+            "- 不通过跳过测试或修改断言来消除失败。"
+          ]
+        },
+        {
+          "kind": "student_instruction",
+          "message_index_0": 565,
+          "message_id": "msg_1ef2d85da001vHhZ2ZB5HHpKFZ",
+          "user_ordinal_1": 24,
+          "created_local": "2026-11-18 23:01:40 +08:00",
+          "verbatim_excerpt_lines": [
+            "我们批准采用方案 B，修复 C 部分剩余的唯一正式测试失败。"
+          ]
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 564,
+          "message_id": "msg_1ef2968af001frOsEaI87s6k67",
+          "created_local": "2026-11-18 22:57:10 +08:00"
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 572,
+          "message_id": "msg_1ef300cc3001UfvwfzgXp9VWbN",
+          "created_local": "2026-11-18 23:04:26 +08:00"
+        }
+      ],
+      "previous_annotation_id": "C-A05",
+      "sentences": [
+        "2026-11-18 22:56，面对图复用测试仍失败、每次运行额外输出独立 debate_record JSON 的情况，我先要求比较字段、消费者依赖和测试契约，暂不修改文件。",
+        "图复用回归仍失败，每次运行另写独立 debate_record JSON，必须先确认完整记录是否已嵌入 full_states_log。",
+        "删除辩论证据或削弱 E 的测试都不能同时满足 FR-01、FR-02 和既有日志行为，因此需要先确认 full_states_log 已保存完整辩论记录。",
+        "agent 给出方案比较后，我在 23:01 批准方案 B，只移除重复的独立文件写入，保留嵌入式 debate_record、全部字段及生成逻辑；后续报告记录原失败用例 1 passed、六个 C 相关测试合计 95 passed，以及嵌入记录字段无缺失。"
+      ]
+    },
+    {
+      "annotation_id": "C-A07",
+      "title": "否决未经授权的强制行情截断",
+      "source_file": "sources/2026-11-19 10-27-04_ses_e0e5ef85cffeBSdr12aoCc1fwi.json",
+      "source_sha256": "1a6d340a747a1da8358bc7f293dd065889a9b5daba1d55298af5c0ce1b743273",
+      "requirement_basis": "COST-01 中不得以减少或失败的数据获取充当降本；get_stock_data 的既有日期区间契约；团队文件所有权。",
+      "continuous_message_range_0": [
+        1246,
+        1261
+      ],
+      "records": [
+        {
+          "kind": "student_instruction",
+          "message_index_0": 1246,
+          "message_id": "msg_1f3ea358a001OyuRCYSr23rGLC",
+          "user_ordinal_1": 73,
+          "created_local": "2026-11-19 21:06:15 +08:00",
+          "verbatim_excerpt_lines": [
+            "请继续当前 Round 3 P4 Market Input 优化任务。本轮目标是决定是否值得实施 60 日 Market CSV 窗口，不修改任何文件、不运行真实 API。已知 Market CSV 为 252 行、29,776B。调用关系及文件权限已核查，不要重复。1. 检查 get_stock_data 的日期区间契约。如果强制返回最近 60 行，会违反哪些现有行为？提供 file:line 证据。2. 检查 Market Analyst 的实际 Prompt 和已有调用日志，确定当前 252 行中哪些数据确实被分析使用，哪些可能冗余。3. 对比原样保留、统一截断 60 行、仅压缩常规近期分析并保留显式历史查询。4. 检查 CSV 格式，判断是否能通过删除冗余表头、重复说明等方式更安全地降本。5. 利用现有日志估算输入 Token 收益，不能准确计算的部分标明未知。6. 给出唯一推荐方案、收益、兼容性风险、修改文件和验证方式。最终只输出新证据、方案比较、推荐方案、是否值得实施。不要修改代码、申请权限、创建文件、运行外部服务或重新讨论协作流程。"
+          ]
+        },
+        {
+          "kind": "student_instruction",
+          "message_index_0": 1253,
+          "message_id": "msg_1f3f45caf001dQLFbeQ3gkr7cd",
+          "user_ordinal_1": 74,
+          "created_local": "2026-11-19 21:17:20 +08:00",
+          "verbatim_excerpt_lines": [
+            "继续 CS5351 TradingAgents C 部分 Round 3 降本优化。实验交易日固定为 2026-11-18，B 正在协调将 Baseline 日期更新至该日，不覆盖历史 Baseline。已完成 D2、D3、P3；P4 强制 60 行 Market CSV 截断已判定 NO-GO，不再研究。本轮：1. 从现有 2026-11-18 After 日志核对运行完成状态、Total/Input/Output Tokens、各 Agent 消耗及 COST-01 差距；不能核实日期则注明。2. 聚焦 turn.py 检查工具结果进入 messages 及 _as_text 重复携带长 CSV 的情况。3. 找到可安全减少的重复上下文，保留必要工具结果、查询能力和准确性。4. 给出一个最小修改方案、功能风险与回归测试。5. 检查文件权限，只在必要时说明具体阻塞。不运行真实 API，不覆盖记录，不提交或推送。本轮仅做重复上下文优化的实施定位，不研究 Market CSV 截断，不建议交付。"
+          ]
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 1252,
+          "message_id": "msg_1f3eaddd8001Gt4HHOSdqXUleR",
+          "created_local": "2026-11-19 21:06:58 +08:00"
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 1261,
+          "message_id": "msg_1f3f522e10014ibR7vMdvtEXAV",
+          "created_local": "2026-11-19 21:18:11 +08:00"
+        }
+      ],
+      "previous_annotation_id": "C-A06",
+      "sentences": [
+        "2026-11-19 21:06，我要求在不修改文件的前提下核查强制只交付最近 60 行行情是否违反 get_stock_data 的区间契约，并审查收益估算的依据。",
+        "agent 的只读分析指出强制只交付最近六十行可能改变模型明确请求的行情区间，预估收益也不能当作实测。",
+        "若工具答复悄然缩小模型明确请求的历史范围，token 减少就可能来自丢失所需输入，不能据此完成 COST-01。",
+        "在 agent 报告硬截断存在契约与授权问题后，我于 21:17 的后续指令明确接受 NO-GO，停止这条强制截断路线；该段的 agent 工具记录仅有只读核查，没有实施 60 行硬截断。"
+      ]
+    },
+    {
+      "annotation_id": "C-A08",
+      "title": "明确驳回错误测量树并暂停真实运行",
+      "source_file": "sources/2026-11-18 19-26-31_ses_e119773e3ffeahvgH7B6svRc5Y.json",
+      "source_sha256": "63131fd777d4d9481ddd5987c6390fcbe1b6832bce2ddce92bc5a1dca4d831c6",
+      "requirement_basis": "COST-01 对照的版本一致性；实验范围和数据有效性治理；AGENTS.md 的阶段审查。",
+      "continuous_message_range_0": [
+        737,
+        763
+      ],
+      "records": [
+        {
+          "kind": "student_instruction",
+          "message_index_0": 737,
+          "message_id": "msg_1f5298df4001s5xWPB768hK72N",
+          "user_ordinal_1": 43,
+          "created_local": "2026-11-20 02:55:03 +08:00",
+          "verbatim_excerpt_lines": [
+            "本轮人工审查暂不批准真实运行。请一次性修正以下问题，保持仅在c-experiments中修改实验层。",
+            "本轮不应自行切换测量树。",
+            "不能以协议字典中的声明代替行为验证。"
+          ]
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 763,
+          "message_id": "msg_1f52b943e001ogoRJDvgIFVJsQ",
+          "created_local": "2026-11-20 02:57:16 +08:00"
+        }
+      ],
+      "previous_annotation_id": "C-A07",
+      "sentences": [
+        "2026-11-20 02:55，在审查新闻窗口实验驱动后，我明确暂不批准真实运行，因为 After 曾指向新闻实现不同的 c-cost-work，而非既定 c-round2-src-migration/src。",
+        "驱动曾把 After 指向新闻实现不同的 c-cost-work，窗口规则声明也不能代替图实际使用包装器的验证。",
+        "若测量对象与已冻结版本不一致，即使配置同为 8/8/3，也无法把实验结果归到指定优化版本，违背 COST-01 的对照目的。",
+        "我要求恢复正确 After 树与 round2_runner、校验 news.py SHA，按真实接口修复日志保存，并验证图实际采用窗口包装器及无效即停行为；agent 随后报告测量树恢复、双树驱动与窗口离线检查通过且没有启动真实实验。"
+      ]
+    },
+    {
+      "annotation_id": "C-A09",
+      "title": "拒绝以无效裁决换取少调用并要求完整回归",
+      "source_file": "sources/2026-11-18 19-26-31_ses_e119773e3ffeahvgH7B6svRc5Y.json",
+      "source_sha256": "63131fd777d4d9481ddd5987c6390fcbe1b6832bce2ddce92bc5a1dca4d831c6",
+      "requirement_basis": "FR-01 的 Research Manager 卡片裁决；FR-04 的调用观测；COST-01 的有功能约束的降本。",
+      "continuous_message_range_0": [
+        811,
+        895
+      ],
+      "records": [
+        {
+          "kind": "student_instruction",
+          "message_index_0": 811,
+          "message_id": "msg_1f5355258001oprFF9dlyBq1A2",
+          "user_ordinal_1": 45,
+          "created_local": "2026-11-20 03:07:54 +08:00",
+          "verbatim_excerpt_lines": [
+            "1. 删除“捕获异常后返回investment plan unavailable占位文本并继续”的路径。",
+            "2. raw非空不等于可用。"
+          ]
+        },
+        {
+          "kind": "student_instruction",
+          "message_index_0": 864,
+          "message_id": "msg_1f53b125f001vaMIz5WMPHeXSX",
+          "user_ordinal_1": 46,
+          "created_local": "2026-11-20 03:14:11 +08:00",
+          "verbatim_excerpt_lines": [
+            "仅“Recommendation: Buy”不能视为完整裁决。",
+            "不能跳过或削弱既有测试来通过。"
+          ]
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 863,
+          "message_id": "msg_1f53977dd001XN379AK7kbVsXP",
+          "created_local": "2026-11-20 03:12:26 +08:00"
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 895,
+          "message_id": "msg_1f53ded78001ZOthONkHKhgWpW",
+          "created_local": "2026-11-20 03:17:18 +08:00"
+        }
+      ],
+      "previous_annotation_id": "C-A08",
+      "sentences": [
+        "2026-11-20 03:07 至 03:14，我对 Research Manager 响应复用继续下达修正指令：占位文本不能作为成功裁决，raw 非空也不等于可用。",
+        "响应复用路径曾允许占位输出或不完整 raw 被继续使用，后续完整回归又暴露了输出契约兼容问题。",
+        "复用输出必须保留有效推荐、非空理由及已有卡片的有效引用，否则少一次调用会牺牲 FR-01 的实际裁决功能，且不能漏记 FR-04 的调用观测。",
+        "我要求 raw 复用与 plain 回退使用同一轻量契约、无有效结果时明确失败，保持其他 agent 行为，并实际执行完整离线回归而非仅报告局部脚本通过；后续 agent 报告保留了初次八项回归失败及修复经过，最终记录 1516 passed、1 skipped、0 failed。"
+      ]
+    },
+    {
+      "annotation_id": "C-A10",
+      "title": "按证据补样而不按 token 筛选并如实披露跨日限制",
+      "source_file": "sources/2026-11-19 23-35-46_ses_e0b8ce435fferr1SzcdX1TF1iT.json",
+      "source_sha256": "9903d3c1fc7892628828a45af1741a8aa1adaa6a72f7f70aa73a470aecfd3730",
+      "requirement_basis": "COST-01 的有效样本与版本可比性；FR-04 的统计可核查；按团队审核意见保留排除和失败原件。",
+      "continuous_message_range_0": [
+        264,
+        335
+      ],
+      "records": [
+        {
+          "kind": "student_instruction",
+          "message_index_0": 264,
+          "message_id": "msg_1f70a63ec0016KbgGBpZuVw3r2",
+          "user_ordinal_1": 10,
+          "created_local": "2026-11-20 11:40:15 +08:00",
+          "verbatim_excerpt_lines": [
+            "不能用五年缓存、分析报告或再次查询的数据冒充实际工具响应。",
+            "在独立验收清单中标注为按B/E意见排除，不能修改其原始valid字段或原始JSON。",
+            "无论结果如何都如实报告。"
+          ]
+        },
+        {
+          "kind": "student_instruction",
+          "message_index_0": 312,
+          "message_id": "msg_1f716d11e001pILa6oxaQFcHlB",
+          "user_ordinal_1": 11,
+          "created_local": "2026-11-20 11:53:50 +08:00",
+          "verbatim_excerpt_lines": [
+            "1. SHA256SUMS.revised.txt 不应包含自身。",
+            "   “执行时点不同可能影响窗口内可获得的新闻及行情终值，差异大小未量化；分析日期和新闻过滤窗口仍固定为11-19。”"
+          ]
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 311,
+          "message_id": "msg_1f7138a20001btljbbraedxpW2",
+          "created_local": "2026-11-20 11:50:15 +08:00"
+        },
+        {
+          "kind": "agent_result",
+          "message_index_0": 335,
+          "message_id": "msg_1f718316f001AWdtZQVbfO2M6N",
+          "created_local": "2026-11-20 11:55:20 +08:00"
+        }
+      ],
+      "previous_annotation_id": null,
+      "sentences": [
+        "2026-11-20 11:40 至 11:55，我将团队要求替换两条证据不足 Before 的意见落实为有次数上限的补样和留证任务。",
+        "原两条一百四十一行记录没有直接行情请求与响应证据，且补样跨 UTC 日，不能用旧缓存或模糊措辞消除这些限制。",
+        "COST-01 的有效性判据要求成本降低不能来自数据缺失，FR-04 的计量与汇总必须可核查，排除也不能依据 token 高低。",
+        "我要求按 tool_call_id 保存真实原文、保留旧 JSON 和 valid 字段、固定分析日并重新统计，随后又要求清单排除自身及明确跨日差异未量化；agent 报告完成两条补样并得到 Before 160315.8／159615、After 147754.2／148087，原件未改。"
+      ]
+    }
+  ],
+  "integrity": {
+    "source_json_byte_preserved": true,
+    "message_count": 2979,
+    "user_count": 182,
+    "assistant_count": 2797,
+    "part_count": 10910,
+    "annotation_count": 10,
+    "source_export_files": 5
+  }
+}

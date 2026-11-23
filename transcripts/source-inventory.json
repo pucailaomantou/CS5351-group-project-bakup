@@ -1,0 +1,85 @@
+{
+  "aggregate_file": "/Users/administrator/Downloads/CS5351_TradingAgents_Sessions/cs5351_tradingagents_all_sessions.json",
+  "aggregate_sha256": "a0b854870f214615ba441701b7d6d9acd02a7e32054f035e6add7cc1d0772e95",
+  "exported_at": "2026-11-20 22:22:09",
+  "aggregate_sessions": 8,
+  "individual_exports_match_aggregate": true,
+  "aggregate_copy_included": false,
+  "reason": "合并文件与单独文件重复，且包含三个与当前项目无关会话；用逐会话原件保留所列五个会话，清单说明排除范围。",
+  "archive_root": "/Users/administrator/CityU/CS5351/c-transcript-archive-20261123",
+  "repo_layout_note": "原始会话 JSON 与完整转写不在仓库；仓库仅保留本清单、evidence-index.json、SHA 清单与精简转录。",
+  "sessions": [
+    {
+      "session_id": "ses_f2374e45fffedh0DbDVQ5gDB6h",
+      "title": "demo.py code repair agent flow analysis",
+      "original_file": "2026-09-26 15-08-19_ses_f2374e45fffedh0DbDVQ5gDB6h.json",
+      "original_sha256": "77a34fed45d9a4af8f2c20f628d75ae7edde96eca016616876daed890ff4c4b4",
+      "message_count": 422,
+      "included": false,
+      "scope": "排除：目录及内容为 Assignment1_Agent_Generation 或问候，非本次 TradingAgents C 交付"
+    },
+    {
+      "session_id": "ses_eea8062b0ffeuXa4zmgjtqly6F",
+      "title": "Compliance audit demo.py CS5351",
+      "original_file": "2026-10-07 16-34-07_ses_eea8062b0ffeuXa4zmgjtqly6F.json",
+      "original_sha256": "d0572c4915db9d137dc69fbb97ac86a8e02b86356271c2a2dde24e93b628ac99",
+      "message_count": 12,
+      "included": false,
+      "scope": "排除：目录及内容为 Assignment1_Agent_Generation 或问候，非本次 TradingAgents C 交付"
+    },
+    {
+      "session_id": "ses_e6475d0baffe8IP9JqcMSMFvWa",
+      "title": "问候",
+      "original_file": "2026-11-02 17-14-46_ses_e6475d0baffe8IP9JqcMSMFvWa.json",
+      "original_sha256": "4ca87ca9d0aee790c896555a73b1d8d4d1c0ab84b40e1b39a85f5a4281fa2fcb",
+      "message_count": 6,
+      "included": false,
+      "scope": "排除：目录及内容为 Assignment1_Agent_Generation 或问候，非本次 TradingAgents C 交付"
+    },
+    {
+      "session_id": "ses_e12d212a1ffeBJghqWvARsT2zc",
+      "title": "问候语",
+      "original_file": "2026-11-18 13-42-52_ses_e12d212a1ffeBJghqWvARsT2zc.json",
+      "original_sha256": "de17f372e49f5f549b99797868da85001b9746c57f278978aa7a83f5d44950cf",
+      "message_count": 46,
+      "included": true,
+      "scope": "辅助归档：问候、历史会话恢复及完整导出"
+    },
+    {
+      "session_id": "ses_e129250b1ffewLkzD51Z5gxpN0",
+      "title": "只读检查项目环境与 Git 状态",
+      "original_file": "2026-11-18 14-52-30_ses_e129250b1ffewLkzD51Z5gxpN0.json",
+      "original_sha256": "c6e5d041dc306b6427d4a9a805e24962a1db3637231dc1ab30cb37754b150d5f",
+      "message_count": 173,
+      "included": true,
+      "scope": "核心：基线审计、计划批准及实现"
+    },
+    {
+      "session_id": "ses_e119773e3ffeahvgH7B6svRc5Y",
+      "title": "C D2 开发环境检查与实施",
+      "original_file": "2026-11-18 19-26-31_ses_e119773e3ffeahvgH7B6svRc5Y.json",
+      "original_sha256": "63131fd777d4d9481ddd5987c6390fcbe1b6832bce2ddce92bc5a1dca4d831c6",
+      "message_count": 957,
+      "included": true,
+      "scope": "核心：配置、计量、辩论及优化验证"
+    },
+    {
+      "session_id": "ses_e0e5ef85cffeBSdr12aoCc1fwi",
+      "title": "CS5351 项目 AGENTS.md 工作约束",
+      "original_file": "2026-11-19 10-27-04_ses_e0e5ef85cffeBSdr12aoCc1fwi.json",
+      "original_sha256": "1a6d340a747a1da8358bc7f293dd065889a9b5daba1d55298af5c0ce1b743273",
+      "message_count": 1365,
+      "included": true,
+      "scope": "核心：需求、基线与治理"
+    },
+    {
+      "session_id": "ses_e0b8ce435fferr1SzcdX1TF1iT",
+      "title": "Ticker 新闻日期窗口修复与离线回归",
+      "original_file": "2026-11-19 23-35-46_ses_e0b8ce435fferr1SzcdX1TF1iT.json",
+      "original_sha256": "9903d3c1fc7892628828a45af1741a8aa1adaa6a72f7f70aa73a470aecfd3730",
+      "message_count": 438,
+      "included": true,
+      "scope": "核心：新闻修复、补样、集成和证据交付"
+    }
+  ]
+}

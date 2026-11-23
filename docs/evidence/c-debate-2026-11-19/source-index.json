@@ -1,0 +1,149 @@
+{
+  "analysis_date": "2026-11-19",
+  "selection_path": "docs/evidence/cost01-2026-11-19/review/SAMPLE-LIST-REVISED.csv",
+  "selection_sha256": "98c70d7179b423cc693778ae74b6f0c083a45b4e67142623efdd9ba0251f2b8b",
+  "schema_path": "src/tradingagents/agents/researchers/debate_schemas.py",
+  "schema_sha256": "a3301195b464661eb08d06ae85ebf6c492e28b41072720e705bf089dccde4981",
+  "records": [
+    {
+      "run_id": "20261120_034452_e30e13b3",
+      "extracted_record": "records/20261120_034452_e30e13b3.json",
+      "extracted_record_sha256": "8799319485cb178ca071d15ea68ca555f2a17835dc8324f2be43aaf1baf25800",
+      "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_034452_e30e13b3.json",
+      "run_record_sha256": "ba93f45fc726888336006e6fbdbe8b99b05f9dc50e5ae0abff28c54c3160109b",
+      "full_state_filename": "full_states_log_2026-11-19.json",
+      "full_state_sha256": "9c7fa1f37916717907c0aa2b5b90c01c927781bd1b3a420ca0b1abbe9f629c60",
+      "full_state_in_repository": false,
+      "extraction": {
+        "investment_debate_state": "$.investment_debate_state",
+        "research_manager_decision": "$.investment_plan"
+      }
+    },
+    {
+      "run_id": "20261120_034254_4abe43bc",
+      "extracted_record": "records/20261120_034254_4abe43bc.json",
+      "extracted_record_sha256": "5f5ac0dd4817afa308a356b15ff7039b5dd544e532bd8e7af04d9ec8ffa170bb",
+      "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_034254_4abe43bc.json",
+      "run_record_sha256": "6545b995b5f72cb4f24b84e6b1ae6181bfe6ca902e7ae8ae93109ff53e3123ca",
+      "full_state_filename": "full_states_log_2026-11-19.json",
+      "full_state_sha256": "1423d3ab2eca7da0c61effcf96814a33ed5a01c4e86322aa07e1db76d625f52e",
+      "full_state_in_repository": false,
+      "extraction": {
+        "investment_debate_state": "$.investment_debate_state",
+        "research_manager_decision": "$.investment_plan"
+      }
+    },
+    {
+      "run_id": "20261120_034856_366d2d63",
+      "extracted_record": "records/20261120_034856_366d2d63.json",
+      "extracted_record_sha256": "72a0b49c9b16228497b1fe1b5e770b3fcdb3d8befe70a342f759a29fbc0bfaa6",
+      "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_034856_366d2d63.json",
+      "run_record_sha256": "3506e9708482b26a585a945cdc7f88e54e67897d1819b2d12a3aea3d6549d5fe",
+      "full_state_filename": "full_states_log_2026-11-19.json",
+      "full_state_sha256": "9cb7d7d2efb9e9fbe33ee99a6459a5e5ef80bb9da2b4d535b83a7dc4812b0253",
+      "full_state_in_repository": false,
+      "extraction": {
+        "investment_debate_state": "$.investment_debate_state",
+        "research_manager_decision": "$.investment_plan"
+      }
+    },
+    {
+      "run_id": "20261120_034651_d075414f",
+      "extracted_record": "records/20261120_034651_d075414f.json",
+      "extracted_record_sha256": "539184132bd1917904adfe62c645f8aec703227b2c6968232735ed5fa1ac293a",
+      "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_034651_d075414f.json",
+      "run_record_sha256": "1b6ffdeaad1d1cda00c13be44f5d9149365f0d3bf29befcf862aa9cd6abcd8c7",
+      "full_state_filename": "full_states_log_2026-11-19.json",
+      "full_state_sha256": "c99bee4797a188ad741bdfbe019edaaaa20bc5ab8e1c2dcf182ce75eee670238",
+      "full_state_in_repository": false,
+      "extraction": {
+        "investment_debate_state": "$.investment_debate_state",
+        "research_manager_decision": "$.investment_plan"
+      }
+    },
+    {
+      "run_id": "20261120_035047_a0423689",
+      "extracted_record": "records/20261120_035047_a0423689.json",
+      "extracted_record_sha256": "e9c8ec838cd506170db2f5a414df57b9a74b96855d50867a5f5d596682e1fce5",
+      "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_035047_a0423689.json",
+      "run_record_sha256": "df3f8bfb6581e1d5abc2f19eb501cefffcea5ec9a1e6c1c2b42fb7163ac3f5c9",
+      "full_state_filename": "full_states_log_2026-11-19.json",
+      "full_state_sha256": "109f4f33bdff341a75f9e3a9f2b80391b2f18b863af0aff02b336a956e8005be",
+      "full_state_in_repository": false,
+      "extraction": {
+        "investment_debate_state": "$.investment_debate_state",
+        "research_manager_decision": "$.investment_plan"
+      }
+    },
+    {
+      "run_id": "20261120_034051_7cbc5158",
+      "extracted_record": "records/20261120_034051_7cbc5158.json",
+      "extracted_record_sha256": "f28bdb8e13fbf50c13dc8f15938a281352297cd3b11dbf8752be9867919f7553",
+      "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_034051_7cbc5158.json",
+      "run_record_sha256": "a4c83b6a76d44fd43d024e64e701fda0aa0f37bfb2543fa174f3f9e680da2468",
+      "full_state_filename": "full_states_log_2026-11-19.json",
+      "full_state_sha256": "fe8140166636f425583f58762140a340e343cbb4a69b7d9b1d81923662a4ecb6",
+      "full_state_in_repository": false,
+      "extraction": {
+        "investment_debate_state": "$.investment_debate_state",
+        "research_manager_decision": "$.investment_plan"
+      }
+    },
+    {
+      "run_id": "20261120_040112_fb2e6b11",
+      "extracted_record": "records/20261120_040112_fb2e6b11.json",
+      "extracted_record_sha256": "eeaff389460a424f8d3414c4c43f10123967192fa5c29e30495e054f483f5d8f",
+      "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_040112_fb2e6b11.json",
+      "run_record_sha256": "9271c65b78bb54433f79aef72a13823a26a2c4fa4bbc677df453aa3a7ec6b589",
+      "full_state_filename": "full_states_log_2026-11-19.json",
+      "full_state_sha256": "89bedeb9476df957f5f1c585aab5ccdff2c1d14194af95b8b34edfc3c38da35b",
+      "full_state_in_repository": false,
+      "extraction": {
+        "investment_debate_state": "$.investment_debate_state",
+        "research_manager_decision": "$.investment_plan"
+      }
+    },
+    {
+      "run_id": "20261120_035902_b4629375",
+      "extracted_record": "records/20261120_035902_b4629375.json",
+      "extracted_record_sha256": "b7b1a0958691deb8e8c5decf99cfad6c3256a3ffa86a4eebccd95095ee0f7acf",
+      "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_035902_b4629375.json",
+      "run_record_sha256": "cb5463a31f628c26b7fc0fa95434ea993ca8e8267c427a13b3ac427324c4d970",
+      "full_state_filename": "full_states_log_2026-11-19.json",
+      "full_state_sha256": "99667bcf542d6da5018f3533fa64a315795ee480a7cb1eaa539243a9d9976da7",
+      "full_state_in_repository": false,
+      "extraction": {
+        "investment_debate_state": "$.investment_debate_state",
+        "research_manager_decision": "$.investment_plan"
+      }
+    },
+    {
+      "run_id": "20261120_035705_5fa4ed81",
+      "extracted_record": "records/20261120_035705_5fa4ed81.json",
+      "extracted_record_sha256": "781726560e580dadcc380578a6325db7dcd04e525c890354390c3a1b2c3628dc",
+      "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_035705_5fa4ed81.json",
+      "run_record_sha256": "4c28ea2c4d714df0c0a87b92de9d0d3b15de36608be0e207ddb5bfc5a81b4cde",
+      "full_state_filename": "full_states_log_2026-11-19.json",
+      "full_state_sha256": "6c6f767c72d84f893ebe1a281993bd513dd29e985d64656495c358e5ee14b8cf",
+      "full_state_in_repository": false,
+      "extraction": {
+        "investment_debate_state": "$.investment_debate_state",
+        "research_manager_decision": "$.investment_plan"
+      }
+    },
+    {
+      "run_id": "20261120_040714_cfaf7ee1",
+      "extracted_record": "records/20261120_040714_cfaf7ee1.json",
+      "extracted_record_sha256": "05444b1d04ab5c82c73df0b32671e619940b71dca6bf2674c9a3fc4bf0b83b92",
+      "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_040714_cfaf7ee1.json",
+      "run_record_sha256": "f8e3fb111eb4bd734e0b4ee1aaccbd9591fa1027ad97ae9e3a682ab022ebfcd2",
+      "full_state_filename": "full_states_log_2026-11-19.json",
+      "full_state_sha256": "3053eb608891224ab55914ccd693fae2d8e631481badcd369dcfe4fbdee7a8f5",
+      "full_state_in_repository": false,
+      "extraction": {
+        "investment_debate_state": "$.investment_debate_state",
+        "research_manager_decision": "$.investment_plan"
+      }
+    }
+  ]
+}

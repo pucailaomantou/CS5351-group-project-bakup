@@ -1,0 +1,13 @@
+# SHA256 of the OUT-OF-REPO full transcript archive
+# archive_root: /Users/administrator/CityU/CS5351/c-transcript-archive-20261123
+# These files (full/ transcripts and sources/ raw JSON) are NOT in this repository.
+76da63c64fff57c026e6647d1a353a2f7360f28e25e4f6ea01d56b432a6731db  full/agents-governance.md
+611d42a34ddd3be8623878d5ea1c41a521ab911c7fd061683782a1d5bd4be927  full/baseline-planning.md
+f72ae288ab31dfc101eb6d9aab1d1adc237e341b4d7083f7fdf8b44f7335e914  full/c-d2.md
+a3a89bcc742162503ea93de746839d7d044b90ef76330215bb73f17a2ae7da99  full/export-recovery.md
+e87bb0e17a21a73d4f2cc2625513dd6095f0fe19ccecd85d774dab95dd263714  full/ticker-news.md
+de17f372e49f5f549b99797868da85001b9746c57f278978aa7a83f5d44950cf  sources/2026-11-18 13-42-52_ses_e12d212a1ffeBJghqWvARsT2zc.json
+c6e5d041dc306b6427d4a9a805e24962a1db3637231dc1ab30cb37754b150d5f  sources/2026-11-18 14-52-30_ses_e129250b1ffewLkzD51Z5gxpN0.json
+63131fd777d4d9481ddd5987c6390fcbe1b6832bce2ddce92bc5a1dca4d831c6  sources/2026-11-18 19-26-31_ses_e119773e3ffeahvgH7B6svRc5Y.json
+1a6d340a747a1da8358bc7f293dd065889a9b5daba1d55298af5c0ce1b743273  sources/2026-11-19 10-27-04_ses_e0e5ef85cffeBSdr12aoCc1fwi.json
+9903d3c1fc7892628828a45af1741a8aa1adaa6a72f7f70aa73a470aecfd3730  sources/2026-11-19 23-35-46_ses_e0b8ce435fferr1SzcdX1TF1iT.json
