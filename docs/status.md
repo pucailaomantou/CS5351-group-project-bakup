@@ -1,6 +1,6 @@
 # CS5351 group project — status
 
-Last updated: 2026-11-20
+Last updated: 2026-11-21
 
 This is the single place to check what is done, what is frozen, and what is still open.
 Update it when you merge something.
@@ -14,9 +14,9 @@ Update it when you merge something.
 | upstream | https://github.com/tauricresearch/tradingagents | 2026-11-17 |
 | source layout | `src/tradingagents/` (package), `src/cli/` and `src/main.py` beside it, `test/offline/`, `test/live/`. Upstream contents unmodified; see `BASELINE.md`. | 2026-11-19 |
 | cost measurement point (superseded 2026-11-20) | NVDA / 2026-09-01, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash | 2026-11-18 |
-| cost measurement point (on main) | NVDA / 2026-11-18, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash; ten valid runs, mean 163633.2, median 160664 | 2026-11-19 |
-| comparison measurement (not a baseline) | NVDA / 2026-11-19, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash, seven-day ticker news window anchored to the analysis date; 20/20/5 against 8/8/3 | 2026-11-20 |
-
+| cost measurement point (superseded 2026-11-21) | NVDA / 2026-11-18, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash; ten valid runs, mean 163633.2, median 160664 | 2026-11-19 |
+| cost measurement point (on main) | NVDA / 2026-11-19, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash, seven-day ticker news window anchored to the analysis date; 20/20/5; ten valid runs, mean 160315.8, median 159615; evidence `docs/evidence/cost01-2026-11-19/` | 2026-11-21 |
+| after measurement (not a baseline) | NVDA / 2026-11-19, same protocol as the baseline, 8/8/3; ten valid runs, mean 147754.2, median 148087 | 2026-11-21 |
 | effective cost config | `max_tool_rounds` 8, `news_article_limit` 8, `global_news_queries` 3 items, `global_news_article_limit` 10 | 2026-11-20 |
 | CI Gates | Schema validation, offline tests, and `ruff check src/` must pass before merge | 2026-11-21 |
 ## Changes so far
@@ -28,8 +28,10 @@ Update it when you merge something.
 | #3 (superseded by #4) | COST-01 `fit_criterion` rewritten; `baseline_median` and `baseline_observations` added; `amended` records both revisions | the measurement invalidated the original criterion |
 | #4 | COST-01 amendment merged to main | the measurement invalidated the original criterion |
 | direct merge by A (no PR) | `BASELINE.md`; sources relocated under `src/`, tests under `test/` | vendoring: upstream version fixed, contents unmodified |
-| #5 (open) | `architecture-blueprint.md`; `docs/architecture/adr/001-bound-cost-at-tool-calls.md`; ADR 002 on context layers; FR-02 state contract | D2 architecture deliverable |
+| #5 (merged) | `architecture-blueprint.md`; `docs/architecture/adr/001-bound-cost-at-tool-calls.md`; ADR 002 on context layers; FR-02 state contract | D2 architecture deliverable |
 | #6 (merged) | COST-01 baseline migrated from 2026-09-01 to 2026-11-18; ten valid runs, mean 163633.2, median 160664; the two 141-row records excluded and retained | the 09-01 batch lacked data-integrity evidence, so the baseline was re-measured |
+| #8 (merged) | `docs/evidence/cost01-2026-11-19/` — 40 files: 12 Before and 12 After raw records, protocol scripts, `SHA256SUMS.txt`, review tables | C's evidence package, so the 2026-11-19 figures can be recomputed from a clone |
+| #9 (open) | `docs/report/`, `docs/evidence/c-debate-2026-11-19/`, `transcripts/`, `docs/review/` | C's report material, debate evidence, transcripts, and the cross-review memo for B |
 | #10 (merged) | `test/offline/test_config_cost.py`, `test_debate_termination.py`, `test_rating_invariants.py` | E's verification work: adds offline tests for COST-01 (8/8/3), FR-02 (termination + convergence), and INV-01 (rating). All 25 tests passed. |
 | #10 (update) | `.github/workflows/ci.yml`, `scripts/validate_requirements.py`, `docs/req/req-schema.json`, `docs/debt-register.md`, `.gitattributes` | E's D3 & D4 work: Implements GitHub Actions blocking gates (Schema, Test, Static Analysis), auto-fixes 9 ruff errors in `src/`, and logs remaining tech debt. |
 ## Measurements on record
@@ -49,10 +51,7 @@ temperature 0.0, analysts market+news, one research round, one risk round:
 - CV fell from 11.4% on the 2026-11-18 batch to 6.4% here, which measures the protocol, not the
   token level
 
-This batch is a comparison measurement, not a baseline. The baseline on main is the 2026-11-18
-batch, measured ten runs at mean 163633.2; the 2026-09-01 batch is superseded. The three are
-never mixed. Raw records live in `c-baseline-work/results/` (Workstream C, local, not in this
-repo).
+This batch is the 2026-11-19 protocol measured twice: 20/20/5 before the tightening, 8/8/3 after. The 20/20/5 batch is the baseline now on main, at mean 160315.8; the 8/8/3 batch is the after measurement at 147754.2. The 2026-11-18 baseline (163633.2) and the 2026-09-01 batch (108901) are both superseded. The three are never mixed.
 
 ## Open questions
 
