@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CS5351 requirements document",
+  "description": "Schema for docs/req/requirements.yaml. Ten frozen requirement ids (FR-01..05, INV-01..03, COST-01, GOV-01); ids are never renumbered or reused.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "owner",
+    "frozen_at",
+    "baseline_repo",
+    "baseline_commit",
+    "tradeoff",
+    "requirements"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "owner": { "type": "string", "minLength": 1 },
+    "frozen_at": { "type": "string", "minLength": 1 },
+    "baseline_repo": { "type": "string", "minLength": 1 },
+    "baseline_commit": { "type": "string", "minLength": 1 },
+    "tradeoff": { "type": "string", "minLength": 1 },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/requirement" }
+    }
+  },
+  "definitions": {
+    "requirement": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["id", "type", "statement", "fit_criterion", "priority", "source"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(FR|INV|COST|GOV)-[0-9]{2}$"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["functional", "invariant", "cost", "governance"]
+        },
+        "statement": { "type": "string", "minLength": 1 },
+        "fit_criterion": { "$ref": "#/definitions/fit_criterion" },
+        "priority": {
+          "type": "string",
+          "enum": ["must", "should", "may"]
+        },
+        "source": { "type": "string", "minLength": 1 },
+        "protects": { "type": "string" },
+        "baseline": { "type": ["number", "string"] },
+        "baseline_date": { "type": "string" },
+        "baseline_status": { "type": "string" },
+        "baseline_ticker": { "type": "string" },
+        "baseline_valid_runs": { "type": "integer", "minimum": 0 },
+        "baseline_mean_total_tokens": { "type": "number" },
+        "baseline_median_total_tokens": { "type": "number" },
+        "baseline_min_total_tokens": { "type": "number" },
+        "baseline_max_total_tokens": { "type": "number" },
+        "baseline_median": { "type": "number" },
+        "baseline_run_ids": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "baseline_evidence_dir": { "type": "string" },
+        "baseline_excluded": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["run_id", "reason"],
+            "additionalProperties": false,
+            "properties": {
+              "run_id": { "type": "string", "minLength": 1 },
+              "reason": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "baseline_supplements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["run_id", "reason"],
+            "additionalProperties": false,
+            "properties": {
+              "run_id": { "type": "string", "minLength": 1 },
+              "total_tokens": { "type": "integer", "minimum": 0 },
+              "replaces": { "type": "string", "minLength": 1 },
+              "reason": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "baseline_observations": { "type": "string" },
+        "baseline_superseded": {
+          "type": "array",
+          "items": { "type": "object", "additionalProperties": true }
+        },
+        "after_integrity_preconditions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "after_integrity_note": { "type": "string" },
+        "comparison_rules": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "amended": { "type": "string" }
+      }
+    },
+    "fit_criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric", "threshold", "verification"],
+      "properties": {
+        "metric": { "type": "string", "minLength": 1 },
+        "threshold": { "type": "string", "minLength": 1 },
+        "verification": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
