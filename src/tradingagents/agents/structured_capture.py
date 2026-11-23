@@ -17,10 +17,10 @@ count, and each run gets a fresh recorder so nothing leaks between runs.
 from __future__ import annotations
 
 import contextlib
-from collections.abc import Iterator
 from contextvars import ContextVar
+from typing import Iterator
 
-_active: ContextVar[StructuredRecorder | None] = ContextVar("structured_recorder", default=None)
+_active: ContextVar["StructuredRecorder | None"] = ContextVar("structured_recorder", default=None)
 
 
 class StructuredRecorder:

@@ -10,7 +10,8 @@ from tradingagents.dataflows.config import get_config
 from tradingagents.dataflows.date_window import coverage_gap, in_window
 from tradingagents.dataflows.errors import VendorUnavailableError
 from tradingagents.dataflows.symbols import normalize_symbol
-from tradingagents.dataflows.vendors.yahoo import news_capture, provider_fixtures
+from tradingagents.dataflows.vendors.yahoo import news_capture
+from tradingagents.dataflows.vendors.yahoo import provider_fixtures
 from tradingagents.dataflows.vendors.yahoo.common import yf_retry
 
 

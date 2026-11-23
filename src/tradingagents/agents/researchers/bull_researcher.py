@@ -12,6 +12,7 @@ from tradingagents.agents.researchers.debate import (
 )
 
 
+
 def create_bull_researcher(llm):
     turn_llm = bind_turn_schema(llm, "bull")
 
