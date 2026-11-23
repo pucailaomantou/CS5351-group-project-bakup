@@ -1,5 +1,5 @@
 # SHA256 of the OUT-OF-REPO full transcript archive
-# archive_root: /Users/administrator/CityU/CS5351/c-transcript-archive-20261123
+# archive (out-of-repo) name: c-transcript-archive-20261123
 # These files (full/ transcripts and sources/ raw JSON) are NOT in this repository.
 76da63c64fff57c026e6647d1a353a2f7360f28e25e4f6ea01d56b432a6731db  full/agents-governance.md
 611d42a34ddd3be8623878d5ea1c41a521ab911c7fd061683782a1d5bd4be927  full/baseline-planning.md

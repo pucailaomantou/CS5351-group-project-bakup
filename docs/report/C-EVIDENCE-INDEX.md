@@ -66,14 +66,14 @@ After 失败保留定位，未覆盖原始 `valid` 字段。选择来自 SAMPLE-
 
 ## 个人转录
 
-- [个人转录（精简版）](../../transcripts/60671980-LI Runyao.md) — LI Runyao / 60671980，十条个人批注、原始指令节选与 agent 回应节选。
+- [个人转录](../../transcripts/60671980-LI Runyao.md) — LI Runyao / 60671980，十条个人批注、原始指令节选与 agent 回应节选。
 - [消息定位索引](../../transcripts/evidence-index.json) — 批注到原始消息的定位、session/message ID 与 SHA256。
 - [来源清单](../../transcripts/source-inventory.json) — 会话来源与是否纳入说明。
 - [转录校验清单（仓库内交付文件）](../../transcripts/SHA256SUMS.txt)
 - [归档校验清单（仓库外原件）](../../transcripts/SHA256SUMS.archive.txt) — 记录仓库外 `full/`、`sources/` 原件的 SHA256。
 
-完整原始会话（五份 `full/` 转写与五份 `sources/` 原始 JSON）**不在本仓库**，保存在仓库外归档
-`/Users/administrator/CityU/CS5351/c-transcript-archive-20261123/`；仓库内不放置其相对链接，以免形成失效入口。
+完整原始会话（五份 `full/` 转写与五份 `sources/` 原始 JSON）不在本仓库，保存在仓库外归档
+`c-transcript-archive-20261123/`；仓库内不放置其相对链接，以免形成失效入口。
 
 ## 证据覆盖范围
 

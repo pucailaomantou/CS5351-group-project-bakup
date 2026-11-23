@@ -1,12 +1,12 @@
 {
-  "aggregate_file": "/Users/administrator/Downloads/CS5351_TradingAgents_Sessions/cs5351_tradingagents_all_sessions.json",
+  "aggregate_file": "CS5351_TradingAgents_Sessions/cs5351_tradingagents_all_sessions.json (仓库外交接材料)",
   "aggregate_sha256": "a0b854870f214615ba441701b7d6d9acd02a7e32054f035e6add7cc1d0772e95",
   "exported_at": "2026-11-20 22:22:09",
   "aggregate_sessions": 8,
   "individual_exports_match_aggregate": true,
   "aggregate_copy_included": false,
   "reason": "合并文件与单独文件重复，且包含三个与当前项目无关会话；用逐会话原件保留所列五个会话，清单说明排除范围。",
-  "archive_root": "/Users/administrator/CityU/CS5351/c-transcript-archive-20261123",
+  "archive_root": "c-transcript-archive-20261123",
   "repo_layout_note": "原始会话 JSON 与完整转写不在仓库；仓库仅保留本清单、evidence-index.json、SHA 清单与精简转录。",
   "sessions": [
     {

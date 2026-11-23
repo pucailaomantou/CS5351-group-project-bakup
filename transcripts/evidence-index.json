@@ -4,8 +4,8 @@
   "role": "C",
   "status": "local_delivery_student_identity_provided",
   "archive_note": "完整原件（full/、sources/）不在本仓库；下列 source_file/readable_file 为外部归档 c-transcript-archive-20261123/ 下的相对路径。",
-  "archive_root": "/Users/administrator/CityU/CS5351/c-transcript-archive-20261123",
-  "repo_layout": "仓库内仅保留本索引、source-inventory.json、SHA256SUMS.txt、SHA256SUMS.archive.txt 与精简转录 60671980-LI Runyao.md",
+  "archive_root": "c-transcript-archive-20261123",
+  "repo_layout": "仓库内仅保留本索引、source-inventory.json、SHA256SUMS.txt、SHA256SUMS.archive.txt 与交付转录 60671980-LI Runyao.md",
   "timezone": "Asia/Shanghai (UTC+08:00)",
   "source_sessions": [
     {
