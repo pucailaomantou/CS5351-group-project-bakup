@@ -18,10 +18,11 @@ inferred from an aggregate. Nothing here fetches, retries, or re-queries.
 from __future__ import annotations
 
 import contextlib
+from collections.abc import Iterator
 from contextvars import ContextVar
-from typing import Any, Iterator
+from typing import Any
 
-_active: ContextVar["NewsCapture | None"] = ContextVar("news_capture", default=None)
+_active: ContextVar[NewsCapture | None] = ContextVar("news_capture", default=None)
 
 
 class NewsCapture:
