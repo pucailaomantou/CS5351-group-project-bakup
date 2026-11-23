@@ -1,0 +1,498 @@
+{
+  "run_id": "20261120_035902_b4629375",
+  "analysis_date": "2026-11-19",
+  "ticker": "NVDA",
+  "source": {
+    "run_record_path": "docs/evidence/cost01-2026-11-19/records/after/20261120_035902_b4629375.json",
+    "run_record_sha256": "cb5463a31f628c26b7fc0fa95434ea993ca8e8267c427a13b3ac427324c4d970",
+    "full_state_filename": "full_states_log_2026-11-19.json",
+    "full_state_sha256": "99667bcf542d6da5018f3533fa64a315795ee480a7cb1eaa539243a9d9976da7",
+    "full_state_in_repository": false,
+    "extraction": {
+      "investment_debate_state": "$.investment_debate_state",
+      "research_manager_decision": "$.investment_plan"
+    }
+  },
+  "investment_debate_state": {
+    "bull_history": "\nBull Analyst: Let me start by conceding the obvious, because a bull case built on denial is worthless: NVDA closed at 147.37 on 2026-11-19, down ~38% from 239.24 on 2026-10-06, below the 10 EMA (164.64), below the 200 SMA (203.32), below the 50 SMA (208.88), below VWMA (168.96), with RSI at 20.03 and MACD at −17.65. That is a genuine, confirmed downtrend. I am not going to pretend otherwise. But here is the thing the technical report itself keeps conceding in its own footnotes: the *rate of change* of bearishness is decelerating, and the report's own \"constructive\" list is longer than it wants to admit. Let me build the case on that.\n\nFirst, the momentum math. The MACD histogram has narrowed four consecutive sessions: −4.22 (11-16) → −4.00 (11-17) → −3.83 (11-18) → −3.63 (11-19). That is a monotonic, four-day compression of downside momentum while price made lower lows. The report calls this \"not a buy signal\" — fine, it's not a *confirmation* signal, but it is precisely the sequence that precedes every MACD crossover. And note the report's own framing: \"the classic setup for either (a) a violent oversold bounce toward 164–169, or (b) a brief pause before the next leg down.\" It gives those two outcomes equal billing. I'd argue the asymmetry is far better than 50/50 for a long here, because of the second point.\n\nSecond, the volume structure. Look at the sequence the report gives us: 747.7M (11-12) → 365.8M → 333.8M → 407.0M → 349.8M → 236.0M (11-19). That is a 68% collapse in volume from the capitulation peak. The report calls it \"mild positive... far too early to call it exhaustion.\" But combine it with the 11-12 bar: open 151.01, low 148.80, close 166.19 — a wide-range bar that closed 17 points off its low on 747.7M shares. That is textbook absorption. Someone with size bought that panic. And the 11-19 session printed a low of 147.15 and closed at 147.37 — a 1.2-point close off the low on the *lightest* volume in the entire decline. Sellers are running out of ammunition at exactly the level where the big buyer showed up.\n\nThird, the RSI. 20.03 is the lowest reading in the 30-day window. The report warns that \"in a strong downtrend, RSI can stay pinned below 30.\" True — but that's a warning about *shorting* into it, not about owning it. The report itself says \"mean-reversion risk for shorts is elevated.\" So the bear's own document is telling you the tactical risk/reward has flipped. At 147.37 with ATR at 9.77, a move back to the 10 EMA at 164.64 is +11.7%; a move to the VWMA at 168.96 is +14.7%. Downside to the lower band at 138.06 is −6.3%. That is roughly a 2:1 reward-to-risk on a *mean-reversion* trade alone, before we even talk about the business.\n\nFourth — and this is where I think the bear case is structurally weakest — the news report's bear pillars are almost entirely unverified narrative, and the report says so itself. \"Nvidia's leadership turmoil\" is cited twice but the feed \"does not specify the nature of the turmoil.\" The $2.5B China diversion story concerns a *former* executive, a *personal* connection, and is \"explicitly unverified.\" The \"data center build-out slowdown\" is described as \"unquantified.\" Tiernan Ray's \"NVDA won't lead in 5 years\" is, by the report's own admission, \"a terminal-value argument, not a 2026 earnings argument.\" So the bear case is: an unverified governance rumor, an unverified short-seller allegation about a former employee, an unquantified capex claim, and a five-year-out multiple argument. Not one of those is a demand datapoint. Not one is a number from NVDA's own P&L. The report is explicit: \"No earnings, guidance, or supply-chain data points in the window.\" The bears are trading headlines against a company whose actual order book nobody in this dataset has looked at.\n\nFifth, the SpaceX item. The report frames SpaceX as \"biggest customer AND $19.7B shareholder\" and calls it \"a fragility, not a strength\" — circular financing. I'd push back hard. A customer that takes a $19.7B equity stake in its supplier is not a red flag, it's the strongest possible signal of demand conviction: SpaceX is putting its own balance sheet behind the belief that NVDA's roadmap is the only path to its compute needs. Yes, it cuts both ways in a drawdown. But the report's own conclusion — \"supports demand today\" — is the part that matters for the next four quarters, and the \"amplifies drawdowns later\" part is a 2027 problem, not a 147.37 problem.\n\nSixth, the Anthropic rotation fear. The report says capital can now \"rotate from compute to model layer without leaving the theme.\" I'd counter that this is backwards. Anthropic's ~$1T compute commitment is not a substitute for NVDA — it is a *demand contract* for NVDA. Every dollar of that commitment has to be converted into GPUs. The report itself says the bear case \"runs through NVDA: a ~$1T compute commitment is only credible if NVDA can supply the GPUs.\" Exactly. The ANT IPO doesn't divert demand from NVDA; it *monetizes and publicizes* the demand. If ANT prices well, that's a capex-credibility event that transmits *positively* to NVDA — the same beta the report warns about, working in the other direction.\n\nSeventh, the technical levels are actually a gift for a disciplined long. The report gives us a clean, objective invalidation: 147.15. That's 0.2% below spot. You can own NVDA here with a stop at 146.50 and risk ~0.6%, against a first target at 150.96 (+2.4%), a second at 155.46–156.14 (+5.5–6.0%), and a third at 164.64 (+11.7%). That is a 4:1 to 20:1 payoff structure depending on how far the bounce runs. The bear's alternative — shorting at 147.37 with RSI at 20 and the histogram narrowing — requires you to be right about a *continuation* into 138 while the report itself flags \"mean-reversion risk for shorts is elevated.\" The bear is being asked to sell the most oversold print in the dataset with decelerating momentum and collapsing volume. That's the worse trade.\n\nEighth, the death cross. The report corrects itself mid-sentence: the 50 SMA is *still above* the 200 SMA (208.88 vs. 203.32). The \"imminent death cross\" is a lagging indicator built from 50 and 200 days of data that mostly predates this decline. By the time it prints, the move is 38% old. Death crosses in high-beta semis have a long history of marking *lows*, not highs, precisely because they're so widely watched. I'm not going to lean on that as a primary argument, but it certainly isn't the bearish confirmation the report treats it as.\n\nNinth, the data gaps cut against the bear, not for it. The report is candid: FRED is unavailable, Polymarket is withheld, the global feed carried no macro items, and there's no fundamentals report at all. The bear case is being built on a *narrative vacuum*. When the fundamental anchor is missing, the market prices narrative — and narrative-driven drawdowns of 38% in six weeks mean-revert violently once any hard datapoint lands. The next NVDA print, or the next hyperscaler capex guide, is a binary catalyst that the current price is not discounting at all.\n\nSo here's my synthesis. I'm not arguing NVDA is in an uptrend — it isn't. I'm arguing that at 147.37, with RSI at 20, four days of MACD histogram compression, volume down 68% from capitulation, a 17-point-off-the-low absorption bar on 747.7M shares, a defined invalidation 0.2% away, and a bear case composed entirely of unverified headlines against a company with no reported fundamental deterioration in this dataset — the *expected value* is long. The bear is fighting the last 38% while the tape is telling you the sellers are done. I'll take that trade, sized properly, with a stop at 146.50 and a first target at 164.64.",
+    "bear_history": "\nBear Analyst: Let me take the bull's case seriously, because it's the best version of it I've seen — and then show why it's a beautifully constructed trap.\n\n**First, the \"asymmetry\" trade is an illusion built on a stop that cannot survive the tape.** The bull says: invalidation at 147.15 is 0.2% away, so risk 0.6% with a stop at 146.50 and target 164.64 for 20:1. Let's do the arithmetic the bull skipped. ATR is 9.77 — 6.6% of price. A stop 0.87 points below spot is *one-eleventh of a single average day's range*. On 2026-11-12 the stock opened 9% below the prior close. On 2026-11-09 it gapped from 186.64 to 173.07. The bull's own card bull-1-5 admits this in its uncertainty field: \"a gap through 147.15 would blow through any stop.\" So the bull is quoting a 20:1 payoff on a stop that the dataset says will be jumped, not honored. That's not asymmetry — that's a lottery ticket priced as a trade. The honest version of the bull's risk is 1 ATR (9.77 points, ~6.6%) or 2 ATR (~19.5 points, 13%), which turns the \"20:1\" into roughly 1.8:1 at best — and that's *if* the bounce reaches the 10 EMA, which has rejected every rally since 11-12.\n\n**Second, the \"absorption\" read is contradicted by the report's own volume-weighted data.** The bull leans hard on the 11-12 bar closing 17 points off its low on 747.7M shares. But look at what happened *after* that absorption: 166.19 → 162.85 → 156.14 → 155.46 → 150.96 → 147.37. Six sessions, six lower highs, six lower lows. If that 747.7M-share buyer was real and size, they are now underwater by 11% and they are the *overhead supply*. That's exactly what VWMA at 168.96 tells us: the average volume-weighted holder is 13% underwater. The bull calls the 11-12 bar \"textbook absorption.\" The tape calls it \"textbook distribution into strength.\" The distinguishing test is simple — absorption holds the low; this didn't. It made a new low seven sessions later.\n\n**Third, the volume collapse is not a bull signal — it's the signature of a market that has stopped bidding.** The bull reads 747.7M → 236.0M as \"sellers running out of ammunition.\" But declining volume on declining price in a confirmed downtrend is what *lack of demand* looks like. Nobody is stepping up. The report is careful here and the bull is not: \"far too early to call it exhaustion.\" And note the sequencing — the lightest volume day of the entire decline (236.0M) came on the day the stock closed 1.2 points off its low, at the *bottom* of the range. That's not a buyer defending 147; that's an absence of buyers letting it drift to the low. If the bull's absorption thesis were right, the lightest-volume day would have closed *up*, not at the low.\n\n**Fourth, the MACD histogram argument is the weakest link and the bull knows it.** Four sessions of narrowing from −4.22 to −3.63 is a 0.59-point compression against a MACD/signal gap of −3.63. Do the math: at the current pace of ~0.2 points per session, the histogram needs roughly 18 more sessions to reach zero, and the MACD line needs to climb 3.63 points to cross its signal. Meanwhile the 10 EMA is falling ~4 points per day. The bull is asking you to hold a falling knife for three-plus weeks on the theory that a deceleration that has so far produced *zero* price confirmation will produce a crossover. And critically — the report is explicit: \"No bullish divergence is visible.\" Price made lower lows on 11-16/17/18/19 while RSI made lower lows too (22.72 → 22.50 → 21.10 → 20.03). The one thing that would validate the bull's mean-reversion thesis — RSI turning up into a lower price low — has not happened. Oversold in a downtrend is a *condition*, not a *catalyst*.\n\n**Fifth, and this is the structural point the bull completely sidesteps: the 50/200 relationship.** The bull mocks the death cross as lagging. Fine — but the bull ignores the more important fact in the same paragraph. The 50 SMA is falling 1.2–1.5 points per day while the 200 SMA is *flat* (203.32 vs. 202.95 on 10-20). That means the 200 SMA is not going to come down to rescue the price — it is a stationary ceiling 38% above spot. The bull's entire thesis requires price to climb 11.7% to the 10 EMA and then another 23% to the 200 SMA. There is no scenario in this dataset where the long-term trend is repaired. The bull is trading a bounce, not an investment — and he's dressing a 3-day mean-reversion scalp as a thesis.\n\n**Sixth, the news. The bull says the bear case is \"entirely unverified narrative.\" I say: read the report's own framing of *why* that matters.** The report's central structural finding is that NVDA now trades as \"a derivative of AI-capex financing, not as a chip company.\" That cuts against the bull, not for him. If NVDA's beta is to capex *credibility* rather than its own order book, then the absence of NVDA-specific fundamentals is not a vacuum that resolves bullishly — it's a vacuum in which the *financing* narrative dominates. And the financing narrative has two genuinely alarming features the bull waves away: (a) SpaceX is simultaneously NVDA's biggest customer and a $19.7B shareholder — the bull calls this \"demand conviction.\" It is the textbook late-cycle signature of vendor financing, and the report's own words are \"supports demand today and amplifies drawdowns later.\" The bull's rebuttal is literally \"that's a 2027 problem.\" That is not an argument; that is a duration mismatch. (b) \"Nvidia's leadership turmoil\" is cited by *two independent sources* in a single week. The bull's defense is that the feed doesn't specify the nature. Correct — and that's precisely why it's a de-rating risk rather than a priced one. Unspecified bad news in a name with a 40x-plus multiple is worse than specified bad news, because the market cannot bound it.\n\n**Seventh, the Anthropic argument is the bull's cleverest point and it's still backwards.** The bull says ANT's $1T compute commitment is a demand contract for NVDA. But the report's actual finding is that the ANT IPO makes the AI trade *separable* — \"capital can now rotate from compute to model layer without leaving the theme.\" That is a new, persistent source of *relative* underperformance. Before ANT, if you wanted AI exposure you bought NVDA. After ANT, you can buy the model layer directly. NVDA's scarcity premium as \"the only way to own AI\" is being dismantled in real time. And the $1T commitment is only credible if it's *funded* — the report flags ANT's disclosures as \"imperfect information,\" and the bear case explicitly names \"a possible slowdown in US data center build-out\" as the thing that breaks the chain. The bull is treating an unverified commitment as a signed purchase order.\n\n**Eighth, the data gaps.** The bull says the missing fundamentals cut against the bear. I'd say the opposite: the report is candid that FRED is unavailable, Polymarket is withheld, and the global feed carried no macro items — and then explicitly warns: \"Do not infer a benign rate/inflation backdrop from the absence of macro headlines.\" The bull is doing exactly what the report told him not to do. He's assuming the next catalyst is bullish because he can't see the next catalyst. That's not analysis; that's hope with a spreadsheet.\n\n**So here's my synthesis.** The bull has correctly identified that NVDA is oversold. He has not identified a single reason it must stop going down. Every constructive signal he cites is second-order — a histogram that needs 18 more sessions, a volume decline that is equally consistent with absent demand, an RSI that has no divergence, and a stop that the ATR says will be jumped. Against that: price below every moving average in a perfect bearish stack, a 200 SMA that is flat and 38% overhead, VWMA 13% above spot creating a 164–169 supply wall, Bollinger bands expanding to the downside with 138.06 as the objective, and a news flow that has shifted from demand questions to *financing and governance* questions. The report's own bottom line is the one I'll adopt: \"No longs without a 10 EMA reclaim.\" The bull wants to buy at 147.37 and hope. I'd rather wait for 164.64 with volume — and if that never comes, the lower band at 138.06 is the next stop. The trend is not your friend here, and the bull's 20:1 payoff is a rounding error away from being a 1:1 loss.",
+    "history": "\nBull Analyst: Let me start by conceding the obvious, because a bull case built on denial is worthless: NVDA closed at 147.37 on 2026-11-19, down ~38% from 239.24 on 2026-10-06, below the 10 EMA (164.64), below the 200 SMA (203.32), below the 50 SMA (208.88), below VWMA (168.96), with RSI at 20.03 and MACD at −17.65. That is a genuine, confirmed downtrend. I am not going to pretend otherwise. But here is the thing the technical report itself keeps conceding in its own footnotes: the *rate of change* of bearishness is decelerating, and the report's own \"constructive\" list is longer than it wants to admit. Let me build the case on that.\n\nFirst, the momentum math. The MACD histogram has narrowed four consecutive sessions: −4.22 (11-16) → −4.00 (11-17) → −3.83 (11-18) → −3.63 (11-19). That is a monotonic, four-day compression of downside momentum while price made lower lows. The report calls this \"not a buy signal\" — fine, it's not a *confirmation* signal, but it is precisely the sequence that precedes every MACD crossover. And note the report's own framing: \"the classic setup for either (a) a violent oversold bounce toward 164–169, or (b) a brief pause before the next leg down.\" It gives those two outcomes equal billing. I'd argue the asymmetry is far better than 50/50 for a long here, because of the second point.\n\nSecond, the volume structure. Look at the sequence the report gives us: 747.7M (11-12) → 365.8M → 333.8M → 407.0M → 349.8M → 236.0M (11-19). That is a 68% collapse in volume from the capitulation peak. The report calls it \"mild positive... far too early to call it exhaustion.\" But combine it with the 11-12 bar: open 151.01, low 148.80, close 166.19 — a wide-range bar that closed 17 points off its low on 747.7M shares. That is textbook absorption. Someone with size bought that panic. And the 11-19 session printed a low of 147.15 and closed at 147.37 — a 1.2-point close off the low on the *lightest* volume in the entire decline. Sellers are running out of ammunition at exactly the level where the big buyer showed up.\n\nThird, the RSI. 20.03 is the lowest reading in the 30-day window. The report warns that \"in a strong downtrend, RSI can stay pinned below 30.\" True — but that's a warning about *shorting* into it, not about owning it. The report itself says \"mean-reversion risk for shorts is elevated.\" So the bear's own document is telling you the tactical risk/reward has flipped. At 147.37 with ATR at 9.77, a move back to the 10 EMA at 164.64 is +11.7%; a move to the VWMA at 168.96 is +14.7%. Downside to the lower band at 138.06 is −6.3%. That is roughly a 2:1 reward-to-risk on a *mean-reversion* trade alone, before we even talk about the business.\n\nFourth — and this is where I think the bear case is structurally weakest — the news report's bear pillars are almost entirely unverified narrative, and the report says so itself. \"Nvidia's leadership turmoil\" is cited twice but the feed \"does not specify the nature of the turmoil.\" The $2.5B China diversion story concerns a *former* executive, a *personal* connection, and is \"explicitly unverified.\" The \"data center build-out slowdown\" is described as \"unquantified.\" Tiernan Ray's \"NVDA won't lead in 5 years\" is, by the report's own admission, \"a terminal-value argument, not a 2026 earnings argument.\" So the bear case is: an unverified governance rumor, an unverified short-seller allegation about a former employee, an unquantified capex claim, and a five-year-out multiple argument. Not one of those is a demand datapoint. Not one is a number from NVDA's own P&L. The report is explicit: \"No earnings, guidance, or supply-chain data points in the window.\" The bears are trading headlines against a company whose actual order book nobody in this dataset has looked at.\n\nFifth, the SpaceX item. The report frames SpaceX as \"biggest customer AND $19.7B shareholder\" and calls it \"a fragility, not a strength\" — circular financing. I'd push back hard. A customer that takes a $19.7B equity stake in its supplier is not a red flag, it's the strongest possible signal of demand conviction: SpaceX is putting its own balance sheet behind the belief that NVDA's roadmap is the only path to its compute needs. Yes, it cuts both ways in a drawdown. But the report's own conclusion — \"supports demand today\" — is the part that matters for the next four quarters, and the \"amplifies drawdowns later\" part is a 2027 problem, not a 147.37 problem.\n\nSixth, the Anthropic rotation fear. The report says capital can now \"rotate from compute to model layer without leaving the theme.\" I'd counter that this is backwards. Anthropic's ~$1T compute commitment is not a substitute for NVDA — it is a *demand contract* for NVDA. Every dollar of that commitment has to be converted into GPUs. The report itself says the bear case \"runs through NVDA: a ~$1T compute commitment is only credible if NVDA can supply the GPUs.\" Exactly. The ANT IPO doesn't divert demand from NVDA; it *monetizes and publicizes* the demand. If ANT prices well, that's a capex-credibility event that transmits *positively* to NVDA — the same beta the report warns about, working in the other direction.\n\nSeventh, the technical levels are actually a gift for a disciplined long. The report gives us a clean, objective invalidation: 147.15. That's 0.2% below spot. You can own NVDA here with a stop at 146.50 and risk ~0.6%, against a first target at 150.96 (+2.4%), a second at 155.46–156.14 (+5.5–6.0%), and a third at 164.64 (+11.7%). That is a 4:1 to 20:1 payoff structure depending on how far the bounce runs. The bear's alternative — shorting at 147.37 with RSI at 20 and the histogram narrowing — requires you to be right about a *continuation* into 138 while the report itself flags \"mean-reversion risk for shorts is elevated.\" The bear is being asked to sell the most oversold print in the dataset with decelerating momentum and collapsing volume. That's the worse trade.\n\nEighth, the death cross. The report corrects itself mid-sentence: the 50 SMA is *still above* the 200 SMA (208.88 vs. 203.32). The \"imminent death cross\" is a lagging indicator built from 50 and 200 days of data that mostly predates this decline. By the time it prints, the move is 38% old. Death crosses in high-beta semis have a long history of marking *lows*, not highs, precisely because they're so widely watched. I'm not going to lean on that as a primary argument, but it certainly isn't the bearish confirmation the report treats it as.\n\nNinth, the data gaps cut against the bear, not for it. The report is candid: FRED is unavailable, Polymarket is withheld, the global feed carried no macro items, and there's no fundamentals report at all. The bear case is being built on a *narrative vacuum*. When the fundamental anchor is missing, the market prices narrative — and narrative-driven drawdowns of 38% in six weeks mean-revert violently once any hard datapoint lands. The next NVDA print, or the next hyperscaler capex guide, is a binary catalyst that the current price is not discounting at all.\n\nSo here's my synthesis. I'm not arguing NVDA is in an uptrend — it isn't. I'm arguing that at 147.37, with RSI at 20, four days of MACD histogram compression, volume down 68% from capitulation, a 17-point-off-the-low absorption bar on 747.7M shares, a defined invalidation 0.2% away, and a bear case composed entirely of unverified headlines against a company with no reported fundamental deterioration in this dataset — the *expected value* is long. The bear is fighting the last 38% while the tape is telling you the sellers are done. I'll take that trade, sized properly, with a stop at 146.50 and a first target at 164.64.\nBear Analyst: Let me take the bull's case seriously, because it's the best version of it I've seen — and then show why it's a beautifully constructed trap.\n\n**First, the \"asymmetry\" trade is an illusion built on a stop that cannot survive the tape.** The bull says: invalidation at 147.15 is 0.2% away, so risk 0.6% with a stop at 146.50 and target 164.64 for 20:1. Let's do the arithmetic the bull skipped. ATR is 9.77 — 6.6% of price. A stop 0.87 points below spot is *one-eleventh of a single average day's range*. On 2026-11-12 the stock opened 9% below the prior close. On 2026-11-09 it gapped from 186.64 to 173.07. The bull's own card bull-1-5 admits this in its uncertainty field: \"a gap through 147.15 would blow through any stop.\" So the bull is quoting a 20:1 payoff on a stop that the dataset says will be jumped, not honored. That's not asymmetry — that's a lottery ticket priced as a trade. The honest version of the bull's risk is 1 ATR (9.77 points, ~6.6%) or 2 ATR (~19.5 points, 13%), which turns the \"20:1\" into roughly 1.8:1 at best — and that's *if* the bounce reaches the 10 EMA, which has rejected every rally since 11-12.\n\n**Second, the \"absorption\" read is contradicted by the report's own volume-weighted data.** The bull leans hard on the 11-12 bar closing 17 points off its low on 747.7M shares. But look at what happened *after* that absorption: 166.19 → 162.85 → 156.14 → 155.46 → 150.96 → 147.37. Six sessions, six lower highs, six lower lows. If that 747.7M-share buyer was real and size, they are now underwater by 11% and they are the *overhead supply*. That's exactly what VWMA at 168.96 tells us: the average volume-weighted holder is 13% underwater. The bull calls the 11-12 bar \"textbook absorption.\" The tape calls it \"textbook distribution into strength.\" The distinguishing test is simple — absorption holds the low; this didn't. It made a new low seven sessions later.\n\n**Third, the volume collapse is not a bull signal — it's the signature of a market that has stopped bidding.** The bull reads 747.7M → 236.0M as \"sellers running out of ammunition.\" But declining volume on declining price in a confirmed downtrend is what *lack of demand* looks like. Nobody is stepping up. The report is careful here and the bull is not: \"far too early to call it exhaustion.\" And note the sequencing — the lightest volume day of the entire decline (236.0M) came on the day the stock closed 1.2 points off its low, at the *bottom* of the range. That's not a buyer defending 147; that's an absence of buyers letting it drift to the low. If the bull's absorption thesis were right, the lightest-volume day would have closed *up*, not at the low.\n\n**Fourth, the MACD histogram argument is the weakest link and the bull knows it.** Four sessions of narrowing from −4.22 to −3.63 is a 0.59-point compression against a MACD/signal gap of −3.63. Do the math: at the current pace of ~0.2 points per session, the histogram needs roughly 18 more sessions to reach zero, and the MACD line needs to climb 3.63 points to cross its signal. Meanwhile the 10 EMA is falling ~4 points per day. The bull is asking you to hold a falling knife for three-plus weeks on the theory that a deceleration that has so far produced *zero* price confirmation will produce a crossover. And critically — the report is explicit: \"No bullish divergence is visible.\" Price made lower lows on 11-16/17/18/19 while RSI made lower lows too (22.72 → 22.50 → 21.10 → 20.03). The one thing that would validate the bull's mean-reversion thesis — RSI turning up into a lower price low — has not happened. Oversold in a downtrend is a *condition*, not a *catalyst*.\n\n**Fifth, and this is the structural point the bull completely sidesteps: the 50/200 relationship.** The bull mocks the death cross as lagging. Fine — but the bull ignores the more important fact in the same paragraph. The 50 SMA is falling 1.2–1.5 points per day while the 200 SMA is *flat* (203.32 vs. 202.95 on 10-20). That means the 200 SMA is not going to come down to rescue the price — it is a stationary ceiling 38% above spot. The bull's entire thesis requires price to climb 11.7% to the 10 EMA and then another 23% to the 200 SMA. There is no scenario in this dataset where the long-term trend is repaired. The bull is trading a bounce, not an investment — and he's dressing a 3-day mean-reversion scalp as a thesis.\n\n**Sixth, the news. The bull says the bear case is \"entirely unverified narrative.\" I say: read the report's own framing of *why* that matters.** The report's central structural finding is that NVDA now trades as \"a derivative of AI-capex financing, not as a chip company.\" That cuts against the bull, not for him. If NVDA's beta is to capex *credibility* rather than its own order book, then the absence of NVDA-specific fundamentals is not a vacuum that resolves bullishly — it's a vacuum in which the *financing* narrative dominates. And the financing narrative has two genuinely alarming features the bull waves away: (a) SpaceX is simultaneously NVDA's biggest customer and a $19.7B shareholder — the bull calls this \"demand conviction.\" It is the textbook late-cycle signature of vendor financing, and the report's own words are \"supports demand today and amplifies drawdowns later.\" The bull's rebuttal is literally \"that's a 2027 problem.\" That is not an argument; that is a duration mismatch. (b) \"Nvidia's leadership turmoil\" is cited by *two independent sources* in a single week. The bull's defense is that the feed doesn't specify the nature. Correct — and that's precisely why it's a de-rating risk rather than a priced one. Unspecified bad news in a name with a 40x-plus multiple is worse than specified bad news, because the market cannot bound it.\n\n**Seventh, the Anthropic argument is the bull's cleverest point and it's still backwards.** The bull says ANT's $1T compute commitment is a demand contract for NVDA. But the report's actual finding is that the ANT IPO makes the AI trade *separable* — \"capital can now rotate from compute to model layer without leaving the theme.\" That is a new, persistent source of *relative* underperformance. Before ANT, if you wanted AI exposure you bought NVDA. After ANT, you can buy the model layer directly. NVDA's scarcity premium as \"the only way to own AI\" is being dismantled in real time. And the $1T commitment is only credible if it's *funded* — the report flags ANT's disclosures as \"imperfect information,\" and the bear case explicitly names \"a possible slowdown in US data center build-out\" as the thing that breaks the chain. The bull is treating an unverified commitment as a signed purchase order.\n\n**Eighth, the data gaps.** The bull says the missing fundamentals cut against the bear. I'd say the opposite: the report is candid that FRED is unavailable, Polymarket is withheld, and the global feed carried no macro items — and then explicitly warns: \"Do not infer a benign rate/inflation backdrop from the absence of macro headlines.\" The bull is doing exactly what the report told him not to do. He's assuming the next catalyst is bullish because he can't see the next catalyst. That's not analysis; that's hope with a spreadsheet.\n\n**So here's my synthesis.** The bull has correctly identified that NVDA is oversold. He has not identified a single reason it must stop going down. Every constructive signal he cites is second-order — a histogram that needs 18 more sessions, a volume decline that is equally consistent with absent demand, an RSI that has no divergence, and a stop that the ATR says will be jumped. Against that: price below every moving average in a perfect bearish stack, a 200 SMA that is flat and 38% overhead, VWMA 13% above spot creating a 164–169 supply wall, Bollinger bands expanding to the downside with 138.06 as the objective, and a news flow that has shifted from demand questions to *financing and governance* questions. The report's own bottom line is the one I'll adopt: \"No longs without a 10 EMA reclaim.\" The bull wants to buy at 147.37 and hope. I'd rather wait for 164.64 with volume — and if that never comes, the lower band at 138.06 is the next stop. The trend is not your friend here, and the bull's 20:1 payoff is a rounding error away from being a 1:1 loss.",
+    "current_response": "**Recommendation**: Underweight\n\n**Rationale**: The bear side won this debate on the merits, and it won on the two cards that actually decide trades: risk definition and trend structure.\n\nThe bull's strongest material was bull-1-1 (MACD histogram compression) and bull-1-2 (volume collapse as absorption). Both are real observations, but both were shown to be second-order and unconfirmed. bear-1-4 dismantled bull-1-1 cleanly: a 0.59-point compression over four sessions against a −3.63 MACD/signal gap needs roughly 18 more sessions at the current pace, while the 10 EMA is falling ~4 points/day — and critically, \"no bullish divergence is visible,\" with RSI making lower lows (22.72 → 22.50 → 21.10 → 20.03) alongside lower price lows. That is the one confirmation that would validate a mean-reversion long, and it is absent. bear-1-3 then inverted bull-1-2 decisively: the lightest-volume day of the entire decline (236.0M) closed 1.2 points off its LOW, not up. Declining volume on declining price in a confirmed downtrend is absent demand, not exhausted supply — and the report itself says it is \"far too early to call it exhaustion.\"\n\nThe decisive card was bear-1-1, which destroyed the bull's entire payoff math. bull-1-5's \"2:1 to 20:1 asymmetry\" rests on a stop 0.87 points below spot — one-eleventh of a single ATR (9.77, 6.6% of price) — in a tape that gapped ~9% on 11-12 and 186.64→173.07 on 11-09. The bull's own uncertainty field concedes a gap through 147.15 blows through the stop. Honest risk is 1–2 ATR, which collapses the payoff to roughly 1.8:1 at best, and only if the bounce reaches a 10 EMA that has rejected every rally since 11-12. bear-1-2 reinforced this: the 11-12 \"absorption\" bar was distribution — six consecutive lower highs/lows followed it (166.19 → 162.85 → 156.14 → 155.46 → 150.96 → 147.37), and VWMA at 168.96 means the average holder is ~13% underwater and IS the overhead supply. Absorption holds the low; this made a new low seven sessions later.\n\nbear-1-5 supplied the structural ceiling: 200 SMA flat at 203.32 (vs. 202.95 on 10-20) while the 50 SMA falls ~1.3 pts/day — a stationary wall 38% overhead, with a perfect bearish stack (price < 10 EMA < 200 SMA < 50 SMA). Nothing in this dataset repairs the long-term trend.\n\nOn the news, the bull's \"unverified narrative\" point (bull-1-3) is fair but cuts both ways, and the bear used it better: unspecified leadership turmoil cited by two independent sources in a week is a de-rating risk precisely because the market cannot bound it, and the SpaceX customer-plus-$19.7B-shareholder structure is textbook vendor financing — \"supports demand today, amplifies drawdowns later.\" bull-1-4's Anthropic argument is clever but the report's actual finding is that ANT makes the AI trade separable, dismantling NVDA's scarcity premium as \"the only way to own AI.\"\n\nWhere the bull is right: NVDA is deeply oversold (RSI 20.03), the report flags elevated mean-reversion risk for shorts, and the bear case contains no hard fundamental datapoint. That is why this is Underweight, not Sell — I am not recommending shorting into RSI 20 with a narrowing histogram. But the bull identified no reason the decline must stop, and every constructive signal he cited is unconfirmed. The report's own bottom line governs: no longs without a 10 EMA reclaim.\n\n**Strategic Actions**:\n- Reduce NVDA exposure to roughly half of a standard allocation (i.e., ~50% of benchmark weight), executed in tranches rather than all at once given the oversold condition — sell into any strength toward 150.96 rather than dumping at the low.\n- Do not initiate or add to longs at current levels. The bull's 147.37 entry is a lottery ticket on a stop the ATR says will be jumped; there is no confirmed reversal signal (no RSI divergence, no MACD crossover, no 10 EMA reclaim).\n- Re-entry trigger: a daily close above the 10 EMA (currently 164.64) on above-average volume, held for two sessions. That is the report's own gate and the level at which the trend structure begins to repair. A secondary, more aggressive trigger is two consecutive closes above 150.96 on expanding volume — that would begin to validate the absorption read and justify restoring to benchmark weight.\n- Downside reference: if 147.15 breaks on expanding volume, the next objective is the lower Bollinger band at 138.06. Do not average down into that; the remaining half position should be reviewed at that level.\n- Risk note for the residual position: ATR is 9.77 (6.6% of price) and the tape has gapped ~9% twice in two weeks. Size the residual position assuming gap risk, not intraday stop risk — a stop near 146.50 is inside one day's noise and should not be relied on as protection.\n- Flag explicitly: this dataset contains no earnings, guidance, supply-chain, or macro data (FRED unavailable, Polymarket withheld, no fundamentals report). The next NVDA print or hyperscaler capex guide is an unmodeled binary catalyst in either direction — keep position sizing modest enough to absorb a gap through it.",
+    "bull_idea_cards": [
+      {
+        "id": "bull-1-1",
+        "claim": "Four consecutive sessions of MACD histogram compression (−4.22 → −4.00 → −3.83 → −3.63) while price made lower lows is the canonical pre-crossover sequence, not a continuation signal.",
+        "evidence": "Technical report §4: histogram peaked in negativity at −4.28 (2026-11-10) and has narrowed steadily to −3.63 (11-19), improving four straight sessions. Report itself calls this 'early deceleration of downside momentum — the first tentative sign of stabilization.'",
+        "stance": "Bullish",
+        "uncertainty": "Histogram compression can stall and re-expand without a crossover; the MACD/signal gap is still −3.63, many sessions from a turn. If price breaks 147.15 on rising volume, the compression was a pause, not a bottom.",
+        "osborn_rule": "defer_judgement",
+        "builds_on": []
+      },
+      {
+        "id": "bull-1-2",
+        "claim": "Volume collapsing 68% from the capitulation peak while price holds the 147–150 zone is absorption, not exhaustion-by-drift — sellers are running out of supply at the level where the big buyer appeared.",
+        "evidence": "Report §2: volume sequence 747.7M (11-12) → 365.8M → 333.8M → 407.0M → 349.8M → 236.0M (11-19). The 11-12 bar opened 151.01, lowed 148.80, closed 166.19 — 17 points off the low on the largest volume in the dataset. 11-19 lowed 147.15 and closed 147.37 on the lightest volume of the decline.",
+        "stance": "Bullish",
+        "uncertainty": "Low-volume drift can precede a fresh gap-down leg rather than a bottom; the report explicitly says it is 'far too early to call it exhaustion.' A close below 147.15 on expanding volume invalidates the absorption read.",
+        "osborn_rule": "pursue_quantity",
+        "builds_on": []
+      },
+      {
+        "id": "bull-1-3",
+        "claim": "The bear case in this dataset is entirely unverified narrative — no demand datapoint, no earnings, no guidance — so a 38% drawdown is pricing rumor, not fundamentals, and mean-reverts hard on any hard data.",
+        "evidence": "News report: 'leadership turmoil' cited twice but 'the feed does not specify the nature'; $2.5B China diversion concerns a former executive and is 'explicitly unverified'; DC build-out slowdown is 'unquantified'; Tiernan Ray's call is 'a terminal-value argument, not a 2026 earnings argument.' Report states: 'No earnings, guidance, or supply-chain data points in the window.'",
+        "stance": "Bullish",
+        "uncertainty": "If the leadership turmoil is a real C-suite departure or the export-control story escalates to a company-level finding, the narrative becomes a fundamental de-rating catalyst and the drawdown is justified rather than overdone.",
+        "osborn_rule": "build_on_others",
+        "builds_on": []
+      },
+      {
+        "id": "bull-1-4",
+        "claim": "The Anthropic IPO is a demand contract for NVDA, not a rotation away from it — the ~$1T compute commitment must be converted into GPUs, so ANT capex credibility transmits positively to NVDA.",
+        "evidence": "News report §1: the bear case 'runs through NVDA: a ~$1T compute commitment is only credible if NVDA can supply the GPUs.' Report also notes the market is bifurcating into model layer (ANT) vs. compute layer (NVDA) — but the model layer's spend is the compute layer's revenue.",
+        "stance": "Bullish",
+        "uncertainty": "If ANT prices poorly or revises its compute commitment downward post-IPO, the same beta works against NVDA and the 'capex credibility' argument inverts. Report flags ANT disclosures as 'imperfect information.'",
+        "osborn_rule": "combine_and_improve",
+        "builds_on": []
+      },
+      {
+        "id": "bull-1-5",
+        "claim": "The trade structure is asymmetric: invalidation at 147.15 is 0.2% away, while the 10 EMA at 164.64 is +11.7% and VWMA at 168.96 is +14.7% — roughly 2:1 to 20:1 payoff depending on target, versus the bear's need to short the most oversold p…",
+        "evidence": "Report §8 levels: support 147.15 (11-19 low), resistance 150.96 / 155.46–156.14 / 164.64 (10 EMA) / 168.96 (VWMA). Report §7: 'mean-reversion risk for shorts is elevated' with RSI at 20.03. ATR 9.77 allows a ~0.6% stop at 146.50.",
+        "stance": "Bullish",
+        "uncertainty": "A gap through 147.15 (as on 11-09 and 11-12, which opened ~9% below prior close) would blow through any stop; ATR of 9.77 (6.6% of price) means a 0.6% stop is inside one day's noise and will be hit on volatility alone.",
+        "osborn_rule": "combine_and_improve",
+        "builds_on": [
+          "bull-1-1",
+          "bull-1-2"
+        ]
+      }
+    ],
+    "bear_idea_cards": [
+      {
+        "id": "bear-1-1",
+        "claim": "The bull's 20:1 'asymmetry' is an artifact of a stop 0.87 points below spot — one-eleventh of a single ATR — in a tape that has gapped 9% twice in two weeks. Honest risk is 1–2 ATR, which collapses the payoff to ~1.8:1.",
+        "evidence": "Report §5: ATR 9.77 (6.6% of price), doubled from 5.72 on 10-29. §2: 11-09 gapped 186.64→173.07 open; 11-12 opened 151.01 vs prior close ~166, ~9% gap. Bull's own card bull-1-5 uncertainty concedes 'a gap through 147.15 would blow through any stop.'",
+        "stance": "Bearish",
+        "uncertainty": "If NVDA opens flat and grinds higher without a gap, a tight stop survives and the bull's payoff math holds. Fails if realized volatility collapses back toward the October regime (ATR ~5.7).",
+        "osborn_rule": "build_on_others",
+        "builds_on": [
+          "bull-1-5"
+        ]
+      },
+      {
+        "id": "bear-1-2",
+        "claim": "The 11-12 'absorption' bar was distribution, not accumulation: the buyer it implies is now 11% underwater and IS the overhead supply. Absorption holds the low; this made a new low seven sessions later.",
+        "evidence": "Report §2: after the 11-12 close of 166.19 on 747.7M shares, price printed six consecutive lower highs/lows: 162.85 → 156.14 → 155.46 → 150.96 → 147.37. §6: VWMA 168.96, price 13% below — 'average dollar-weighted holder is underwater by ~13%, creating persistent overhead supply.'",
+        "stance": "Bearish",
+        "uncertainty": "If price reclaims 155.46–156.14 on expanding volume, the 11-12 buyer is proven to have been accumulating and the distribution read is wrong.",
+        "osborn_rule": "build_on_others",
+        "builds_on": [
+          "bull-1-2"
+        ]
+      },
+      {
+        "id": "bear-1-3",
+        "claim": "The volume collapse is absent demand, not exhausted supply — proven by the fact that the lightest-volume day of the decline (236.0M) closed 1.2 points off its LOW, not up.",
+        "evidence": "Report §2: volume 747.7M → 365.8M → 333.8M → 407.0M → 349.8M → 236.0M; 11-19 low 147.15, close 147.37. Report explicitly: 'far too early to call it exhaustion.' §7 lists declining volume only as 'minor' constructive evidence.",
+        "stance": "Bearish",
+        "uncertainty": "A low-volume retest that then reverses up on rising volume would convert this into a genuine seller-exhaustion bottom. Fails on two consecutive closes above 150.96 with above-average volume.",
+        "osborn_rule": "combine_and_improve",
+        "builds_on": [
+          "bull-1-2",
+          "bull-1-1"
+        ]
+      },
+      {
+        "id": "bear-1-4",
+        "claim": "The MACD histogram 'turn' needs ~18 more sessions to reach zero at the current 0.2 pt/session pace while the 10 EMA falls ~4 pts/day — the bull is asking holders to wait three weeks for a signal with zero price confirmation and no RSI dive…",
+        "evidence": "Report §4: histogram −4.22 → −4.00 → −3.83 → −3.63 (0.59 pts over 4 sessions); MACD −17.65 vs signal −14.02, gap −3.63. 'No bullish divergence is visible' — RSI made lower lows 22.72 → 22.50 → 21.10 → 20.03 alongside lower price lows. 10 EMA falling ~4 pts/day (168.47 → 164.64).",
+        "stance": "Bearish",
+        "uncertainty": "A sharp single-session rally can compress the histogram far faster than the linear pace implies, producing a crossover in days rather than weeks. Fails if MACD crosses its signal before price breaks 147.15.",
+        "osborn_rule": "defer_judgement",
+        "builds_on": [
+          "bull-1-1"
+        ]
+      },
+      {
+        "id": "bear-1-5",
+        "claim": "The 200 SMA is FLAT at 203.32 while the 50 SMA falls ~1.3 pts/day — a stationary ceiling 38% overhead. No path in this dataset repairs the long-term trend; the bull is dressing a 3-day scalp as an investment thesis.",
+        "evidence": "Report §3: 200 SMA 203.32 vs 202.95 on 10-20 (essentially flat); 50 SMA 208.88 falling 1.2–1.5 pts/day; price 27.5% below the 200 SMA and 29.4% below the 50 SMA. Perfect bearish stack: price < 10 EMA < 200 SMA < 50 SMA. §8: 203.32 = 'strategic regime change' level.",
+        "stance": "Bearish",
+        "uncertainty": "A sustained multi-month recovery could lift price toward the 200 SMA, but nothing in the visible dataset supports that path. Fails if price closes above the 10 EMA and holds it for two weeks with rising volume.",
+        "osborn_rule": "pursue_quantity",
+        "builds_on": []
+      }
+    ],
+    "debate_rounds": [
+      {
+        "round": 1,
+        "bull_cards": [
+          {
+            "id": "bull-1-1",
+            "claim": "Four consecutive sessions of MACD histogram compression (−4.22 → −4.00 → −3.83 → −3.63) while price made lower lows is the canonical pre-crossover sequence, not a continuation signal.",
+            "evidence": "Technical report §4: histogram peaked in negativity at −4.28 (2026-11-10) and has narrowed steadily to −3.63 (11-19), improving four straight sessions. Report itself calls this 'early deceleration of downside momentum — the first tentative sign of stabilization.'",
+            "stance": "Bullish",
+            "uncertainty": "Histogram compression can stall and re-expand without a crossover; the MACD/signal gap is still −3.63, many sessions from a turn. If price breaks 147.15 on rising volume, the compression was a pause, not a bottom.",
+            "osborn_rule": "defer_judgement",
+            "builds_on": []
+          },
+          {
+            "id": "bull-1-2",
+            "claim": "Volume collapsing 68% from the capitulation peak while price holds the 147–150 zone is absorption, not exhaustion-by-drift — sellers are running out of supply at the level where the big buyer appeared.",
+            "evidence": "Report §2: volume sequence 747.7M (11-12) → 365.8M → 333.8M → 407.0M → 349.8M → 236.0M (11-19). The 11-12 bar opened 151.01, lowed 148.80, closed 166.19 — 17 points off the low on the largest volume in the dataset. 11-19 lowed 147.15 and closed 147.37 on the lightest volume of the decline.",
+            "stance": "Bullish",
+            "uncertainty": "Low-volume drift can precede a fresh gap-down leg rather than a bottom; the report explicitly says it is 'far too early to call it exhaustion.' A close below 147.15 on expanding volume invalidates the absorption read.",
+            "osborn_rule": "pursue_quantity",
+            "builds_on": []
+          },
+          {
+            "id": "bull-1-3",
+            "claim": "The bear case in this dataset is entirely unverified narrative — no demand datapoint, no earnings, no guidance — so a 38% drawdown is pricing rumor, not fundamentals, and mean-reverts hard on any hard data.",
+            "evidence": "News report: 'leadership turmoil' cited twice but 'the feed does not specify the nature'; $2.5B China diversion concerns a former executive and is 'explicitly unverified'; DC build-out slowdown is 'unquantified'; Tiernan Ray's call is 'a terminal-value argument, not a 2026 earnings argument.' Report states: 'No earnings, guidance, or supply-chain data points in the window.'",
+            "stance": "Bullish",
+            "uncertainty": "If the leadership turmoil is a real C-suite departure or the export-control story escalates to a company-level finding, the narrative becomes a fundamental de-rating catalyst and the drawdown is justified rather than overdone.",
+            "osborn_rule": "build_on_others",
+            "builds_on": []
+          },
+          {
+            "id": "bull-1-4",
+            "claim": "The Anthropic IPO is a demand contract for NVDA, not a rotation away from it — the ~$1T compute commitment must be converted into GPUs, so ANT capex credibility transmits positively to NVDA.",
+            "evidence": "News report §1: the bear case 'runs through NVDA: a ~$1T compute commitment is only credible if NVDA can supply the GPUs.' Report also notes the market is bifurcating into model layer (ANT) vs. compute layer (NVDA) — but the model layer's spend is the compute layer's revenue.",
+            "stance": "Bullish",
+            "uncertainty": "If ANT prices poorly or revises its compute commitment downward post-IPO, the same beta works against NVDA and the 'capex credibility' argument inverts. Report flags ANT disclosures as 'imperfect information.'",
+            "osborn_rule": "combine_and_improve",
+            "builds_on": []
+          },
+          {
+            "id": "bull-1-5",
+            "claim": "The trade structure is asymmetric: invalidation at 147.15 is 0.2% away, while the 10 EMA at 164.64 is +11.7% and VWMA at 168.96 is +14.7% — roughly 2:1 to 20:1 payoff depending on target, versus the bear's need to short the most oversold p…",
+            "evidence": "Report §8 levels: support 147.15 (11-19 low), resistance 150.96 / 155.46–156.14 / 164.64 (10 EMA) / 168.96 (VWMA). Report §7: 'mean-reversion risk for shorts is elevated' with RSI at 20.03. ATR 9.77 allows a ~0.6% stop at 146.50.",
+            "stance": "Bullish",
+            "uncertainty": "A gap through 147.15 (as on 11-09 and 11-12, which opened ~9% below prior close) would blow through any stop; ATR of 9.77 (6.6% of price) means a 0.6% stop is inside one day's noise and will be hit on volatility alone.",
+            "osborn_rule": "combine_and_improve",
+            "builds_on": [
+              "bull-1-1",
+              "bull-1-2"
+            ]
+          }
+        ],
+        "bear_cards": [
+          {
+            "id": "bear-1-1",
+            "claim": "The bull's 20:1 'asymmetry' is an artifact of a stop 0.87 points below spot — one-eleventh of a single ATR — in a tape that has gapped 9% twice in two weeks. Honest risk is 1–2 ATR, which collapses the payoff to ~1.8:1.",
+            "evidence": "Report §5: ATR 9.77 (6.6% of price), doubled from 5.72 on 10-29. §2: 11-09 gapped 186.64→173.07 open; 11-12 opened 151.01 vs prior close ~166, ~9% gap. Bull's own card bull-1-5 uncertainty concedes 'a gap through 147.15 would blow through any stop.'",
+            "stance": "Bearish",
+            "uncertainty": "If NVDA opens flat and grinds higher without a gap, a tight stop survives and the bull's payoff math holds. Fails if realized volatility collapses back toward the October regime (ATR ~5.7).",
+            "osborn_rule": "build_on_others",
+            "builds_on": [
+              "bull-1-5"
+            ]
+          },
+          {
+            "id": "bear-1-2",
+            "claim": "The 11-12 'absorption' bar was distribution, not accumulation: the buyer it implies is now 11% underwater and IS the overhead supply. Absorption holds the low; this made a new low seven sessions later.",
+            "evidence": "Report §2: after the 11-12 close of 166.19 on 747.7M shares, price printed six consecutive lower highs/lows: 162.85 → 156.14 → 155.46 → 150.96 → 147.37. §6: VWMA 168.96, price 13% below — 'average dollar-weighted holder is underwater by ~13%, creating persistent overhead supply.'",
+            "stance": "Bearish",
+            "uncertainty": "If price reclaims 155.46–156.14 on expanding volume, the 11-12 buyer is proven to have been accumulating and the distribution read is wrong.",
+            "osborn_rule": "build_on_others",
+            "builds_on": [
+              "bull-1-2"
+            ]
+          },
+          {
+            "id": "bear-1-3",
+            "claim": "The volume collapse is absent demand, not exhausted supply — proven by the fact that the lightest-volume day of the decline (236.0M) closed 1.2 points off its LOW, not up.",
+            "evidence": "Report §2: volume 747.7M → 365.8M → 333.8M → 407.0M → 349.8M → 236.0M; 11-19 low 147.15, close 147.37. Report explicitly: 'far too early to call it exhaustion.' §7 lists declining volume only as 'minor' constructive evidence.",
+            "stance": "Bearish",
+            "uncertainty": "A low-volume retest that then reverses up on rising volume would convert this into a genuine seller-exhaustion bottom. Fails on two consecutive closes above 150.96 with above-average volume.",
+            "osborn_rule": "combine_and_improve",
+            "builds_on": [
+              "bull-1-2",
+              "bull-1-1"
+            ]
+          },
+          {
+            "id": "bear-1-4",
+            "claim": "The MACD histogram 'turn' needs ~18 more sessions to reach zero at the current 0.2 pt/session pace while the 10 EMA falls ~4 pts/day — the bull is asking holders to wait three weeks for a signal with zero price confirmation and no RSI dive…",
+            "evidence": "Report §4: histogram −4.22 → −4.00 → −3.83 → −3.63 (0.59 pts over 4 sessions); MACD −17.65 vs signal −14.02, gap −3.63. 'No bullish divergence is visible' — RSI made lower lows 22.72 → 22.50 → 21.10 → 20.03 alongside lower price lows. 10 EMA falling ~4 pts/day (168.47 → 164.64).",
+            "stance": "Bearish",
+            "uncertainty": "A sharp single-session rally can compress the histogram far faster than the linear pace implies, producing a crossover in days rather than weeks. Fails if MACD crosses its signal before price breaks 147.15.",
+            "osborn_rule": "defer_judgement",
+            "builds_on": [
+              "bull-1-1"
+            ]
+          },
+          {
+            "id": "bear-1-5",
+            "claim": "The 200 SMA is FLAT at 203.32 while the 50 SMA falls ~1.3 pts/day — a stationary ceiling 38% overhead. No path in this dataset repairs the long-term trend; the bull is dressing a 3-day scalp as an investment thesis.",
+            "evidence": "Report §3: 200 SMA 203.32 vs 202.95 on 10-20 (essentially flat); 50 SMA 208.88 falling 1.2–1.5 pts/day; price 27.5% below the 200 SMA and 29.4% below the 50 SMA. Perfect bearish stack: price < 10 EMA < 200 SMA < 50 SMA. §8: 203.32 = 'strategic regime change' level.",
+            "stance": "Bearish",
+            "uncertainty": "A sustained multi-month recovery could lift price toward the 200 SMA, but nothing in the visible dataset supports that path. Fails if price closes above the 10 EMA and holds it for two weeks with rising volume.",
+            "osborn_rule": "pursue_quantity",
+            "builds_on": []
+          }
+        ]
+      }
+    ],
+    "convergence_rounds": null,
+    "termination_reason": "max_rounds",
+    "debate_record": {
+      "schema_version": 1,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules": [
+        "defer_judgement",
+        "pursue_quantity",
+        "build_on_others",
+        "combine_and_improve"
+      ],
+      "osborn_rules_used": [
+        "defer_judgement",
+        "pursue_quantity",
+        "build_on_others",
+        "combine_and_improve"
+      ],
+      "bull_idea_cards": [
+        {
+          "id": "bull-1-1",
+          "claim": "Four consecutive sessions of MACD histogram compression (−4.22 → −4.00 → −3.83 → −3.63) while price made lower lows is the canonical pre-crossover sequence, not a continuation signal.",
+          "evidence": "Technical report §4: histogram peaked in negativity at −4.28 (2026-11-10) and has narrowed steadily to −3.63 (11-19), improving four straight sessions. Report itself calls this 'early deceleration of downside momentum — the first tentative sign of stabilization.'",
+          "stance": "Bullish",
+          "uncertainty": "Histogram compression can stall and re-expand without a crossover; the MACD/signal gap is still −3.63, many sessions from a turn. If price breaks 147.15 on rising volume, the compression was a pause, not a bottom.",
+          "osborn_rule": "defer_judgement",
+          "builds_on": []
+        },
+        {
+          "id": "bull-1-2",
+          "claim": "Volume collapsing 68% from the capitulation peak while price holds the 147–150 zone is absorption, not exhaustion-by-drift — sellers are running out of supply at the level where the big buyer appeared.",
+          "evidence": "Report §2: volume sequence 747.7M (11-12) → 365.8M → 333.8M → 407.0M → 349.8M → 236.0M (11-19). The 11-12 bar opened 151.01, lowed 148.80, closed 166.19 — 17 points off the low on the largest volume in the dataset. 11-19 lowed 147.15 and closed 147.37 on the lightest volume of the decline.",
+          "stance": "Bullish",
+          "uncertainty": "Low-volume drift can precede a fresh gap-down leg rather than a bottom; the report explicitly says it is 'far too early to call it exhaustion.' A close below 147.15 on expanding volume invalidates the absorption read.",
+          "osborn_rule": "pursue_quantity",
+          "builds_on": []
+        },
+        {
+          "id": "bull-1-3",
+          "claim": "The bear case in this dataset is entirely unverified narrative — no demand datapoint, no earnings, no guidance — so a 38% drawdown is pricing rumor, not fundamentals, and mean-reverts hard on any hard data.",
+          "evidence": "News report: 'leadership turmoil' cited twice but 'the feed does not specify the nature'; $2.5B China diversion concerns a former executive and is 'explicitly unverified'; DC build-out slowdown is 'unquantified'; Tiernan Ray's call is 'a terminal-value argument, not a 2026 earnings argument.' Report states: 'No earnings, guidance, or supply-chain data points in the window.'",
+          "stance": "Bullish",
+          "uncertainty": "If the leadership turmoil is a real C-suite departure or the export-control story escalates to a company-level finding, the narrative becomes a fundamental de-rating catalyst and the drawdown is justified rather than overdone.",
+          "osborn_rule": "build_on_others",
+          "builds_on": []
+        },
+        {
+          "id": "bull-1-4",
+          "claim": "The Anthropic IPO is a demand contract for NVDA, not a rotation away from it — the ~$1T compute commitment must be converted into GPUs, so ANT capex credibility transmits positively to NVDA.",
+          "evidence": "News report §1: the bear case 'runs through NVDA: a ~$1T compute commitment is only credible if NVDA can supply the GPUs.' Report also notes the market is bifurcating into model layer (ANT) vs. compute layer (NVDA) — but the model layer's spend is the compute layer's revenue.",
+          "stance": "Bullish",
+          "uncertainty": "If ANT prices poorly or revises its compute commitment downward post-IPO, the same beta works against NVDA and the 'capex credibility' argument inverts. Report flags ANT disclosures as 'imperfect information.'",
+          "osborn_rule": "combine_and_improve",
+          "builds_on": []
+        },
+        {
+          "id": "bull-1-5",
+          "claim": "The trade structure is asymmetric: invalidation at 147.15 is 0.2% away, while the 10 EMA at 164.64 is +11.7% and VWMA at 168.96 is +14.7% — roughly 2:1 to 20:1 payoff depending on target, versus the bear's need to short the most oversold p…",
+          "evidence": "Report §8 levels: support 147.15 (11-19 low), resistance 150.96 / 155.46–156.14 / 164.64 (10 EMA) / 168.96 (VWMA). Report §7: 'mean-reversion risk for shorts is elevated' with RSI at 20.03. ATR 9.77 allows a ~0.6% stop at 146.50.",
+          "stance": "Bullish",
+          "uncertainty": "A gap through 147.15 (as on 11-09 and 11-12, which opened ~9% below prior close) would blow through any stop; ATR of 9.77 (6.6% of price) means a 0.6% stop is inside one day's noise and will be hit on volatility alone.",
+          "osborn_rule": "combine_and_improve",
+          "builds_on": [
+            "bull-1-1",
+            "bull-1-2"
+          ]
+        }
+      ],
+      "bear_idea_cards": [
+        {
+          "id": "bear-1-1",
+          "claim": "The bull's 20:1 'asymmetry' is an artifact of a stop 0.87 points below spot — one-eleventh of a single ATR — in a tape that has gapped 9% twice in two weeks. Honest risk is 1–2 ATR, which collapses the payoff to ~1.8:1.",
+          "evidence": "Report §5: ATR 9.77 (6.6% of price), doubled from 5.72 on 10-29. §2: 11-09 gapped 186.64→173.07 open; 11-12 opened 151.01 vs prior close ~166, ~9% gap. Bull's own card bull-1-5 uncertainty concedes 'a gap through 147.15 would blow through any stop.'",
+          "stance": "Bearish",
+          "uncertainty": "If NVDA opens flat and grinds higher without a gap, a tight stop survives and the bull's payoff math holds. Fails if realized volatility collapses back toward the October regime (ATR ~5.7).",
+          "osborn_rule": "build_on_others",
+          "builds_on": [
+            "bull-1-5"
+          ]
+        },
+        {
+          "id": "bear-1-2",
+          "claim": "The 11-12 'absorption' bar was distribution, not accumulation: the buyer it implies is now 11% underwater and IS the overhead supply. Absorption holds the low; this made a new low seven sessions later.",
+          "evidence": "Report §2: after the 11-12 close of 166.19 on 747.7M shares, price printed six consecutive lower highs/lows: 162.85 → 156.14 → 155.46 → 150.96 → 147.37. §6: VWMA 168.96, price 13% below — 'average dollar-weighted holder is underwater by ~13%, creating persistent overhead supply.'",
+          "stance": "Bearish",
+          "uncertainty": "If price reclaims 155.46–156.14 on expanding volume, the 11-12 buyer is proven to have been accumulating and the distribution read is wrong.",
+          "osborn_rule": "build_on_others",
+          "builds_on": [
+            "bull-1-2"
+          ]
+        },
+        {
+          "id": "bear-1-3",
+          "claim": "The volume collapse is absent demand, not exhausted supply — proven by the fact that the lightest-volume day of the decline (236.0M) closed 1.2 points off its LOW, not up.",
+          "evidence": "Report §2: volume 747.7M → 365.8M → 333.8M → 407.0M → 349.8M → 236.0M; 11-19 low 147.15, close 147.37. Report explicitly: 'far too early to call it exhaustion.' §7 lists declining volume only as 'minor' constructive evidence.",
+          "stance": "Bearish",
+          "uncertainty": "A low-volume retest that then reverses up on rising volume would convert this into a genuine seller-exhaustion bottom. Fails on two consecutive closes above 150.96 with above-average volume.",
+          "osborn_rule": "combine_and_improve",
+          "builds_on": [
+            "bull-1-2",
+            "bull-1-1"
+          ]
+        },
+        {
+          "id": "bear-1-4",
+          "claim": "The MACD histogram 'turn' needs ~18 more sessions to reach zero at the current 0.2 pt/session pace while the 10 EMA falls ~4 pts/day — the bull is asking holders to wait three weeks for a signal with zero price confirmation and no RSI dive…",
+          "evidence": "Report §4: histogram −4.22 → −4.00 → −3.83 → −3.63 (0.59 pts over 4 sessions); MACD −17.65 vs signal −14.02, gap −3.63. 'No bullish divergence is visible' — RSI made lower lows 22.72 → 22.50 → 21.10 → 20.03 alongside lower price lows. 10 EMA falling ~4 pts/day (168.47 → 164.64).",
+          "stance": "Bearish",
+          "uncertainty": "A sharp single-session rally can compress the histogram far faster than the linear pace implies, producing a crossover in days rather than weeks. Fails if MACD crosses its signal before price breaks 147.15.",
+          "osborn_rule": "defer_judgement",
+          "builds_on": [
+            "bull-1-1"
+          ]
+        },
+        {
+          "id": "bear-1-5",
+          "claim": "The 200 SMA is FLAT at 203.32 while the 50 SMA falls ~1.3 pts/day — a stationary ceiling 38% overhead. No path in this dataset repairs the long-term trend; the bull is dressing a 3-day scalp as an investment thesis.",
+          "evidence": "Report §3: 200 SMA 203.32 vs 202.95 on 10-20 (essentially flat); 50 SMA 208.88 falling 1.2–1.5 pts/day; price 27.5% below the 200 SMA and 29.4% below the 50 SMA. Perfect bearish stack: price < 10 EMA < 200 SMA < 50 SMA. §8: 203.32 = 'strategic regime change' level.",
+          "stance": "Bearish",
+          "uncertainty": "A sustained multi-month recovery could lift price toward the 200 SMA, but nothing in the visible dataset supports that path. Fails if price closes above the 10 EMA and holds it for two weeks with rising volume.",
+          "osborn_rule": "pursue_quantity",
+          "builds_on": []
+        }
+      ],
+      "rounds": [
+        {
+          "round": 1,
+          "bull_cards": [
+            {
+              "id": "bull-1-1",
+              "claim": "Four consecutive sessions of MACD histogram compression (−4.22 → −4.00 → −3.83 → −3.63) while price made lower lows is the canonical pre-crossover sequence, not a continuation signal.",
+              "evidence": "Technical report §4: histogram peaked in negativity at −4.28 (2026-11-10) and has narrowed steadily to −3.63 (11-19), improving four straight sessions. Report itself calls this 'early deceleration of downside momentum — the first tentative sign of stabilization.'",
+              "stance": "Bullish",
+              "uncertainty": "Histogram compression can stall and re-expand without a crossover; the MACD/signal gap is still −3.63, many sessions from a turn. If price breaks 147.15 on rising volume, the compression was a pause, not a bottom.",
+              "osborn_rule": "defer_judgement",
+              "builds_on": []
+            },
+            {
+              "id": "bull-1-2",
+              "claim": "Volume collapsing 68% from the capitulation peak while price holds the 147–150 zone is absorption, not exhaustion-by-drift — sellers are running out of supply at the level where the big buyer appeared.",
+              "evidence": "Report §2: volume sequence 747.7M (11-12) → 365.8M → 333.8M → 407.0M → 349.8M → 236.0M (11-19). The 11-12 bar opened 151.01, lowed 148.80, closed 166.19 — 17 points off the low on the largest volume in the dataset. 11-19 lowed 147.15 and closed 147.37 on the lightest volume of the decline.",
+              "stance": "Bullish",
+              "uncertainty": "Low-volume drift can precede a fresh gap-down leg rather than a bottom; the report explicitly says it is 'far too early to call it exhaustion.' A close below 147.15 on expanding volume invalidates the absorption read.",
+              "osborn_rule": "pursue_quantity",
+              "builds_on": []
+            },
+            {
+              "id": "bull-1-3",
+              "claim": "The bear case in this dataset is entirely unverified narrative — no demand datapoint, no earnings, no guidance — so a 38% drawdown is pricing rumor, not fundamentals, and mean-reverts hard on any hard data.",
+              "evidence": "News report: 'leadership turmoil' cited twice but 'the feed does not specify the nature'; $2.5B China diversion concerns a former executive and is 'explicitly unverified'; DC build-out slowdown is 'unquantified'; Tiernan Ray's call is 'a terminal-value argument, not a 2026 earnings argument.' Report states: 'No earnings, guidance, or supply-chain data points in the window.'",
+              "stance": "Bullish",
+              "uncertainty": "If the leadership turmoil is a real C-suite departure or the export-control story escalates to a company-level finding, the narrative becomes a fundamental de-rating catalyst and the drawdown is justified rather than overdone.",
+              "osborn_rule": "build_on_others",
+              "builds_on": []
+            },
+            {
+              "id": "bull-1-4",
+              "claim": "The Anthropic IPO is a demand contract for NVDA, not a rotation away from it — the ~$1T compute commitment must be converted into GPUs, so ANT capex credibility transmits positively to NVDA.",
+              "evidence": "News report §1: the bear case 'runs through NVDA: a ~$1T compute commitment is only credible if NVDA can supply the GPUs.' Report also notes the market is bifurcating into model layer (ANT) vs. compute layer (NVDA) — but the model layer's spend is the compute layer's revenue.",
+              "stance": "Bullish",
+              "uncertainty": "If ANT prices poorly or revises its compute commitment downward post-IPO, the same beta works against NVDA and the 'capex credibility' argument inverts. Report flags ANT disclosures as 'imperfect information.'",
+              "osborn_rule": "combine_and_improve",
+              "builds_on": []
+            },
+            {
+              "id": "bull-1-5",
+              "claim": "The trade structure is asymmetric: invalidation at 147.15 is 0.2% away, while the 10 EMA at 164.64 is +11.7% and VWMA at 168.96 is +14.7% — roughly 2:1 to 20:1 payoff depending on target, versus the bear's need to short the most oversold p…",
+              "evidence": "Report §8 levels: support 147.15 (11-19 low), resistance 150.96 / 155.46–156.14 / 164.64 (10 EMA) / 168.96 (VWMA). Report §7: 'mean-reversion risk for shorts is elevated' with RSI at 20.03. ATR 9.77 allows a ~0.6% stop at 146.50.",
+              "stance": "Bullish",
+              "uncertainty": "A gap through 147.15 (as on 11-09 and 11-12, which opened ~9% below prior close) would blow through any stop; ATR of 9.77 (6.6% of price) means a 0.6% stop is inside one day's noise and will be hit on volatility alone.",
+              "osborn_rule": "combine_and_improve",
+              "builds_on": [
+                "bull-1-1",
+                "bull-1-2"
+              ]
+            }
+          ],
+          "bear_cards": [
+            {
+              "id": "bear-1-1",
+              "claim": "The bull's 20:1 'asymmetry' is an artifact of a stop 0.87 points below spot — one-eleventh of a single ATR — in a tape that has gapped 9% twice in two weeks. Honest risk is 1–2 ATR, which collapses the payoff to ~1.8:1.",
+              "evidence": "Report §5: ATR 9.77 (6.6% of price), doubled from 5.72 on 10-29. §2: 11-09 gapped 186.64→173.07 open; 11-12 opened 151.01 vs prior close ~166, ~9% gap. Bull's own card bull-1-5 uncertainty concedes 'a gap through 147.15 would blow through any stop.'",
+              "stance": "Bearish",
+              "uncertainty": "If NVDA opens flat and grinds higher without a gap, a tight stop survives and the bull's payoff math holds. Fails if realized volatility collapses back toward the October regime (ATR ~5.7).",
+              "osborn_rule": "build_on_others",
+              "builds_on": [
+                "bull-1-5"
+              ]
+            },
+            {
+              "id": "bear-1-2",
+              "claim": "The 11-12 'absorption' bar was distribution, not accumulation: the buyer it implies is now 11% underwater and IS the overhead supply. Absorption holds the low; this made a new low seven sessions later.",
+              "evidence": "Report §2: after the 11-12 close of 166.19 on 747.7M shares, price printed six consecutive lower highs/lows: 162.85 → 156.14 → 155.46 → 150.96 → 147.37. §6: VWMA 168.96, price 13% below — 'average dollar-weighted holder is underwater by ~13%, creating persistent overhead supply.'",
+              "stance": "Bearish",
+              "uncertainty": "If price reclaims 155.46–156.14 on expanding volume, the 11-12 buyer is proven to have been accumulating and the distribution read is wrong.",
+              "osborn_rule": "build_on_others",
+              "builds_on": [
+                "bull-1-2"
+              ]
+            },
+            {
+              "id": "bear-1-3",
+              "claim": "The volume collapse is absent demand, not exhausted supply — proven by the fact that the lightest-volume day of the decline (236.0M) closed 1.2 points off its LOW, not up.",
+              "evidence": "Report §2: volume 747.7M → 365.8M → 333.8M → 407.0M → 349.8M → 236.0M; 11-19 low 147.15, close 147.37. Report explicitly: 'far too early to call it exhaustion.' §7 lists declining volume only as 'minor' constructive evidence.",
+              "stance": "Bearish",
+              "uncertainty": "A low-volume retest that then reverses up on rising volume would convert this into a genuine seller-exhaustion bottom. Fails on two consecutive closes above 150.96 with above-average volume.",
+              "osborn_rule": "combine_and_improve",
+              "builds_on": [
+                "bull-1-2",
+                "bull-1-1"
+              ]
+            },
+            {
+              "id": "bear-1-4",
+              "claim": "The MACD histogram 'turn' needs ~18 more sessions to reach zero at the current 0.2 pt/session pace while the 10 EMA falls ~4 pts/day — the bull is asking holders to wait three weeks for a signal with zero price confirmation and no RSI dive…",
+              "evidence": "Report §4: histogram −4.22 → −4.00 → −3.83 → −3.63 (0.59 pts over 4 sessions); MACD −17.65 vs signal −14.02, gap −3.63. 'No bullish divergence is visible' — RSI made lower lows 22.72 → 22.50 → 21.10 → 20.03 alongside lower price lows. 10 EMA falling ~4 pts/day (168.47 → 164.64).",
+              "stance": "Bearish",
+              "uncertainty": "A sharp single-session rally can compress the histogram far faster than the linear pace implies, producing a crossover in days rather than weeks. Fails if MACD crosses its signal before price breaks 147.15.",
+              "osborn_rule": "defer_judgement",
+              "builds_on": [
+                "bull-1-1"
+              ]
+            },
+            {
+              "id": "bear-1-5",
+              "claim": "The 200 SMA is FLAT at 203.32 while the 50 SMA falls ~1.3 pts/day — a stationary ceiling 38% overhead. No path in this dataset repairs the long-term trend; the bull is dressing a 3-day scalp as an investment thesis.",
+              "evidence": "Report §3: 200 SMA 203.32 vs 202.95 on 10-20 (essentially flat); 50 SMA 208.88 falling 1.2–1.5 pts/day; price 27.5% below the 200 SMA and 29.4% below the 50 SMA. Perfect bearish stack: price < 10 EMA < 200 SMA < 50 SMA. §8: 203.32 = 'strategic regime change' level.",
+              "stance": "Bearish",
+              "uncertainty": "A sustained multi-month recovery could lift price toward the 200 SMA, but nothing in the visible dataset supports that path. Fails if price closes above the 10 EMA and holds it for two weeks with rising volume.",
+              "osborn_rule": "pursue_quantity",
+              "builds_on": []
+            }
+          ]
+        }
+      ],
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "convergence_method": "structural_no_new_claims: a round converges when both sides' new cards add no (stance, claim) pair absent from the previous round; deterministic, no LLM call; checked once per completed bull+bear round.",
+      "rationale_citations": [
+        "bull-1-1",
+        "bull-1-2",
+        "bull-1-3",
+        "bull-1-4",
+        "bull-1-5",
+        "bear-1-1",
+        "bear-1-2",
+        "bear-1-3",
+        "bear-1-4",
+        "bear-1-5"
+      ],
+      "turn_status": {
+        "bull": "ok",
+        "bear": "ok"
+      }
+    }
+  },
+  "research_manager_decision": "**Recommendation**: Underweight\n\n**Rationale**: The bear side won this debate on the merits, and it won on the two cards that actually decide trades: risk definition and trend structure.\n\nThe bull's strongest material was bull-1-1 (MACD histogram compression) and bull-1-2 (volume collapse as absorption). Both are real observations, but both were shown to be second-order and unconfirmed. bear-1-4 dismantled bull-1-1 cleanly: a 0.59-point compression over four sessions against a −3.63 MACD/signal gap needs roughly 18 more sessions at the current pace, while the 10 EMA is falling ~4 points/day — and critically, \"no bullish divergence is visible,\" with RSI making lower lows (22.72 → 22.50 → 21.10 → 20.03) alongside lower price lows. That is the one confirmation that would validate a mean-reversion long, and it is absent. bear-1-3 then inverted bull-1-2 decisively: the lightest-volume day of the entire decline (236.0M) closed 1.2 points off its LOW, not up. Declining volume on declining price in a confirmed downtrend is absent demand, not exhausted supply — and the report itself says it is \"far too early to call it exhaustion.\"\n\nThe decisive card was bear-1-1, which destroyed the bull's entire payoff math. bull-1-5's \"2:1 to 20:1 asymmetry\" rests on a stop 0.87 points below spot — one-eleventh of a single ATR (9.77, 6.6% of price) — in a tape that gapped ~9% on 11-12 and 186.64→173.07 on 11-09. The bull's own uncertainty field concedes a gap through 147.15 blows through the stop. Honest risk is 1–2 ATR, which collapses the payoff to roughly 1.8:1 at best, and only if the bounce reaches a 10 EMA that has rejected every rally since 11-12. bear-1-2 reinforced this: the 11-12 \"absorption\" bar was distribution — six consecutive lower highs/lows followed it (166.19 → 162.85 → 156.14 → 155.46 → 150.96 → 147.37), and VWMA at 168.96 means the average holder is ~13% underwater and IS the overhead supply. Absorption holds the low; this made a new low seven sessions later.\n\nbear-1-5 supplied the structural ceiling: 200 SMA flat at 203.32 (vs. 202.95 on 10-20) while the 50 SMA falls ~1.3 pts/day — a stationary wall 38% overhead, with a perfect bearish stack (price < 10 EMA < 200 SMA < 50 SMA). Nothing in this dataset repairs the long-term trend.\n\nOn the news, the bull's \"unverified narrative\" point (bull-1-3) is fair but cuts both ways, and the bear used it better: unspecified leadership turmoil cited by two independent sources in a week is a de-rating risk precisely because the market cannot bound it, and the SpaceX customer-plus-$19.7B-shareholder structure is textbook vendor financing — \"supports demand today, amplifies drawdowns later.\" bull-1-4's Anthropic argument is clever but the report's actual finding is that ANT makes the AI trade separable, dismantling NVDA's scarcity premium as \"the only way to own AI.\"\n\nWhere the bull is right: NVDA is deeply oversold (RSI 20.03), the report flags elevated mean-reversion risk for shorts, and the bear case contains no hard fundamental datapoint. That is why this is Underweight, not Sell — I am not recommending shorting into RSI 20 with a narrowing histogram. But the bull identified no reason the decline must stop, and every constructive signal he cited is unconfirmed. The report's own bottom line governs: no longs without a 10 EMA reclaim.\n\n**Strategic Actions**:\n- Reduce NVDA exposure to roughly half of a standard allocation (i.e., ~50% of benchmark weight), executed in tranches rather than all at once given the oversold condition — sell into any strength toward 150.96 rather than dumping at the low.\n- Do not initiate or add to longs at current levels. The bull's 147.37 entry is a lottery ticket on a stop the ATR says will be jumped; there is no confirmed reversal signal (no RSI divergence, no MACD crossover, no 10 EMA reclaim).\n- Re-entry trigger: a daily close above the 10 EMA (currently 164.64) on above-average volume, held for two sessions. That is the report's own gate and the level at which the trend structure begins to repair. A secondary, more aggressive trigger is two consecutive closes above 150.96 on expanding volume — that would begin to validate the absorption read and justify restoring to benchmark weight.\n- Downside reference: if 147.15 breaks on expanding volume, the next objective is the lower Bollinger band at 138.06. Do not average down into that; the remaining half position should be reviewed at that level.\n- Risk note for the residual position: ATR is 9.77 (6.6% of price) and the tape has gapped ~9% twice in two weeks. Size the residual position assuming gap risk, not intraday stop risk — a stop near 146.50 is inside one day's noise and should not be relied on as protection.\n- Flag explicitly: this dataset contains no earnings, guidance, supply-chain, or macro data (FRED unavailable, Polymarket withheld, no fundamentals report). The next NVDA print or hyperscaler capex guide is an unmodeled binary catalyst in either direction — keep position sizing modest enough to absorb a gap through it."
+}

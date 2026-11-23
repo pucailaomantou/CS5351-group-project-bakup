@@ -1,0 +1,289 @@
+{
+  "prepared_on": "2026-11-21",
+  "validation_type": "offline_inspection_of_existing_records",
+  "new_live_runs": 0,
+  "llm_calls": 0,
+  "selected_runs": 10,
+  "total_cards": 100,
+  "all_checks_pass": true,
+  "scope": [
+    "IdeaCard Pydantic schema",
+    "nonempty required fields",
+    "card and citation IDs",
+    "two phases",
+    "existing round cap and termination fields",
+    "source equality"
+  ],
+  "runs": [
+    {
+      "run_id": "20261120_034452_e30e13b3",
+      "bull_cards": 5,
+      "bear_cards": 5,
+      "schema_valid": true,
+      "required_fields_nonempty": true,
+      "card_ids_unique": true,
+      "builds_on_ids_valid": true,
+      "rm_valid_citations": 10,
+      "rm_cites_both_sides": true,
+      "rm_citation_ids_match_record": true,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules_used": [
+        "build_on_others",
+        "combine_and_improve",
+        "defer_judgement",
+        "pursue_quantity"
+      ],
+      "debate_rounds": 1,
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "extracted_values_equal_source": true
+    },
+    {
+      "run_id": "20261120_034254_4abe43bc",
+      "bull_cards": 5,
+      "bear_cards": 5,
+      "schema_valid": true,
+      "required_fields_nonempty": true,
+      "card_ids_unique": true,
+      "builds_on_ids_valid": true,
+      "rm_valid_citations": 8,
+      "rm_cites_both_sides": true,
+      "rm_citation_ids_match_record": true,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules_used": [
+        "build_on_others",
+        "combine_and_improve",
+        "defer_judgement",
+        "pursue_quantity"
+      ],
+      "debate_rounds": 1,
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "extracted_values_equal_source": true
+    },
+    {
+      "run_id": "20261120_034856_366d2d63",
+      "bull_cards": 5,
+      "bear_cards": 5,
+      "schema_valid": true,
+      "required_fields_nonempty": true,
+      "card_ids_unique": true,
+      "builds_on_ids_valid": true,
+      "rm_valid_citations": 10,
+      "rm_cites_both_sides": true,
+      "rm_citation_ids_match_record": true,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules_used": [
+        "build_on_others",
+        "combine_and_improve",
+        "defer_judgement",
+        "pursue_quantity"
+      ],
+      "debate_rounds": 1,
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "extracted_values_equal_source": true
+    },
+    {
+      "run_id": "20261120_034651_d075414f",
+      "bull_cards": 5,
+      "bear_cards": 5,
+      "schema_valid": true,
+      "required_fields_nonempty": true,
+      "card_ids_unique": true,
+      "builds_on_ids_valid": true,
+      "rm_valid_citations": 9,
+      "rm_cites_both_sides": true,
+      "rm_citation_ids_match_record": true,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules_used": [
+        "build_on_others",
+        "combine_and_improve",
+        "defer_judgement",
+        "pursue_quantity"
+      ],
+      "debate_rounds": 1,
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "extracted_values_equal_source": true
+    },
+    {
+      "run_id": "20261120_035047_a0423689",
+      "bull_cards": 5,
+      "bear_cards": 5,
+      "schema_valid": true,
+      "required_fields_nonempty": true,
+      "card_ids_unique": true,
+      "builds_on_ids_valid": true,
+      "rm_valid_citations": 9,
+      "rm_cites_both_sides": true,
+      "rm_citation_ids_match_record": true,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules_used": [
+        "build_on_others",
+        "combine_and_improve",
+        "defer_judgement",
+        "pursue_quantity"
+      ],
+      "debate_rounds": 1,
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "extracted_values_equal_source": true
+    },
+    {
+      "run_id": "20261120_034051_7cbc5158",
+      "bull_cards": 5,
+      "bear_cards": 5,
+      "schema_valid": true,
+      "required_fields_nonempty": true,
+      "card_ids_unique": true,
+      "builds_on_ids_valid": true,
+      "rm_valid_citations": 10,
+      "rm_cites_both_sides": true,
+      "rm_citation_ids_match_record": true,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules_used": [
+        "build_on_others",
+        "combine_and_improve",
+        "defer_judgement",
+        "pursue_quantity"
+      ],
+      "debate_rounds": 1,
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "extracted_values_equal_source": true
+    },
+    {
+      "run_id": "20261120_040112_fb2e6b11",
+      "bull_cards": 5,
+      "bear_cards": 5,
+      "schema_valid": true,
+      "required_fields_nonempty": true,
+      "card_ids_unique": true,
+      "builds_on_ids_valid": true,
+      "rm_valid_citations": 10,
+      "rm_cites_both_sides": true,
+      "rm_citation_ids_match_record": true,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules_used": [
+        "build_on_others",
+        "combine_and_improve",
+        "defer_judgement",
+        "pursue_quantity"
+      ],
+      "debate_rounds": 1,
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "extracted_values_equal_source": true
+    },
+    {
+      "run_id": "20261120_035902_b4629375",
+      "bull_cards": 5,
+      "bear_cards": 5,
+      "schema_valid": true,
+      "required_fields_nonempty": true,
+      "card_ids_unique": true,
+      "builds_on_ids_valid": true,
+      "rm_valid_citations": 10,
+      "rm_cites_both_sides": true,
+      "rm_citation_ids_match_record": true,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules_used": [
+        "build_on_others",
+        "combine_and_improve",
+        "defer_judgement",
+        "pursue_quantity"
+      ],
+      "debate_rounds": 1,
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "extracted_values_equal_source": true
+    },
+    {
+      "run_id": "20261120_035705_5fa4ed81",
+      "bull_cards": 5,
+      "bear_cards": 5,
+      "schema_valid": true,
+      "required_fields_nonempty": true,
+      "card_ids_unique": true,
+      "builds_on_ids_valid": true,
+      "rm_valid_citations": 10,
+      "rm_cites_both_sides": true,
+      "rm_citation_ids_match_record": true,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules_used": [
+        "build_on_others",
+        "combine_and_improve",
+        "defer_judgement",
+        "pursue_quantity"
+      ],
+      "debate_rounds": 1,
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "extracted_values_equal_source": true
+    },
+    {
+      "run_id": "20261120_040714_cfaf7ee1",
+      "bull_cards": 5,
+      "bear_cards": 5,
+      "schema_valid": true,
+      "required_fields_nonempty": true,
+      "card_ids_unique": true,
+      "builds_on_ids_valid": true,
+      "rm_valid_citations": 10,
+      "rm_cites_both_sides": true,
+      "rm_citation_ids_match_record": true,
+      "phases": [
+        "generation",
+        "adjudication"
+      ],
+      "osborn_rules_used": [
+        "build_on_others",
+        "combine_and_improve",
+        "defer_judgement",
+        "pursue_quantity"
+      ],
+      "debate_rounds": 1,
+      "max_rounds": 1,
+      "termination_reason": "max_rounds",
+      "convergence_rounds": null,
+      "extracted_values_equal_source": true
+    }
+  ]
+}
