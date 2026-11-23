@@ -18,7 +18,7 @@ Update it when you merge something.
 | cost measurement point (on main) | NVDA / 2026-11-19, analysts market+news, research 1 round / risk 1 round, temperature 0.0, CS5351/DeepSeek-V4-Flash, seven-day ticker news window anchored to the analysis date; 20/20/5; ten valid runs, mean 160315.8, median 159615; evidence `docs/evidence/cost01-2026-11-19/` | 2026-11-21 |
 | after measurement (not a baseline) | NVDA / 2026-11-19, same protocol as the baseline, 8/8/3; ten valid runs, mean 147754.2, median 148087 | 2026-11-21 |
 | effective cost config | `max_tool_rounds` 8, `news_article_limit` 8, `global_news_queries` 3 items, `global_news_article_limit` 10 | 2026-11-20 |
-| CI Gates | Schema validation, offline tests, and `ruff check src/` must pass before merge | 2026-11-21 |
+| CI Gates | Schema validation, offline tests, and `ruff check src/` runs on every PR; enforcement pending branch protection | 2026-11-21 |
 ## Changes so far
 
 | PR | what changed | why |
@@ -33,7 +33,7 @@ Update it when you merge something.
 | #8 (merged) | `docs/evidence/cost01-2026-11-19/` — 40 files: 12 Before and 12 After raw records, protocol scripts, `SHA256SUMS.txt`, review tables | C's evidence package, so the 2026-11-19 figures can be recomputed from a clone |
 | #9 (open) | `docs/report/`, `docs/evidence/c-debate-2026-11-19/`, `transcripts/`, `docs/review/` | C's report material, debate evidence, transcripts, and the cross-review memo for B |
 | #10 (merged) | `test/offline/test_config_cost.py`, `test_debate_termination.py`, `test_rating_invariants.py` | E's verification work: adds offline tests for COST-01 (8/8/3), FR-02 (termination + convergence), and INV-01 (rating). All 25 tests passed. |
-| #10 (update) | `.github/workflows/ci.yml`, `scripts/validate_requirements.py`, `docs/req/req-schema.json`, `docs/debt-register.md`, `.gitattributes` | E's D3 & D4 work: Implements GitHub Actions blocking gates (Schema, Test, Static Analysis), auto-fixes 9 ruff errors in `src/`, and logs remaining tech debt. |
+| #15 | `.github/workflows/ci.yml`, `scripts/validate_requirements.py`, `docs/req/req-schema.json`, `docs/debt-register.md`, `.gitattributes` | E's D3 work: CI/schema/debt register/.gitattributes only; `src/` untouched. |
 ## Measurements on record
 
 Two ten-run batches on NVDA / 2026-11-19 under one protocol, ten valid runs on each side,
