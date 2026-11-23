@@ -1,0 +1,185 @@
+{
+  "_semantics": {
+    "read": "true: the agent may read this path; false: it may not.",
+    "write": "true: the named owner may write here; false: nobody writes here outside a human edit. human_approval never overrides write:false.",
+    "owner": "Exactly one owner per path. A more specific key may repeat its own parent path (e.g. graph/setup.py under graph/) only to tighten approval; it never changes the owner.",
+    "human_approval": "always: the owner's write is a proposal a human must approve before merge. It never grants write to a non-owner and never turns write:false into write.",
+    "combination": "write:true + human_approval:always = the owner may propose a change that a human must approve. write:false = closed to agents entirely."
+  },
+  "default": {
+    "read": false,
+    "write": false
+  },
+  "paths": {
+    "AGENTS.md": { "read": true, "write": true, "owner": "A", "human_approval": "always" },
+    "Prompt.md": { "read": true, "write": true, "owner": "A", "human_approval": "always" },
+    "README.md": { "read": true, "write": true, "owner": "A", "human_approval": "always" },
+    ".opencode/": {
+      "read": true,
+      "write": true,
+      "owner": "A",
+      "human_approval": "always",
+      "note": "Human-owned: an agent may never edit its own constraints."
+    },
+    ".agent/": {
+      "read": true,
+      "write": true,
+      "owner": "A",
+      "human_approval": "always",
+      "note": "Project covenant. Human-owned."
+    },
+    ".github/PULL_REQUEST_TEMPLATE.md": {
+      "read": true,
+      "write": true,
+      "owner": "A",
+      "note": "Planned: not yet in the repository."
+    },
+    ".github/workflows/": {
+      "read": true,
+      "write": true,
+      "owner": "E",
+      "note": "CI workflow. E owns the workflows; A owns the rest of .github/."
+    },
+    "scripts/": { "read": true, "write": true, "owner": "A" },
+    "pyproject.toml": {
+      "read": true,
+      "write": true,
+      "owner": "A",
+      "human_approval": "always",
+      "note": "Packaging and tooling configuration; changes need approval."
+    },
+
+    "docs/req/": {
+      "read": true,
+      "write": true,
+      "owner": "B",
+      "human_approval": "always",
+      "note": "Requirement registry. The owner proposes; humans approve."
+    },
+    "docs/architecture/": {
+      "read": true,
+      "write": true,
+      "owner": "B",
+      "note": "ADRs and the architecture blueprint."
+    },
+    "docs/status.md": { "read": true, "write": true, "owner": "B" },
+
+    "src/tradingagents/graph/": { "read": true, "write": true, "owner": "C" },
+    "src/tradingagents/graph/setup.py": {
+      "read": true,
+      "write": true,
+      "owner": "C",
+      "human_approval": "always",
+      "note": "Graph wiring. D reports the needed change to C; D never edits it."
+    },
+    "src/tradingagents/agents/researchers/": { "read": true, "write": true, "owner": "C" },
+    "src/tradingagents/agents/managers/": { "read": true, "write": true, "owner": "C" },
+    "src/tradingagents/agents/analysts/": { "read": true, "write": true, "owner": "C" },
+    "src/tradingagents/default_config.py": {
+      "read": true,
+      "write": true,
+      "owner": "C",
+      "human_approval": "always",
+      "note": "Holds the frozen COST-01 levers 8 / 8 / 3."
+    },
+    "src/cli/stats_handler.py": { "read": true, "write": true, "owner": "C" },
+    "src/tradingagents/reporting.py": { "read": true, "write": true, "owner": "C" },
+    "docs/report/": {
+      "read": true,
+      "write": true,
+      "owner": "C",
+      "note": "Planned: report output location; the directory does not exist yet."
+    },
+    "docs/review/": {
+      "read": true,
+      "write": true,
+      "owner": "C",
+      "note": "Planned: review artefacts; the directory does not exist yet."
+    },
+
+    "src/tradingagents/safety/": {
+      "read": true,
+      "write": true,
+      "owner": "D",
+      "human_approval": "always",
+      "note": "The safety guard. Plain code only, zero LLM calls. New location, not yet created."
+    },
+    "src/tradingagents/agents/rating.py": { "read": true, "write": true, "owner": "D" },
+    "src/tradingagents/agents/schemas.py": { "read": true, "write": true, "owner": "D" },
+    "src/tradingagents/agents/post_screen.py": { "read": true, "write": true, "owner": "D" },
+
+    "test/": { "read": true, "write": true, "owner": "E" },
+    "test/offline/": {
+      "read": true,
+      "write": true,
+      "owner": "E",
+      "human_approval": "always",
+      "note": "The regression oracle. Never weakened, skipped or deleted to pass."
+    },
+    "Report.md": {
+      "read": true,
+      "write": true,
+      "owner": "E",
+      "note": "Planned release report; not yet in the repository."
+    },
+
+    "BASELINE.md": {
+      "read": true,
+      "write": false,
+      "owner": "frozen",
+      "note": "FROZEN for everyone. Provenance anchor for the vendored baseline."
+    },
+    "transcripts/": {
+      "read": true,
+      "write": false,
+      "owner": "frozen",
+      "note": "FROZEN for everyone. Meeting and session records."
+    },
+    "docs/upstream/": {
+      "read": true,
+      "write": false,
+      "owner": "frozen",
+      "note": "FROZEN for everyone. Upstream README, as retrieved."
+    },
+    "docs/evidence/": {
+      "read": true,
+      "write": false,
+      "owner": "frozen",
+      "note": "FROZEN for everyone. Evidence packages are a record, not a working directory."
+    },
+    "src/tradingagents/dataflows/": {
+      "read": true,
+      "write": false,
+      "owner": "frozen",
+      "note": "FROZEN as vendored. The only place third-party vendors are imported; changes follow the vendored-source rules."
+    }
+  },
+  "guard_rules": {
+    "cost_levers_are_frozen": {
+      "description": "max_tool_rounds 8, news_article_limit 8, three global news queries. Changing them is not a fix.",
+      "enforcement": "ci_gate",
+      "test": "test/offline/test_config_cost.py",
+      "action": "block_merge"
+    },
+    "vendored_package_boundary": {
+      "description": "Third-party vendor imports only under src/tradingagents/dataflows/.",
+      "enforcement": "ci_gate",
+      "test": "test/offline/test_layering.py",
+      "action": "block_merge"
+    },
+    "safety_guard_is_plain_code": {
+      "description": "Nothing under src/tradingagents/safety/ may call an LLM. The guard is deterministic.",
+      "enforcement": "review",
+      "action": "block_merge"
+    },
+    "review_is_not_tradeable": {
+      "description": "final_rating REVIEW must never become a tradeable position.",
+      "enforcement": "review",
+      "action": "block_merge"
+    }
+  },
+  "enforcement": {
+    "mechanism": "CI gates on every pull request; no pre-commit hook exists in this repository",
+    "ci_gate": "CI runs Schema, Offline Test and Static Analysis gates on every PR; branch protection is not yet enforced."
+  }
+}

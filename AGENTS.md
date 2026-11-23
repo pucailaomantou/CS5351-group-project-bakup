@@ -69,7 +69,8 @@ to test.
 | Area | Owner |
 |---|---|
 | `src/tradingagents/graph/setup.py` (graph wiring) | C |
-| The safety guard (deterministic pre-action checks), plain code | D |
+| `src/tradingagents/agents/analysts/` (analyst agents) | C |
+| The safety guard, `src/tradingagents/safety/` (deterministic pre-action checks), plain code | D |
 | Everything else | whoever is leading that workstream — ask before editing |
 
 D adds the safety guard but **does not edit `src/tradingagents/graph/setup.py`**.
@@ -89,8 +90,8 @@ unsure who owns a file, stop and ask.
   deterministic and testable offline.
 - **COST-01 config is `8 / 8 / 3`**: `max_tool_rounds = 8`,
   `news_article_limit = 8`, three `global_news_queries` entries. Do not change
-  those numbers to make a test pass. (The baseline still reads 20 / 20 / 5; the
-  change to 8 / 8 / 3 is the work, not a given.)
+  those numbers to make a test pass. (The levers are 8 / 8 / 3 on `main`; a change
+  to them is a requirement change, not a fix.)
 - **`REVIEW` is not a tradeable position** — code that turns a rating into an
   action must handle it.
 
@@ -116,8 +117,21 @@ For everyone, unless the team agrees otherwise in the open:
    without saying so.
 4. Commit on a branch, push the branch, and say what you changed. Only the
    maintainer merges to `main`.
+5. A branch whose PR is merged is closed: new work starts from a fresh branch off
+   `main`. Never push to a merged branch and never force-push.
+6. CI runs Schema, Offline Test and Static Analysis gates on every PR; they are not
+   yet enforced by branch protection, so a green run is evidence, not a lock.
 
-## Later
+## Where the rules live
 
-`docs/architecture/`, `.opencode/`, `.agent/` and `Prompt.md` are not written yet.
-They are planned, not linked here — do not treat them as missing or invent them.
+- [AGENTS.md](AGENTS.md) — this file: layout, owners, invariants.
+- [Prompt.md](Prompt.md) — the static launch instruction: plan, stop, staged gates.
+- [.opencode/rules.md](.opencode/rules.md) — always-on behavioural rules.
+- [.opencode/permissions.jsonc](.opencode/permissions.jsonc) — ownership and approval matrix.
+- [.agent/rules.md](.agent/rules.md) — the project covenant.
+- [docs/architecture/](docs/architecture/) — the blueprint and the ADRs in `docs/architecture/adr/`.
+- [docs/status.md](docs/status.md) — frozen values, changes, open questions.
+
+Not written yet, so not linked: `docs/code-governance/`, `docs/bug-diary.md`,
+`docs/review-memo.md`, `docs/ai-use-log.yaml` and `Report.md`. They are planned —
+do not treat them as missing or invent them.
