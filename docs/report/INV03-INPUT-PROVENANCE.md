@@ -100,5 +100,8 @@ All INV-03 C-side code and this interface doc are included in PR #21
 - `src/tradingagents/agents/analysts/fundamentals_analyst.py` — profile + balance/cashflow/income (yfinance CSV / SEC EDGAR / Alpha Vantage), withheld handling, per-period retention
 - `docs/report/INV03-INPUT-PROVENANCE.md` — this interface handoff (for D)
 
-Not in this PR (out of repo, awaiting owners): the pytest test candidate (E lands it
-in `test/offline/`) and the ADR (B lands it in `docs/architecture/adr/`).
+Review materials in this PR (candidates; not yet in the official suites):
+- [E] pytest test candidate — [docs/review/inv03/test_inv03_provenance.py](../review/inv03/test_inv03_provenance.py);
+  target on acceptance `test/offline/test_inv03_provenance.py` (E owns test/offline).
+- [B] ADR (Proposed) — [docs/review/inv03/ADR-INV03-provenance.md](../review/inv03/ADR-INV03-provenance.md);
+  target on acceptance `docs/architecture/adr/` (B owns docs/architecture/).
