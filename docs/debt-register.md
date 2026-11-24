@@ -8,10 +8,11 @@ rows — mark them resolved and date the change.
 
 | id | area | description | deferred to | recorded |
 |---|---|---|---|---|
-| DEBT-01 | CI / lint | The static-analysis gate runs `ruff check src/`. This PR reverted `src/` to main; the 9 ruff errors will be fixed by C's separate PR. Until that fix merges, `ruff check src/` does not pass. (The 9 are: I001 import sorting ×3, UP035/UP037 typing modernisation ×4, F401 unused import ×1.) | C's separate PR | 2026-11-21 |
 | DEBT-02 | CI / lint | Legacy code **outside `src/`** (tests and evidence scripts) still carries **37 unresolved ruff errors** and is not gated, because the static-analysis gate runs `ruff check src/` only. | next sprint | 2026-11-21 |
 
 ## Resolved
 
-_(none yet)_
+| id | area | description | resolved |
+|---|---|---|---|
+| DEBT-01 | CI / lint | Fixed by PR #17 (commit 32e02b0): the 9 pre-existing style errors in five source files (three under `vendors/yahoo/`, two under `agents/`; 2×I001, 3×UP035, 3×UP037, 1×F401) are gone; `ruff check src/` now exits 0. | 2026-11-23 |
 
