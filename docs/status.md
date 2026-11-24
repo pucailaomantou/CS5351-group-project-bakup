@@ -1,6 +1,6 @@
 # CS5351 group project — status
 
-Last updated: 2026-11-21
+Last updated: 2026-11-23
 
 This is the single place to check what is done, what is frozen, and what is still open.
 Update it when you merge something.
@@ -33,7 +33,11 @@ Update it when you merge something.
 | #8 (merged) | `docs/evidence/cost01-2026-11-19/` — 40 files: 12 Before and 12 After raw records, protocol scripts, `SHA256SUMS.txt`, review tables | C's evidence package, so the 2026-11-19 figures can be recomputed from a clone |
 | #9 (open) | `docs/report/`, `docs/evidence/c-debate-2026-11-19/`, `transcripts/`, `docs/review/` | C's report material, debate evidence, transcripts, and the cross-review memo for B |
 | #10 (merged) | `test/offline/test_config_cost.py`, `test_debate_termination.py`, `test_rating_invariants.py` | E's verification work: adds offline tests for COST-01 (8/8/3), FR-02 (termination + convergence), and INV-01 (rating). All 25 tests passed. |
-| #15 | `.github/workflows/ci.yml`, `scripts/validate_requirements.py`, `docs/req/req-schema.json`, `docs/debt-register.md`, `.gitattributes` | E's D3 work: CI/schema/debt register/.gitattributes only; `src/` untouched. |
+| #12 (merged) | D2 response to C's review; B transcript C-B06 | D2 review response |
+| #13 (merged) | INV-03 per-class freshness rewrite | INV-03 correctness |
+| #15 (merged) | `.github/workflows/ci.yml`, `scripts/validate_requirements.py`, `docs/req/req-schema.json`, `docs/debt-register.md`, `.gitattributes` | E's D3 work: CI/schema/debt register/.gitattributes only; `src/` untouched. |
+| #16 (merged) | COST-01 141-row wording | clearer baseline exclusion note |
+| #17 (merged) | 9 ruff fixes; static gate green | clears the src/ lint debt |
 ## Measurements on record
 
 Two ten-run batches on NVDA / 2026-11-19 under one protocol, ten valid runs on each side,
