@@ -1,6 +1,6 @@
 # CS5351 group project — status
 
-Last updated: 2026-11-23
+Last updated: 2026-11-24
 
 This is the single place to check what is done, what is frozen, and what is still open.
 Update it when you merge something.
@@ -30,14 +30,18 @@ Update it when you merge something.
 | direct merge by A (no PR) | `BASELINE.md`; sources relocated under `src/`, tests under `test/` | vendoring: upstream version fixed, contents unmodified |
 | #5 (merged) | `architecture-blueprint.md`; `docs/architecture/adr/001-bound-cost-at-tool-calls.md`; ADR 002 on context layers; FR-02 state contract | D2 architecture deliverable |
 | #6 (merged) | COST-01 baseline migrated from 2026-09-01 to 2026-11-18; ten valid runs, mean 163633.2, median 160664; the two 141-row records excluded and retained | the 09-01 batch lacked data-integrity evidence, so the baseline was re-measured |
+| #7 (merged) | C's core implementation: cost config 8/8/3, token metering, two-phase research debate | FR-01/FR-02/COST-01 implementation |
 | #8 (merged) | `docs/evidence/cost01-2026-11-19/` — 40 files: 12 Before and 12 After raw records, protocol scripts, `SHA256SUMS.txt`, review tables | C's evidence package, so the 2026-11-19 figures can be recomputed from a clone |
-| #9 (open) | `docs/report/`, `docs/evidence/c-debate-2026-11-19/`, `transcripts/`, `docs/review/` | C's report material, debate evidence, transcripts, and the cross-review memo for B |
+| #9 (closed, superseded by #19) | `docs/report/`, `docs/evidence/c-debate-2026-11-19/`, `transcripts/`, `docs/review/` | C's report material, debate evidence, transcripts, and the cross-review memo for B; superseded by #19 |
 | #10 (merged) | `test/offline/test_config_cost.py`, `test_debate_termination.py`, `test_rating_invariants.py` | E's verification work: adds offline tests for COST-01 (8/8/3), FR-02 (termination + convergence), and INV-01 (rating). All 25 tests passed. |
+| #11 (merged) | COST-01 baseline moved to the 2026-11-19 batch | Align baseline and After protocol |
 | #12 (merged) | D2 response to C's review; B transcript C-B06 | D2 review response |
 | #13 (merged) | INV-03 per-class freshness rewrite | INV-03 correctness |
 | #15 (merged) | `.github/workflows/ci.yml`, `scripts/validate_requirements.py`, `docs/req/req-schema.json`, `docs/debt-register.md`, `.gitattributes` | E's D3 work: CI/schema/debt register/.gitattributes only; `src/` untouched. |
 | #16 (merged) | COST-01 141-row wording | clearer baseline exclusion note |
 | #17 (merged) | 9 ruff fixes; static gate green | clears the src/ lint debt |
+| #18 (merged) | `AGENTS.md`, `Prompt.md`, `.opencode/permissions.jsonc`, `.opencode/rules.md`, `.agent/rules.md` | D3 governance control plane |
+| #19 (merged) | Report material, debate evidence, transcripts and the cross-review memo | C's report workstream; supersedes #9 |
 ## Measurements on record
 
 Two ten-run batches on NVDA / 2026-11-19 under one protocol, ten valid runs on each side,

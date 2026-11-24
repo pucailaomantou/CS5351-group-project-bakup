@@ -14,5 +14,5 @@ rows — mark them resolved and date the change.
 
 | id | area | description | resolved |
 |---|---|---|---|
-| DEBT-01 | CI / lint | Fixed by PR #17 (commit 32e02b0): the 9 pre-existing style errors in five vendored files (2×I001, 3×UP035, 3×UP037, 1×F401) are gone; `ruff check src/` now exits 0. | 2026-11-23 |
+| DEBT-01 | CI / lint | Fixed by PR #17 (commit 32e02b0): the 9 pre-existing style errors in five source files (three under `vendors/yahoo/`, two under `agents/`; 2×I001, 3×UP035, 3×UP037, 1×F401) are gone; `ruff check src/` now exits 0. | 2026-11-23 |
 
