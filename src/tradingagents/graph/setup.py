@@ -21,7 +21,7 @@ from tradingagents.agents import (
     create_trader,
 )
 from tradingagents.agents.analysts.turn import WRAP_UP
-from tradingagents.agents.state import AgentState
+from tradingagents.agents.state import AgentState, InputProvenance
 
 from .analyst_execution import build_analyst_execution_plan
 from .conditional_logic import ConditionalLogic
@@ -59,7 +59,14 @@ def _analyst_graph(spec, agent, max_tool_rounds: int):
     that turn ends it whatever it answers, so a model that keeps calling tools
     cannot run the graph into its recursion limit (#1420).
     """
-    output = TypedDict(f"{spec.key.capitalize()}Report", {spec.report_key: str})
+    # The subgraph runs on the full AgentState but only emits its report plus
+    # the point-in-time input provenance (INV-03) back to the parent graph, so
+    # analysts running side by side never write each other's keys and the
+    # provenance still reaches the final AgentState.
+    output = TypedDict(
+        f"{spec.key.capitalize()}Report",
+        {spec.report_key: str, "input_provenance": list[InputProvenance]},
+    )
     graph = StateGraph(AgentState, output_schema=output)
     graph.add_node("agent", agent)
     graph.add_edge(START, "agent")

@@ -71,6 +71,9 @@ class Propagator:
             "fundamentals_report": "",
             "sentiment_report": "",
             "news_report": "",
+            # Fresh, independent provenance list per run (INV-03): never shared
+            # across runs; analysts append their point-in-time input cutoffs.
+            "input_provenance": [],
         }
 
     def get_graph_args(self, callbacks: list | None = None) -> dict[str, Any]:

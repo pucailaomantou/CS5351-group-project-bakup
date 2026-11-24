@@ -1,7 +1,12 @@
+import re
+from datetime import date
+
+from langchain_core.messages import ToolMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 from tradingagents.agents.analysts.turn import take_turn
 from tradingagents.agents.context import get_instrument_context_from_state, get_language_instruction
+from tradingagents.agents.state import InputProvenance
 from tradingagents.agents.tools import get_indicators, get_stock_data, get_verified_market_snapshot
 
 # The tools this analyst is offered; its tool node is built from the same tuple.
@@ -10,6 +15,91 @@ TOOLS = (
     get_indicators,
     get_verified_market_snapshot,
 )
+
+# The verified snapshot states the real latest trading row it used; that row's
+# date is the actual data cutoff, not the requested analysis date.
+_LATEST_ROW_RE = re.compile(r"Latest trading row used:\s*(\d{4}-\d{2}-\d{2})")
+_ISO_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+_DATA_UNAVAILABLE = "DATA_UNAVAILABLE"
+_NO_DATA_AVAILABLE = "NO_DATA_AVAILABLE"
+
+
+def _valid_calendar_date(value: str | None) -> str | None:
+    """Return ``value`` only if it is a real calendar date (YYYY-MM-DD), else None.
+
+    Rejects impossible dates such as 2026-02-30 that a shape-only regex would
+    accept, so a bogus cutoff is never recorded as a reliable time.
+    """
+    if not value or not _ISO_DATE_RE.fullmatch(value):
+        return None
+    try:
+        return date.fromisoformat(value).isoformat()
+    except ValueError:
+        return None
+
+
+def _snapshot_input_provenance(messages) -> list[InputProvenance]:
+    """Point-in-time provenance for verified market snapshots the analyst received.
+
+    Only snapshots whose ToolMessage actually reached the analyst's context are
+    recorded ("actually used"). Availability is classified honestly: a ToolMessage
+    with ``status="error"`` or content carrying ``DATA_UNAVAILABLE`` /
+    ``NO_DATA_AVAILABLE`` is recorded as unavailable (``available=False`` with a
+    matching ``missing_reason``) and never as usable data. The cutoff is the real
+    ``Latest trading row used`` date, validated as a real calendar date, never the
+    ``Requested analysis date``. A missing or impossible date yields
+    ``as_of=None``, ``precision="unknown"`` and ``time_reliable=False`` (never
+    backfilled). Entries are de-duplicated by ``tool_call_id``.
+    """
+    entries: list[InputProvenance] = []
+    seen: set[str] = set()
+    for message in messages or []:
+        if not isinstance(message, ToolMessage):
+            continue
+        if getattr(message, "name", None) != "get_verified_market_snapshot":
+            continue
+        call_id = getattr(message, "tool_call_id", "") or ""
+        if call_id in seen:
+            continue
+        seen.add(call_id)
+        content = message.content if isinstance(message.content, str) else str(message.content)
+        status = getattr(message, "status", None)
+
+        available = True
+        missing_reason = ""
+        if status == "error":
+            available = False
+            missing_reason = "tool_error"
+        elif _DATA_UNAVAILABLE in content:
+            available = False
+            missing_reason = "vendor_unavailable"
+        elif _NO_DATA_AVAILABLE in content:
+            available = False
+            missing_reason = "no_data_available"
+
+        as_of = None
+        if available:
+            match = _LATEST_ROW_RE.search(content)
+            as_of = _valid_calendar_date(match.group(1)) if match else None
+            if as_of is None:
+                missing_reason = "no_reliable_date"
+
+        entries.append(InputProvenance(
+            analyst="market",
+            tool="get_verified_market_snapshot",
+            call_id=call_id,
+            input_class="market_close",
+            period_id="",
+            as_of=as_of,
+            precision="date" if as_of else "unknown",
+            semantics="latest_trading_row",
+            evidence=(f"Latest trading row used: {as_of}" if as_of
+                      else "Latest trading row used: (unparsed)"),
+            available=available,
+            time_reliable=as_of is not None,
+            missing_reason=missing_reason,
+        ))
+    return entries
 
 
 def create_market_analyst(llm):
@@ -79,6 +169,7 @@ Write a very detailed and nuanced report of the trends you observe. Provide spec
         return {
             "messages": [result],
             "market_report": report,
+            "input_provenance": _snapshot_input_provenance(state["messages"]),
         }
 
     return market_analyst_node
