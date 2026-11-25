@@ -75,10 +75,16 @@ def record(
     time_reliable: bool = True,
     missing_reason=None,
     analyst: str | None = None,
-    tool: str = "get_data",
+    tool: str | None = None,
     call_id: str = "call_001",
 ) -> dict:
-    """One provenance record, defaulting every field to a fresh, valid value."""
+    """One provenance record, defaulting every field to a fresh, valid value.
+
+    ``tool`` defaults to the point-in-time tool that serves the class: freshness
+    only judges those, and a statement is grouped by its own tool name.
+    """
+    if tool is None:
+        tool = "get_balance_sheet" if input_class == FUNDAMENTALS else "get_verified_market_snapshot"
     return {
         "analyst": analyst if analyst is not None else input_class,
         "tool": tool,
@@ -203,11 +209,17 @@ class TestMissingOrUnusableProvenanceFailsClosed:
         assert verdict.reason == "INVALID_TRADE_DATE"
 
     def test_a_required_input_class_with_no_record_fails(self):
-        provenance = [r for r in all_fresh() if r["input_class"] != NEWS]
+        provenance = [r for r in all_fresh() if r["input_class"] != FUNDAMENTALS]
         verdict = check_freshness(state(provenance))
         assert verdict.passed is False
         missing = [d for d in verdict.details if d["reason"] == MISSING_REQUIRED_INPUT]
-        assert [d["input_class"] for d in missing] == [NEWS]
+        assert [d["input_class"] for d in missing] == [FUNDAMENTALS]
+
+    def test_a_window_scoped_class_absent_is_not_a_failure(self):
+        """News and sentiment are window inputs; their absence is not INV-03's concern."""
+        provenance = [r for r in all_fresh() if r["input_class"] != NEWS]
+        verdict = check_freshness(state(provenance))
+        assert verdict.passed is True
 
     def test_an_optional_class_absent_is_not_a_failure(self):
         """A run without a sentiment analyst is clean when sentiment is not required."""
@@ -387,7 +399,8 @@ def test_the_two_fundamentals_thresholds_are_configured_separately():
 def test_a_fresh_record_beside_a_stale_one_still_fails():
     """The invariant is per input: a newer record must not hide an older one."""
     provenance = all_fresh() + [
-        record(MARKET, "2026-10-01", call_id="call_old", tool="get_stock_data"),
+        record(MARKET, "2026-10-01", call_id="call_old",
+               tool="get_verified_market_snapshot"),
     ]
     verdict = check_freshness(state(provenance))
     assert verdict.passed is False
@@ -395,21 +408,22 @@ def test_a_fresh_record_beside_a_stale_one_still_fails():
     stale = [d for d in verdict.details if d["reason"] == STALE_INPUT]
     assert len(stale) == 1
     assert stale[0]["call_id"] == "call_old"
-    assert stale[0]["tool"] == "get_stock_data"
+    assert stale[0]["tool"] == "get_verified_market_snapshot"
     assert stale[0]["analyst"] == MARKET
 
 
 @pytest.mark.unit
 def test_every_failing_record_is_collected_not_just_the_first():
+    """The classes this module judges are market and the three statements."""
     provenance = all_fresh() + [
         record(MARKET, "2026-10-01", call_id="call_market_old"),
-        record(NEWS, "2026-10-01", call_id="call_news_old"),
-        record(FUNDAMENTALS, "2025-01-01", call_id="call_fund_old"),
+        record(FUNDAMENTALS, "2025-01-01", call_id="call_fund_old",
+               semantics=FUNDAMENTALS_FISCAL_PERIOD_END),
     ]
     verdict = check_freshness(state(provenance))
     assert verdict.passed is False
     ids = {d["call_id"] for d in verdict.details}
-    assert {"call_market_old", "call_news_old", "call_fund_old"} <= ids
+    assert {"call_market_old", "call_fund_old"} <= ids
 
 
 @pytest.mark.unit
@@ -552,8 +566,9 @@ class TestThresholdConfiguration:
         assert verdict.passed is False
         assert verdict.details[0]["threshold_days"] == 1
 
-    def test_the_default_required_classes_are_the_four_analyst_inputs(self):
-        assert set(REQUIRED_INPUT_CLASSES) == {MARKET, SENTIMENT, NEWS, FUNDAMENTALS}
+    def test_the_default_required_classes_are_the_point_in_time_inputs(self):
+        """News and sentiment are window-scoped, so they are not required."""
+        assert set(REQUIRED_INPUT_CLASSES) == {MARKET, FUNDAMENTALS}
 
 
 # ---------------------------------------------------------------------------
@@ -601,3 +616,46 @@ class TestGateIsDeterministicAndModelFree:
         for forbidden in ("with_structured_output", ".invoke(", "structured_llm",
                           "requests", "yfinance", "langchain", "tradingagents."):
             assert forbidden not in source
+
+
+# ---------------------------------------------------------------------------
+# E. The vocabulary is a contract with the producer
+# ---------------------------------------------------------------------------
+#
+# Every other test builds its records from these same constants, so it passes
+# whichever strings the constants hold: it proves the checks are consistent, not
+# that they read what teammate C writes. These two pin the values themselves, so
+# a rename on either side breaks a test instead of failing silently at run time.
+
+@pytest.mark.unit
+class TestTheVocabularyMatchesTheProducer:
+    def test_the_class_and_semantic_values_are_the_producers_strings(self):
+        """The literals below are what ``analysts/`` records actually carry."""
+        assert MARKET == "market_close"
+        assert MARKET_OBSERVATION_DATE == "latest_trading_row"
+        assert FUNDAMENTALS == "fundamentals"
+        assert FUNDAMENTALS_FISCAL_PERIOD_END == "period_end"
+
+    def test_a_record_written_with_the_producers_literals_passes(self):
+        """Built without the constants: exactly what C emits today."""
+        provenance = [
+            {
+                "analyst": "market", "tool": "get_verified_market_snapshot",
+                "call_id": "c_m", "input_class": "market_close",
+                "period_id": "", "as_of": "2026-11-21", "precision": "date",
+                "semantics": "latest_trading_row", "evidence": "Latest trading row used: 2026-11-21",
+                "available": True, "time_reliable": True, "missing_reason": "",
+            },
+            {
+                "analyst": "fundamentals", "tool": "get_income_statement",
+                "call_id": "c_f", "input_class": "fundamentals",
+                "period_id": "2026-09-30", "as_of": "2026-09-30", "precision": "date",
+                "semantics": "period_end", "evidence": "get_income_statement: 2026-09-30",
+                "available": True, "time_reliable": True, "missing_reason": "",
+            },
+        ]
+        verdict = check_freshness(state(provenance))
+        assert verdict.passed is True, reasons(verdict)
+
+    def test_the_default_required_classes_are_the_producers_strings(self):
+        assert set(REQUIRED_INPUT_CLASSES) == {"market_close", "fundamentals"}

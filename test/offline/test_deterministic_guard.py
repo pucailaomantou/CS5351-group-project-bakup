@@ -24,8 +24,12 @@ import tradingagents.safety.deterministic_guard as dg
 from tradingagents.agents.schemas import PortfolioDecision, PortfolioRating, render_pm_decision
 from tradingagents.safety.freshness import (
     FRESHNESS_RULE_VERSION,
+    FUNDAMENTALS,
+    FUNDAMENTALS_DISCLOSURE_DATE,
     FreshnessVerdict,
     MALFORMED_RECORD,
+    MARKET,
+    MARKET_OBSERVATION_DATE,
     STALE_INPUT,
 )
 from tradingagents.safety.guard import GUARD_RULE_VERSION, RATING_REVIEW, GuardVerdict
@@ -55,11 +59,16 @@ TRADE_DATE = "2026-11-23"
 # Fixtures: a state whose every check passes, and controlled doubles
 # ---------------------------------------------------------------------------
 
-def record(input_class: str, as_of, *, semantics: str, cid: str = "c1") -> dict:
-    """One fresh provenance record; the fields INV-03 requires and no more."""
+def record(input_class: str, as_of, *, semantics: str, cid: str = "c1",
+           tool: str = "get_verified_market_snapshot") -> dict:
+    """One fresh provenance record; the fields INV-03 requires and no more.
+
+    ``tool`` defaults to the one PIT market tool; a statement record must pass
+    its own tool so the per-tool grouping in ``freshness`` can see it.
+    """
     return {
         "analyst": input_class,
-        "tool": "get_data",
+        "tool": tool,
         "call_id": cid,
         "input_class": input_class,
         "as_of": as_of,
@@ -72,12 +81,19 @@ def record(input_class: str, as_of, *, semantics: str, cid: str = "c1") -> dict:
 
 
 def fresh_provenance() -> list[dict]:
-    """One fresh record per required input class."""
+    """One fresh record per required input class.
+
+    ``freshness`` only judges point-in-time tools: market and the three
+    statements. Sentiment and news are window-scoped and are not required.
+    """
     return [
-        record("market", "2026-11-21", semantics="market_observation_date", cid="c_m"),
-        record("sentiment", "2026-11-21", semantics="sentiment_observation_date", cid="c_s"),
-        record("news", "2026-11-22", semantics="news_publication_date", cid="c_n"),
-        record("fundamentals", "2026-08-01", semantics="fundamentals_disclosure_date", cid="c_f"),
+        record(MARKET, "2026-11-21", semantics=MARKET_OBSERVATION_DATE, cid="c_m"),
+        record("sentiment", "2026-11-21", semantics="sentiment_observation_date", cid="c_s",
+               tool="get_news"),
+        record("news", "2026-11-22", semantics="news_publication_date", cid="c_n",
+               tool="get_news"),
+        record(FUNDAMENTALS, "2026-08-01", semantics=FUNDAMENTALS_DISCLOSURE_DATE, cid="c_f",
+               tool="get_balance_sheet"),
     ]
 
 
@@ -271,8 +287,8 @@ class TestAuditOutput:
         assert result.checks[CHECK_INV03]["rule_version"] == FRESHNESS_RULE_VERSION
 
     def test_inv03_per_input_evidence_survives(self):
-        stale = fresh_provenance() + [record("market", "2026-10-01",
-                                             semantics="market_observation_date", cid="c_old")]
+        stale = fresh_provenance() + [record(MARKET, "2026-10-01",
+                                             semantics=MARKET_OBSERVATION_DATE, cid="c_old")]
         result = evaluate_guard({
             "final_rating": "Buy",
             "final_trade_decision": decision("Enter 5% of the portfolio."),
@@ -288,8 +304,8 @@ class TestAuditOutput:
         assert (old[0]["threshold_days"], old[0]["actual_age_days"]) == (3, 53)
 
     def test_the_whole_result_is_json_serialisable(self):
-        stale = fresh_provenance() + [record("market", "2026-10-01",
-                                             semantics="market_observation_date", cid="c_old")]
+        stale = fresh_provenance() + [record(MARKET, "2026-10-01",
+                                             semantics=MARKET_OBSERVATION_DATE, cid="c_old")]
         result = evaluate_guard({
             "final_rating": "Strong Buy",
             "final_trade_decision": decision("All in."),
@@ -584,8 +600,8 @@ class TestBrokenStateExtractionFailsClosed:
 class TestAsDictReturnsIndependentCopies:
     def _vetoed(self):
         """A failed result, so INV-03 carries a non-empty ``failures`` list."""
-        stale = fresh_provenance() + [record("market", "2026-10-01",
-                                             semantics="market_observation_date", cid="c_old")]
+        stale = fresh_provenance() + [record(MARKET, "2026-10-01",
+                                             semantics=MARKET_OBSERVATION_DATE, cid="c_old")]
         return evaluate_guard({
             "final_rating": "Buy",
             "final_trade_decision": decision("12% of the portfolio."),

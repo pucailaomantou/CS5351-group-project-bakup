@@ -15,7 +15,9 @@ What it checks, and nothing else:
   carry a semantic the class supports.
 - A parsed ``as_of`` not later than ``trade_date``, whose age in calendar days
   is at or below the threshold for that (input class, semantic) pair.
-- Every record: a fresh record never masks a stale one recorded beside it.
+- Every judged record: a fresh record never masks a stale one recorded beside it.
+- A record from a tool with no PIT cutoff is not judged; a multi-period statement
+  is judged on its newest period only (``_select_records``).
 
 The size of a *window* (how many days a news lookback spans) is an existing
 concern of ``date_window`` and is out of scope here; this module judges one
@@ -59,24 +61,28 @@ THRESHOLD_UNIT = "calendar_days"
 # here, once, so a rename in the producer is one edit here and not a search
 # through the checks.
 
-# Input classes.
-MARKET = "market"
+# Input classes. The values are teammate C's ``input_class`` strings, so a
+# record produced by an analyst is read here without a translation step.
+MARKET = "market_close"
 SENTIMENT = "sentiment"
 NEWS = "news"
 FUNDAMENTALS = "fundamentals"
 
-# Temporal semantics: what ``as_of`` means for the record's data.
-MARKET_OBSERVATION_DATE = "market_observation_date"
+# Temporal semantics: what ``as_of`` means for the record's data. The values are
+# teammate C's ``semantics`` strings.
+MARKET_OBSERVATION_DATE = "latest_trading_row"
 SENTIMENT_OBSERVATION_DATE = "sentiment_observation_date"
 NEWS_PUBLICATION_DATE = "news_publication_date"
 # A fundamentals figure carries the date the company filed it: an actual
-# disclosure date.
-FUNDAMENTALS_DISCLOSURE_DATE = "fundamentals_disclosure_date"
-# No disclosure date was available, so ``as_of`` is the fiscal period's end.
-# That is a conservative lower bound on when the figure became public (a
-# company files weeks after the period ends), not a publication timestamp, so
-# it must never be judged by the disclosure-date threshold.
-FUNDAMENTALS_FISCAL_PERIOD_END = "fundamentals_fiscal_period_end"
+# disclosure date. C does not produce this yet (no filing date is visible in the
+# vendor text), so no record carries it today; it is kept for the day it does,
+# and judged by the tighter threshold below.
+FUNDAMENTALS_DISCLOSURE_DATE = "filing_date"
+# No filing date was available, so ``as_of`` is the fiscal period's end. That is
+# a conservative lower bound on when the figure became public (a company files
+# weeks after the period ends), not a publication timestamp, so it must never be
+# judged by the filing-date threshold. This is what C emits today.
+FUNDAMENTALS_FISCAL_PERIOD_END = "period_end"
 
 # Supported semantics per input class. A record whose semantics is not listed
 # for its class is unsupported and fails closed.
@@ -106,14 +112,46 @@ DEFAULT_THRESHOLDS_DAYS: dict[tuple[str, str], int] = {
     (FUNDAMENTALS, FUNDAMENTALS_FISCAL_PERIOD_END): 180,
 }
 
+# Thresholds keyed by (input class, tool, semantic). The three statement tools
+# share one semantic (``period_end``), so the class+semantic pair alone cannot
+# name the input a threshold belongs to, and an analyst that goes back over
+# several fiscal periods cannot be judged as if it had read one. The table above
+# is kept for callers that pass their own thresholds explicitly.
+DEFAULT_TOOL_THRESHOLDS_DAYS: dict[tuple[str, str, str], int] = {
+    (MARKET, "get_verified_market_snapshot", MARKET_OBSERVATION_DATE): 3,
+    (FUNDAMENTALS, "get_balance_sheet", FUNDAMENTALS_FISCAL_PERIOD_END): 180,
+    (FUNDAMENTALS, "get_cashflow", FUNDAMENTALS_FISCAL_PERIOD_END): 180,
+    (FUNDAMENTALS, "get_income_statement", FUNDAMENTALS_FISCAL_PERIOD_END): 180,
+}
+
+# The tools whose records carry a real point-in-time cutoff. Anything else,
+# notably ``get_fundamentals`` (the live-only profile, which has no historical
+# vintage), still reaches the state for the audit trail but is not judged here:
+# there is no data time to judge it by.
+_PIT_TOOLS: tuple[str, ...] = (
+    "get_verified_market_snapshot",
+    "get_balance_sheet",
+    "get_cashflow",
+    "get_income_statement",
+)
+
+# Statement tools return one record per fiscal period. Their records are grouped
+# per tool and per temporal semantic, and only the newest period of each group is
+# judged: an older period must not outvote the one the decision rests on.
+_STATEMENT_TOOLS: tuple[str, ...] = (
+    "get_balance_sheet",
+    "get_cashflow",
+    "get_income_statement",
+)
+
 # The input classes that must be present for a decision to be trustable.
 #
-# INV-03's statement covers "any key input"; it does not name the classes. The
-# default mirrors the pipeline's own analyst set (the four sources in
-# ``graph/analyst_execution.py``); a caller that ran fewer analysts passes its
-# own tuple. Keep this in step with the analyst selection when INV-03 is wired
-# into the graph.
-REQUIRED_INPUT_CLASSES: tuple[str, ...] = (MARKET, SENTIMENT, NEWS, FUNDAMENTALS)
+# INV-03's statement covers "any key input"; it does not name the classes. News
+# and sentiment are window-scoped, not point-in-time inputs: no analyst records
+# a real cutoff for them, so INV-03 cannot judge them and they are not required.
+# The two classes below are the pipeline's point-in-time inputs. A caller that
+# ran fewer analysts passes its own tuple.
+REQUIRED_INPUT_CLASSES: tuple[str, ...] = (MARKET, FUNDAMENTALS)
 
 
 # ---------------------------------------------------------------------------
@@ -274,6 +312,72 @@ def _parse_as_of(value: object, precision: str) -> tuple[date | None, str | None
 
 
 # ---------------------------------------------------------------------------
+# Selection: which records are judged, and at what threshold
+# ---------------------------------------------------------------------------
+
+def _tool_thresholds() -> dict[tuple[str, str], int]:
+    """The tool-keyed table projected onto the ``(class, semantic)`` table the check reads.
+
+    ``_select_records`` has already collapsed each ``(tool, semantic)`` group to
+    one record. Because every surviving ``(class, semantic)`` pair maps to a
+    single threshold, the projection is unambiguous, and ``_check_record`` keeps
+    reading one flat table exactly as it did before.
+
+    The projection is layered over ``DEFAULT_THRESHOLDS_DAYS`` rather than
+    replacing it, so a caller that judges a class this module does not treat as
+    point-in-time (news or sentiment, over an explicit ``required_classes``)
+    still finds its threshold instead of falling through to ``NO_THRESHOLD``.
+    """
+    projected = dict(DEFAULT_THRESHOLDS_DAYS)
+    projected.update({
+        (input_class, semantic): days
+        for (input_class, _tool, semantic), days in DEFAULT_TOOL_THRESHOLDS_DAYS.items()
+    })
+    return projected
+
+
+def _select_records(records) -> list:
+    """The records freshness judges, one per ``(tool, temporal semantic)``.
+
+    - A tool that carries no PIT cutoff is dropped (the live-only profile): that
+      record stays in the state for the audit trail, it is just not judged.
+    - A statement returns many periods in one call. Grouped per tool and per
+      semantic, only the newest ``as_of`` is kept for judging; an older period
+      must not outvote the one the decision rests on.
+    - A record whose ``as_of`` is None is never dropped by that selection: it is
+      kept, so the existing checks report it instead of letting a newer sibling
+      mask it.
+    - Dates are compared as strings. A malformed date still competes and is then
+      rejected by the date check, so it can never pass by being skipped.
+    - A non-mapping, or a record without a string ``tool``, is passed through
+      untouched so the existing validation reports it exactly as it does now.
+    """
+    passthrough: list = []
+    undated: list = []
+    newest: dict[tuple, dict] = {}
+
+    for record in records:
+        if not isinstance(record, Mapping):
+            passthrough.append(record)
+            continue
+        tool = record.get("tool")
+        if isinstance(tool, str) and tool not in _PIT_TOOLS:
+            continue
+        if not (isinstance(tool, str) and tool in _STATEMENT_TOOLS):
+            passthrough.append(record)
+            continue
+        if record.get("as_of") is None:
+            undated.append(record)
+            continue
+        key = (tool, record.get("semantics"))
+        current = newest.get(key)
+        if current is None or str(record["as_of"]) > str(current["as_of"]):
+            newest[key] = record
+
+    return passthrough + undated + list(newest.values())
+
+
+# ---------------------------------------------------------------------------
 # Validation of one record
 # ---------------------------------------------------------------------------
 
@@ -378,12 +482,15 @@ def evaluate(
 
     ``input_provenance`` is the list of records; ``trade_date`` is the run's
     ``YYYY-MM-DD`` analysis date and the reference every age is measured from.
-    ``required_classes`` defaults to the pipeline's four analyst inputs;
-    ``thresholds`` defaults to ``DEFAULT_THRESHOLDS_DAYS``.
+    ``required_classes`` defaults to the pipeline's point-in-time inputs;
+    ``thresholds`` defaults to the tool-keyed table projected to
+    ``(class, semantic)``. Records from tools that carry no PIT cutoff are not
+    judged, and a multi-period statement is judged on its newest period only
+    (see ``_select_records``).
 
-    Every failure is collected: all records are judged, and every required class
-    that has no record at all adds its own entry. The verdict passes only when
-    no entry was produced.
+    Every failure is collected: all judged records are reported, and every
+    required class that has no record at all adds its own entry. The verdict
+    passes only when no entry was produced.
     """
     trade_day = _parse_date(trade_date)
     if trade_day is None:
@@ -399,7 +506,7 @@ def evaluate(
         return _failure({"reason": INVALID_PROVENANCE,
                          "message": f"input_provenance is {type(input_provenance).__name__}, not a list"})
 
-    thresholds = DEFAULT_THRESHOLDS_DAYS if thresholds is None else thresholds
+    thresholds = _tool_thresholds() if thresholds is None else thresholds
     details: list[dict] = []
 
     present_classes = set()
@@ -412,6 +519,8 @@ def evaluate(
                 isinstance(record.get(name), str) and record.get(name) for name in _TEXT_FIELDS
             ):
                 present_classes.add(claimed)
+
+    for record in _select_records(input_provenance):
         failure = _check_record(record, trade_day, thresholds)
         if failure is not None:
             details.append(failure)
